@@ -23,7 +23,7 @@ public class _06_MyInfoMain {
 		_06_MyInfo info2 = new _06_MyInfo("룰루랄라",12,"경기도 인천시", "fnffnfkffk@gmail.com","개발자");
 		
 		info2.printInfo();
-		
+		 
 		
 	}
 
