@@ -19,7 +19,7 @@ public class _01_ArreayEx {
 		    * int[] scores = {값1, 값2,...};
 		    */
 		
-		
+		 
 		/*
  		    * 방법2) 선언과 생성을 동시에 한다. .. 추천
 		    * int[] scores = new int[갯수];
