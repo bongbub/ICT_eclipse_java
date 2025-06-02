@@ -74,12 +74,8 @@ public class _01_ArreayEx {
 		
 //		int selnum = scan.nextInt();
 //		for(int j=0; j)
-		
-		
-		
+		scan.close();
 		
 	}
-	
-
 
 }
