@@ -54,11 +54,17 @@ public class _05_AnimalMain {
 	
 //          ==> 부모 클래스 하나로 받으면 됨!!
 	
-	// 부모타입으로 받음
+	
+	// 자식클에만 있는 함수를 호출하기 위해서는!?
+	// 부모클에서 접근할 수 없듬
+	//  -> 다운캐스팅으로 낮춰서 접근!
+	// 만약 받아온 ani가 자식클이라면
+	// 부모타입으로 받음!!!!!!!!!!!!!!!!
 	// 부모타입의 참조변수를 가진 일반 메서드
 	public static void moveAnimal(_05_Animal animal) {
 		// animal로 접근할 수 있는건 _05_Animal에 있는 것.
 		animal.move();  // _05_Animal에 있는 move()를 호출하겠다.
+						// 자료형이 부모클래스 타입이어도 재정의된 자식 메서드가 호출!!!!!!!!!!!!!!!!!!
 		
 		if(animal instanceof _05_Human) {  // animal이 _05_Human의 객체이면
 			_05_Human human = (_05_Human)animal;  // 다운캐스팅
