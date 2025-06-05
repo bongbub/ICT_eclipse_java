@@ -4,6 +4,7 @@ public class _01_VariableEx {
 	public static void main(String[] args) {
 		/* 가상머신(JVM, Java Virtual Machine)이 프로그램을 시작하기 위해 호출하는 메서드 
 		 */
+		// https://docs.oracle.com/javase/8/docs/api/
 		
 		System.out.println("*** 변수 ***");
 		System.out.println("변수 : 하나의 값을 저장할 수 있는 메모리 공간");
