@@ -1,6 +1,7 @@
 package ch08;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 // 2025.6.5 (7교시)
@@ -50,6 +51,8 @@ public class _01_ArrayList {
 	       *         
 	       * 9. 전체 삭제 : list.clear();
 	       * 10. 반복자 : Iterator<E> iterator : while(hasNext())  { next() }
+	       * 			인터페이스임
+	       * 									다음값(has Next)이 존재하는 동안 반복 존재하면 next-> 출력
 	       */
 		
 		
@@ -67,7 +70,7 @@ public class _01_ArrayList {
 		// 방법1) for문으로 출력하기
 		System.out.println("방법1) for문을 통해 출력하기");
 		for(int i=0; i<list.size(); i++) {
-			System.out.println(list.get(i));
+			System.out.println(list.get(i)+ "\n");
 		}
 		
 		// 다형성 적용
@@ -78,10 +81,45 @@ public class _01_ArrayList {
 		list2.add("바나나킥");
 		list2.add("홈런볼");
 		// 방법2) 향상된 for문
+		System.out.println("방법2) 향상된 for문을 통해 출력하기");
+
 		// list2안에 요소가 몇 개 있느냐에 따라 자동으로 반복
 		for(String i : list2) {
 			System.out.println(list2);
 		}
-		System.out.println("총 반복 횟수: " + list2.size());
+		System.out.println("총 반복 횟수: " + list2.size() + "\n");
+		
+		
+		System.out.println("방법3) 반복자를 통해 출력하기");
+		// 반복자 생성
+		Iterator<String> iterator = list.iterator();	
+		// -> arraylist의 iterator()라는 메서드가 Iterator<>, 즉 반복자 기능을 할 수 있도록 돕겠다 라는 구절
+		// Interator interator = list.iterator();  => 자료형 생략 시 가장 큰 자료형인 Object로 받음
+		// Object란? 부모클래스가 상속하는 것. 원래 "클래스명 extends Object{ ...}" 임.. 생략된 것!
+		
+		// 값이 존재하는 동안 이동해가며 출력
+		while(iterator.hasNext()) {	// ArrayList의 값이 존재하는지 체크
+			String test = iterator.next();		// 값을 가져옴
+			System.out.println(test);
+		}
+		System.out.println("");
+
+		
+		// Integer 형식을 Iterator로 출력하기
+		System.out.println("방법3-2) Interger 형식을 Iterator로 출력");
+		ArrayList<Integer> arr = new ArrayList<Integer>();
+		arr.add(10);
+		arr.add(20);
+		arr.add(30);
+		arr.add(40);
+		arr.add(50);
+		
+		Iterator<Integer> ite = arr.iterator();
+		while(ite.hasNext()) {
+			int test = ite.next();
+			System.out.println(test);
+		}
+		
+		
 	}
 }
