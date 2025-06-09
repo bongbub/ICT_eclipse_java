@@ -12,9 +12,9 @@ public class _04_MemberArrayList {
 	private ArrayList<_04_Member> list;
 	// 디폴트 생성자
 	public _04_MemberArrayList() {
-		list = new ArrayList<_04_Member>();
+		list = new ArrayList<_04_Member>(); 
 	}
-	
+	 
 	// 리스트 추가 메서드
 	public void addMember(_04_Member member) {	// _04_Member member = new _04_Member(1001, "이지원");
 		list.add(member);		// new _04_Member(1001, "이지원");
@@ -32,7 +32,7 @@ public class _04_MemberArrayList {
 				list.remove(i);			// 해당 회원 삭제
 				return true;			// removeMember에 참값을 전달. for문은 계속 돎 (-> false 구문으로 가지 않음)
 										// 삭제 후 false 구문을 실행하지 않아야할 때. (== skip)
-			}
+			} 
 		}
 		System.out.println(memberId + "가 존재하지 않습니다.");		// 반복문이 끝날 때까지 해당 아이디를 못 찾는 경우
 		return false;					// 종료. removeMember()메서드를 빠져나감

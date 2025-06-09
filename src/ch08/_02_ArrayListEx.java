@@ -35,7 +35,7 @@ public class _02_ArrayListEx {
 		}
 		
 		System.out.println(" === 향상된 for문으로 출력 ===");
-		for(String i : array){
+		for(String i : array){ 
 			System.out.println(array);
 		}
 		
