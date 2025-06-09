@@ -18,7 +18,7 @@ public class _04_MemberArrayList {
 	// 리스트 추가 메서드
 	public void addMember(_04_Member member) {	// _04_Member member = new _04_Member(1001, "이지원");
 		list.add(member);		// new _04_Member(1001, "이지원");
-	}
+	} 
 	
 	// 삭제메서드
 	public boolean removeMember(int memberId) {
