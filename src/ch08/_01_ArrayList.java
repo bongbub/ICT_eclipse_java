@@ -90,7 +90,7 @@ public class _01_ArrayList {
 		System.out.println("총 반복 횟수: " + list2.size() + "\n");
 		
 		
-		System.out.println("방법3) 반복자를 통해 출력하기");
+		System.out.println("방법3) 반복자를 통해 출력하기"); 
 		// 반복자 생성
 		Iterator<String> iterator = list.iterator();	
 		// -> arraylist의 iterator()라는 메서드가 Iterator<>, 즉 반복자 기능을 할 수 있도록 돕겠다 라는 구절
