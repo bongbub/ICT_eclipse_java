@@ -2,7 +2,7 @@ package test;
 
 import java.util.Scanner;
 
-public class _09_EmployeeMain {
+public class _01_EmployeeMain {
 
 	// 2025.6.2
 
@@ -10,11 +10,11 @@ public class _09_EmployeeMain {
 		
 		
 		// Manager 클래스 생성자
-		_09_Manager man = new _09_Manager();
+		_02_Manager man = new _02_Manager();
 		
 		
 		
-		 _09_Sawon sawon = new _09_Sawon("S002","박나래","전산실",8000, 1000);
+		 _02_Sawon sawon = new _02_Sawon("S002","박나래","전산실",8000, 1000);
 		// 이렇게 작성하면 안되는 이유
 		// -> _09_Sawon 클래스에 그런 매개변수 생성자가 없으므로!
 		// _> 하지만 만들어줬으니까 다시 주석 해제 ㅋ 그리고 아래 주석 ㅋ

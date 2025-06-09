@@ -1,6 +1,6 @@
 package test;
 
-public class _09_Manager extends _09_Employee {
+public class _02_Manager extends _01_Employee {
 	
 	// 2025.6.2
 	// 자식클래스

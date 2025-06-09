@@ -1,6 +1,6 @@
 package test;
 
-public class _09_Sawon extends _09_Employee{
+public class _02_Sawon extends _01_Employee{
 	
 	// 2025.6.2
 	// 자식 클래스
@@ -15,7 +15,7 @@ public class _09_Sawon extends _09_Employee{
 	
 	// 때문에 Main에서 set(...) 의 세터를 사용하지 않고 정보를 세팅하려면
 	// 이 클래스에서 생성자를 통해 세팅해주면 됨!
-	public _09_Sawon(String sabun, String name, String deptName, int salary, int sudang) {
+	public _02_Sawon(String sabun, String name, String deptName, int salary, int sudang) {
 		super(sabun, name, deptName, salary);
 		this.sudang = sudang;
 	}

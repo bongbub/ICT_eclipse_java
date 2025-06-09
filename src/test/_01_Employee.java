@@ -1,6 +1,6 @@
 package test;
 
-public class _09_Employee {
+public class _01_Employee {
 	
 	// 2025.6.2 (1교시 시험)
 	// 상속 예제
@@ -13,14 +13,14 @@ public class _09_Employee {
 	private int salary;
 
 	// 디폴트 생성자
-	public _09_Employee() {
+	public _01_Employee() {
 		//System.out.println(" --  Employee --");
 		//System.out.println("");
 		
 	}
 	
 	// 매개변수 생성자
-	public _09_Employee(String sabun, String name, String deptName, int salary) {
+	public _01_Employee(String sabun, String name, String deptName, int salary) {
 		this.sabun = sabun;
 		this.name = name;
 		this.deptName = deptName;
