@@ -4,7 +4,7 @@ package ch08_re;
 
 public class _04_MemberArrayListMain {
 	public static void main(String[] args) {
-		
+		 
 		// 생성자
 		_04_MemberArrayList list = new _04_MemberArrayList();
 		

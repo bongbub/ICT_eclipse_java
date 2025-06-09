@@ -15,7 +15,7 @@ public class _04_MemberArrayList {
 	public _04_MemberArrayList() {
 		list = new ArrayList<_04_Member>();
 	}
-	
+	 
 	// 리스트추가
 	public void addMem(_04_Member member) {
 		list.add(member); 		// 매개변수 -> 멤버변수로 저장된 데이터를 리스트에 저장

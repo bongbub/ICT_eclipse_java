@@ -7,7 +7,7 @@ public class _04_Member {
 	// 멤버변수
 	private int memberId;
 	private String memberName;
-	
+	 
 	// 매개변수생성자
 	public _04_Member(int memberId, String memberName) {
 		this.memberId = memberId;

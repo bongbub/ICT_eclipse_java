@@ -12,7 +12,7 @@ public class _04_MemberArrayList {
 	private ArrayList<_04_Member> list;
 	// 디폴트 생성자
 	public _04_MemberArrayList() {
-		list = new ArrayList<_04_Member>(); 
+		list = new ArrayList<_04_Member>();  
 	}
 	 
 	// 리스트 추가 메서드

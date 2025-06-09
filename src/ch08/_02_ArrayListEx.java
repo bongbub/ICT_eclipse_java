@@ -32,7 +32,7 @@ public class _02_ArrayListEx {
 
 		for (int i = 0; i<array.size(); i++){
 			System.out.println(array.get(i));
-		}
+		} 
 		
 		System.out.println(" === 향상된 for문으로 출력 ===");
 		for(String i : array){ 
