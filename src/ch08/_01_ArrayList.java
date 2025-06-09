@@ -116,7 +116,7 @@ public class _01_ArrayList {
 		
 		Iterator<Integer> ite = arr.iterator();
 		while(ite.hasNext()) {
-			int test = ite.next();
+			Integer test = ite.next();
 			System.out.println(test);
 		}
 		
