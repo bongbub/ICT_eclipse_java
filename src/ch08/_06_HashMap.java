@@ -51,7 +51,7 @@ public class _06_HashMap {
 		
 		System.out.println(map);
 		System.out.println("<<< 전체 데이터 for문으로 출력 >>>");
-		for(int i=1; i<map.size()+1; i++) {
+		for(int i=1; i<=map.size(); i++) {
 			System.out.println(i+"번에는"+map.get(i));
 		}
 		
@@ -60,11 +60,31 @@ public class _06_HashMap {
 		
 		System.out.println(" <<< 박나래 삭제 후 전체 데이터 출력 >>>");
 		System.out.println(map.remove(4));
-		for(int i=1; i<map.size(); i++) {
-			System.out.println(i+"번에는"+map.get(i));
+		
+		for(int i=1; i<=map.size(); i++) {
+			System.out.println(i+"번 "+map.get(i));
 		}
 		
+		// 데이터가 비어있는지 여부 : isEmpty()
+		System.out.println(map.isEmpty());
 		
+		// 해당 키가 있는지 여부
+		System.out.println(" -- 해당 키가 존재하는지 여부 : containsKey(key) --");
+		System.out.println(map.containsKey(1));
+		System.out.println(map.containsKey(2));
+		System.out.println(map.containsKey(3));
+		System.out.println(map.containsKey(4));
+		System.out.println(map.containsKey(5));
+
+		// 해당 값이 있는지 여부
+		System.out.println(" -- 해당 값이 존재하는지 여부 : containsValue(value) --");
+		System.out.println(map.containsValue("아이유"));
+		System.out.println(map.containsValue("유재석"));
+		System.out.println(map.containsValue("박명수"));
+		System.out.println(map.containsValue("박나래"));
+		
+		System.out.println(" <<< 해당 개수 : size() >>>");
+		System.out.println(map.size());
 		
 	}
 }
