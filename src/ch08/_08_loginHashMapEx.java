@@ -35,14 +35,15 @@ public class _08_loginHashMapEx {
 		login.put("son", "son1234");
 		login.put("choi", "choi1234");
 		
+		
 		Scanner scan = new Scanner(System.in);
 		
 		while(true) {
 			System.out.println("system :  Q 또는 q를 입력하시면 로그인을 종료합니다. ");
 			System.out.print("system : 아이디를 입력하세요 :");
 			String id = scan.next();
-			if(id.equals("q")) {
-				break;
+			if(id.equals("q")|| id.equals("Q")) {
+				System.exit(0);
 			}
 			else if(login.containsKey(id)) {
 				System.out.println("system : 아이디 일치");
@@ -54,19 +55,14 @@ public class _08_loginHashMapEx {
 				}
 				else {
 					System.out.println("비밀번호 불일치");
-					break;
+					continue;
 				}
-				
 			}
 			else {
-				System.out.println("system : 아이디가 일치하지 않습니다.");
-				System.exit(0);
-				
+				System.out.println("system : 아이디가 일치하지 않습니다. \n");
+				continue;
 			}
-			
-
 		}
 		scan.close();
-		
 	}
 }
