@@ -52,16 +52,18 @@ public class _02_ArithmethicException {
 			System.out.println(" \n !!!!!!!!!!!!!! 오류 발생 !!!!!!!!!!!!! ");
 			System.out.println("오류코드 : "+ e);
 			System.out.println("오류메세지 : "+ e.getMessage());
+			e.printStackTrace();
 		}
 		finally {
 			// 항상 수행되는 부분(예외가 발생하지 않더라도) 
 		    // 주로 자원해제를 위한 close() 문장이 온다.
 			System.out.println("\n항상 출력되는 finally 부분 입니다용 ㅋ");
+			scan.close();
 		}
 
 		
 		
-		System.out.println( "\n ＠＠＠ 정상종료 ＠＠＠");
+		System.out.println( "\n @＠＠ 정상종료 ＠＠@");
 		scan.close();
 	}
 	

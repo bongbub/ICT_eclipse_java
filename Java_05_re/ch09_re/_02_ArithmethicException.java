@@ -26,6 +26,7 @@ public class _02_ArithmethicException {
 			System.out.println("무조건 출력되는 finally 부분");
 		}
 		System.out.println("정상출력 테스트");
+		scan.close();
 		
 	}
 }
