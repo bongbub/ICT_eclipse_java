@@ -14,12 +14,12 @@ public class _06_IDFormat {
 	}
 	
 	// setter
-	public void setUserId(String userId) throws _06_IDFormatException {
+	public void setUserId(String userId) throws _06_IDFmException {
 		if(userID == null) {
-			throw new _06_IDFormatException("아이디는 null일 수 없습니다");
+			throw new _06_IDFmException("아이디는 null일 수 없습니다");
 		}
-		if(userID.length()<8 || userID.length()>20) {
-			throw new _06_IDFormatException("아이디는 8자이상 20자 이하로 쓰시오.");
+		else if(userID.length()<8 || userID.length()>20) {
+			throw new _06_IDFmException("아이디는 8자이상 20자 이하로 쓰시오.");
 		}
 		this.userID = userID;
 	}

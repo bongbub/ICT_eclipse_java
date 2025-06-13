@@ -14,7 +14,7 @@ public class _06_Main {
 		try {
 			format.setUserId(userID);
 			System.out.println("아이디 :" + userID);
-		} catch (_06_IDFormatException e) {
+		} catch (_06_IDFmException e) {
 			System.out.println(e.getMessage());
 		} finally {
 
