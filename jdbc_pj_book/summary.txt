@@ -13,8 +13,8 @@ DAO(Data Access Object) : 데이터 접근 객체
 		=> CRUD(입력, 수정, 삭제, 조회)
 
      
-화면단(프론트엔드) : BookMain ~> Menu ~> 메뉴선택
-백엔드단        : ~> BookController ~> BookServiceImpl(BookService) ~> BookDAOImpl(BookDAO)  
+화면단(프론트엔드)        : BookMain ~> Menu ~> 메뉴선택
+백엔드단(비즈니스로직구현)  : ~> BookController ~> BookServiceImpl(BookService) ~> BookDAOImpl(BookDAO)  
                        (컨트롤러)			     (서비스)			               (DAO)
 
 
