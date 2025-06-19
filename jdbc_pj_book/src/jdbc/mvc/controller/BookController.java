@@ -1,5 +1,7 @@
 package jdbc.mvc.controller;
 
+import jdbc.mvc.dto.BookDTO;
+import jdbc.mvc.service.BookServiceImpl;
 
 /*
  *   작성일 : 2025.6.18
@@ -15,8 +17,14 @@ package jdbc.mvc.controller;
 
 public class BookController {
 	
-	// 1. 도서 추가
+	BookServiceImpl sevice = new BookServiceImpl();
 	
+	// 1. 도서 추가
+	public void bookAdd(BookDTO dto) {
+		System.out.println(" -- bookInsert() --");
+		sevice.bookInsert(dto);
+		System.out.println(dto.toString());
+	}
 	
 	// 2. 도서 수정
 	

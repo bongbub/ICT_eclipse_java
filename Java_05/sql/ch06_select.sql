@@ -578,7 +578,7 @@ SELECT EMPLOYEE_ID AS 사번
 
 
 
-/* DECODE함수, CASE문
+/* DECODE함수, CASE문 사용
     사원테이블의 부서ID가 10~60인 경우 부서ID와 '부서명' 출력
     그 외는 '부서미정'으로 출력
     부서ID로 정렬한다.
@@ -594,20 +594,23 @@ SELECT EMPLOYEE_ID AS 사번
     그외      부서미정 
 */    
 
-SELECT CASE
-	WHEN DEPARTMENT_ID IS NOT NULL THEN department_id  
-	END AS 부서ID
-	 ,DECODE(DEPARTMENT_ID 
-			, 10, DEPARTMENT_NAME
-			, 20, DEPARTMENT_NAME
-			, 30, DEPARTMENT_NAME
-			, 40, DEPARTMENT_NAME
-			, 50, DEPARTMENT_NAME
-			, 60, DEPARTMENT_NAME
-			, '부서미정') AS 부서명
-  FROM DEPARTMENTS
-  --WHERE DEPARTMENT_ID IS NOT NULL 
-  ORDER BY DEPARTMENT_ID ASC;
+SELECT DISTINCT 
+	   DEPARTMENT_ID
+	 , CASE
+		 WHEN department_id BETWEEN 10 AND 60 THEN
+		 DECODE(department_id
+	 		, 10, 'Administration'
+	 		, 20, 'Marketing'
+	 		, 30, 'Purchasing'
+	 		, 40, 'Human Resources'
+	 		, 50, 'Shipping'
+	 		, 60, 'IT'
+	 		, '부서미정')
+	 	 ELSE '부서미정'
+	 END AS 부서명
+  FROM EMPLOYEES
+  WHERE DEPARTMENT_ID IS NOT null
+ORDER BY DEPARTMENT_ID ASC;
 
 
 	
