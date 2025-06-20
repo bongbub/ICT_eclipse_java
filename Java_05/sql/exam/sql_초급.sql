@@ -374,12 +374,14 @@ DROP TABLE NewOrders;
 
 CREATE TABLE NewOrders(
 	orderid		NUMBER	PRIMARY KEY,
-	custid		NUMBER 	NOT NULL CONSTRAINT neworders_custid_fk FOREIGN KEY(custid) REFERENCES NewCustomer(custid),
+	custid		NUMBER  NOT null,
 	bookid		NUMBER	NOT NULL,
 	saleprice	NUMBER,
-	orderdate	date
-)
+	orderdate	DATE,
+	CONSTRAINT neworders_custid_fk FOREIGN KEY(custid) REFERENCES NewCustomer(custid) ON DELETE CASCADE
+);
 
+SELECT * FROM NEWOrders;
 
 --4.2 ALTER문
 --3-37 NewBook 테이블에 VARCHAR2(13)의 자료형을 가진 isbn 속성을 추가하시오.
@@ -399,7 +401,6 @@ CREATE TABLE NewOrders(
 
 
 
-*/
 
 
 
