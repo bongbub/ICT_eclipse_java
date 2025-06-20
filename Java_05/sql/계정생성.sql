@@ -4,14 +4,17 @@
 -- 1. 사용자 계정생성 : scott_05 계정생성 .. 1,2,3번
 -- create user <계정이름> identified by <계정암호> default tablespace users;
 create user scott_05 identified by tiger default tablespace users; 
+create user madang identified by tiger default tablespace users; 
 
 -- 2. 사용자 권한 부여
 -- grant [시스템 권한] to [계정];
 grant connect, resource, create view, create session to scott_05;
+grant connect, resource, create view, create session to madang;
 
 -- 3. 락 해제
 -- alter user <계정이름> account unlock;
 alter user scott_05 account unlock;
+alter user madang account unlock;
 
 
 

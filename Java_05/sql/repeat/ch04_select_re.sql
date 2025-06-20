@@ -95,3 +95,30 @@ SELECT EMPLOYEE_ID , START_DATE , END_DATE , DEPARTMENT_ID
   WHERE JOB_ID = 'AC_ACCOUNT';
   
 
+
+  -- 실습 4-13. 사원테이블에서(employees) department_id를 중복없이 조회하라
+  --			단, department_id를 내림차순으로 정렬해라
+SELECT DISTINCT DEPARTMENT_ID
+  FROM EMPLOYEES
+  ORDER BY DEPARTMENT_ID DESC;
+
+  -- 실습 4-13-1. 사원테이블에서(employees) employee_id, department_id를 중복없이 조회하라
+  --			단, department_id를 내림차순으로 정렬해라
+  SELECT DISTINCT 
+         EMPLOYEE_ID 사번
+       , department_id 부서번호
+    FROM EMPLOYEES
+ORDER BY DEPARTMENT_ID DESC;
+    
+-- 실습 4-14. First_name, Last_name, email, hire_date 조회 
+-- firstname과 lastname을 같이 보여라
+SELECT e.FIRST_NAME || ' ' || e.LAST_NAME 이름
+     , e.EMAIL 이메일
+     , e.HIRE_DATE 입사일
+  FROM EMPLOYEES e
+  ORDER BY e.HIRE_DATE ASC;
+
+
+
+
+

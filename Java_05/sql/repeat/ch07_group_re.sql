@@ -149,35 +149,10 @@ SELECT job_id 직무
      , trunc(sum(SALARY)) 총급여
      , Trunc(avg(salary)) 평균급여
   FROM EMPLOYEES
-  WHERE JOB_ID = '%IT%'
+  WHERE JOB_ID NOT like '%IT%'
  GROUP BY JOB_ID
  HAVING avg(salary) >= 5000
  ORDER BY JOB_ID ASC;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

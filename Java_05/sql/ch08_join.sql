@@ -193,3 +193,241 @@ SELECT e.EMPLOYEE_ID 사번
    AND e.EMPLOYEE_ID = 100;
 
 
+SELECT e.EMPLOYEE_ID 사번
+	 , e.LAST_NAME 이름
+	 , d.DEPARTMENT_ID 부서번호
+	 , d.DEPARTMENT_NAME 부서명
+	 , l.LOCATION_ID 위치번호
+	 , l.STREET_ADDRESS 주소
+  FROM EMPLOYEES e
+  join DEPARTMENTS d
+    on e.DEPARTMENT_ID = d.DEPARTMENT_ID
+  JOIN  LOCATIONS l
+    ON d.LOCATION_ID = l.LOCATION_ID
+ WHERE e.EMPLOYEE_ID = 100;
+
+
+------------------------------------------------------------------------------------------------------------------------
+-- 2025.6.20
+-- 아침테스트
+
+-- conuries T + regions T => region_id가 1일때의 정보 조회
+-- 방법1)
+SELECT r.REGION_ID 지역번호
+     , c.COUNTRY_ID 국가번호
+     , c.COUNTRY_NAME 국가명
+     , r.REGION_NAME 지역명
+  FROM COUNTRIES c
+     , REGIONS r
+WHERE c.REGION_ID = r.REGION_ID
+  AND r.REGION_ID = 1;
+
+
+-- 방법2)
+SELECT c.COUNTRY_ID 국가번호
+     , c.COUNTRY_NAME 국가명
+     , r.REGION_ID 지역번호
+     , r.REGION_NAME 지역명
+  FROM COUNTRIES c
+  JOIN REGIONS r
+	ON c.REGION_ID = r.REGION_ID
+ WHERE r.REGION_ID = 1
+ ORDER BY r.REGION_ID ASC;
+  
+  
+
+-- 사원 T +부서 T
+-- 사번이 110번일 때 사번, last_name, 부서id, 부서명
+-- 방법1)
+SELECT e.EMPLOYEE_ID 사번
+	 , e.LAST_NAME 이름
+	 , d.DEPARTMENT_ID 부서아이디
+	 , d.DEPARTMENT_NAME 부서명
+  FROM EMPLOYEES e
+  	 , DEPARTMENTS d
+  WHERE e.DEPARTMENT_ID = d.DEPARTMENT_ID
+   AND e.EMPLOYEE_ID = 110;
+
+
+-- 방법2)
+SELECT e.EMPLOYEE_ID
+	 , e.LAST_NAME
+	 , d.DEPARTMENT_ID
+	 , d.DEPARTMENT_NAME
+  FROM EMPLOYEES e
+  JOIN DEPARTMENTS d
+    ON e.DEPARTMENT_ID = d.DEPARTMENT_ID
+ WHERE e.EMPLOYEE_ID = 110
+ ORDER BY e.EMPLOYEE_ID ASC;
+
+
+-- [3. 사원정보, 부서정보, 위치정보, 국가정보 ]
+-- 101번인 사원의 사번, last_name, 부서테이블의 부서코드, 부서명, 위치테이블의 location_id, street_address, 국가테이블의 id, name
+-- 방법1. 
+SELECT e.EMPLOYEE_ID 사번
+	 , e.LAST_NAME 이름
+	 , d.DEPARTMENT_ID 부서코드
+	 , d.DEPARTMENT_NAME 이름
+	 , l.LOCATION_ID 지역코드
+	 , l.STREET_ADDRESS 주소
+	 , c.COUNTRY_ID 국가번호
+	 , c.COUNTRY_NAME 국가명
+  FROM EMPLOYEES e
+     , DEPARTMENTS d
+     , LOCATIONS l
+     , COUNTRIES c
+WHERE e.DEPARTMENT_ID = d.DEPARTMENT_ID
+  AND d.LOCATION_ID = l.LOCATION_ID
+  AND l.COUNTRY_ID = c.COUNTRY_ID
+  AND e.EMPLOYEE_ID = 101;
+
+
+-- 방법2
+SELECT e.EMPLOYEE_ID 사번
+	 , e.LAST_NAME 이름
+	 , d.DEPARTMENT_ID 부서코드
+	 , d.DEPARTMENT_NAME 이름
+	 , l.LOCATION_ID 지역코드
+	 , l.STREET_ADDRESS 주소
+	 , c.COUNTRY_ID 국가번호
+	 , c.COUNTRY_NAME 국가명
+  FROM EMPLOYEES e
+  JOIN DEPARTMENTS d
+    ON e.DEPARTMENT_ID = d.DEPARTMENT_ID
+  JOIN LOCATIONS l
+    ON d.LOCATION_ID = l.LOCATION_ID
+  JOIN COUNTRIES c
+    ON l.COUNTRY_ID = c.COUNTRY_ID
+ WHERE e.EMPLOYEE_ID = 101;
+
+
+
+-- pk 조건2가지 : not null, 중복불가
+
+-- [4. 사원정보, 부서정보, 위치정보, 국가정보, 지역정보]
+-- 101번인 사원의 사번, last_name, 부서테이블의 부서코드, 부서명, 위치테이블의 location_id, street_address, 
+-- 국가테이블의 id, name, Regions 테이블의 region_id, region_name
+-- 방법1.
+SELECT e.EMPLOYEE_ID 사번
+	 , e.LAST_NAME 이름
+	 , d.DEPARTMENT_ID 부서코드
+	 , d.DEPARTMENT_NAME 부서명
+	 , l.LOCATION_ID 지역번호
+	 , l.STREET_ADDRESS 주소
+	 , c.COUNTRY_ID 국가번호
+	 , c.COUNTRY_NAME 국가명
+	 , r.REGION_NAME 지역이름
+	 , r.REGION_ID 구역id
+  FROM EMPLOYEES e
+     , DEPARTMENTS d
+     , LOCATIONS l
+     , COUNTRIES c
+     , REGIONS r
+ WHERE e.DEPARTMENT_ID = d.DEPARTMENT_ID
+   AND d.LOCATION_ID = l.LOCATION_ID
+   AND l.COUNTRY_ID = c.COUNTRY_ID
+   AND c.REGION_ID = r.REGION_ID
+   AND e.EMPLOYEE_ID = 101;
+
+
+-- 방법2
+SELECT
+       e.EMPLOYEE_ID 사번
+	 , e.LAST_NAME 이름
+	 , d.DEPARTMENT_ID 부서코드
+	 , d.DEPARTMENT_NAME 부서명
+	 , l.LOCATION_ID 지역번호
+	 , l.STREET_ADDRESS 주소
+	 , c.COUNTRY_ID 국가번호
+	 , c.COUNTRY_NAME 국가명
+	 , r.REGION_NAME 지역이름
+	 , r.REGION_ID 구역id
+  FROM EMPLOYEES e
+  JOIN DEPARTMENTS d
+    ON e.DEPARTMENT_ID = d.DEPARTMENT_ID
+  JOIN LOCATIONS l
+    ON d.LOCATION_ID = l.LOCATION_ID
+  JOIN COUNTRIES c
+    ON l.COUNTRY_ID = c.COUNTRY_ID
+  JOIN REGIONS r
+    ON c.REGION_ID = r.REGION_ID
+ WHERE e.EMPLOYEE_ID = 101;
+
+
+-- [5. 사원정보, 부서정보, 위치정보, 국가정보, 지역정보, 직무정보(현재), 직무history(이전)]
+-- 101번인 사원의 사번, last_name, 부서테이블의 부서코드, 부서명, 위치테이블의 location_id, street_address, 
+-- 국가테이블의 id, name, Regions 테이블의 region_id, region_name, 모든 직무정보, 
+-- 직무history : start_date : '97/09/21'의 모든 정보 
+-- 방법1. 
+SELECT 
+	   e.EMPLOYEE_ID 사번
+	 , e.LAST_NAME 이름
+	 , d.DEPARTMENT_ID 부서코드
+	 , d.DEPARTMENT_NAME 부서명
+	 , l.LOCATION_ID 지역번호
+	 , l.STREET_ADDRESS 주소
+	 , c.COUNTRY_ID 국가코드
+	 , c.COUNTRY_NAME 국가명
+	 , r.REGION_ID 지역번호
+	 , r.REGION_NAME 지역이름
+	 , j.JOB_ID 직업코드
+	 , j.JOB_TITLE 직무명
+	 , j.MAX_SALARY 최대급여
+	 , j.MIN_SALARY 최소급여
+	 , jh.EMPLOYEE_ID 사번
+	 , jh.END_DATE 퇴사일
+	 , jh.START_DATE 입사일
+	 , jh.JOB_ID 직무코드
+	 , jh.DEPARTMENT_ID 부서코드
+  FROM EMPLOYEES e
+     , DEPARTMENTS d
+     , LOCATIONS l
+     , COUNTRIES c
+     , REGIONS r
+     , JOBS j
+     , JOB_HISTORY jh
+ WHERE e.DEPARTMENT_ID = d.DEPARTMENT_ID
+   AND d.LOCATION_ID = l.LOCATION_ID
+   AND l.COUNTRY_ID = c.COUNTRY_ID
+   AND c.REGION_ID = r.REGION_ID
+   AND e.JOB_ID = j.JOB_ID
+   AND e.EMPLOYEE_ID = jh.EMPLOYEE_ID
+   AND e.EMPLOYEE_ID = 101
+   AND jh.START_DATE = '97/09/21';
+
+-- 방법2
+SELECT e.EMPLOYEE_ID 사번
+	 , e.LAST_NAME 이름
+	 , d.DEPARTMENT_ID 부서코드
+	 , d.DEPARTMENT_NAME 부서명
+	 , l.LOCATION_ID 지역번호
+	 , l.STREET_ADDRESS 주소
+	 , c.COUNTRY_ID 국가코드
+	 , c.COUNTRY_NAME 국가명
+	 , r.REGION_ID 지역번호
+	 , r.REGION_NAME 지역이름
+	 , j.JOB_ID 직업코드
+	 , j.JOB_TITLE 직무명
+	 , j.MAX_SALARY 최대급여
+	 , j.MIN_SALARY 최소급여
+	 , jh.EMPLOYEE_ID 사번
+	 , jh.END_DATE 퇴사일
+	 , jh.START_DATE 입사일
+	 , jh.JOB_ID 직무코드
+	 , jh.DEPARTMENT_ID 부서코드
+  FROM EMPLOYEES e
+  JOIN DEPARTMENTS d
+    ON e.DEPARTMENT_ID = d.DEPARTMENT_ID
+  JOIN locations l
+    ON d.LOCATION_ID = l.LOCATION_ID
+  JOIN COUNTRIES c
+    ON l.COUNTRY_ID = c.COUNTRY_ID
+  JOIN REGIONS r
+    ON c.REGION_ID = r.REGION_ID
+  JOIN jobs j
+    ON e.JOB_ID = j.JOB_ID
+  JOIN JOB_HISTORY jh
+    ON e.EMPLOYEE_ID = jh.EMPLOYEE_ID
+ WHERE e.EMPLOYEE_ID = 101
+   AND jh.START_DATE = '97/09/21';
+
