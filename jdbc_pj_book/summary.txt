@@ -22,7 +22,24 @@ DAO(Data Access Object) : 데이터 접근 객체
                 (서비스)                 (DAO : 데이터 입력수정삭제조회 = DB작업)		
                 (ㄴ DAO 호출, 결과리턴)      
 
+--------------------------------------------------------------------------------
+--    2025.6.23
+-- [ JDBC 테이블 생성 ] --
 
+
+
+-- 1) 도서정보 테이블
+DROP TABLE mvc_book_tbl CASCADE CONSTRAINTS;
+CREATE TABLE mvc_book_tbl(
+	bookid 		NUMBER(4)		PRIMARY KEY,	-- 도서번호
+	title       VARCHAR2(50)	NOT NULL,		-- 도서명
+	author		VARCHAR2(50)	NOT NULL,		-- 저자
+	publisher	VARCHAR2(50)	NOT NULL, 		-- 출판사
+	price		NUMBER(7)		NOT NULL,		-- 가격
+	pubdate		DATE      		DEFAULT sysdate	-- 출판일
+);
+
+SELECT * FROM mvc_book_tbl;
 
 
 

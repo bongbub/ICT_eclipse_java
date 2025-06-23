@@ -59,7 +59,7 @@ public class Menu {
 		
 		System.out.println("도서관리메뉴 (book_menu)");
 		System.out.println("*-------------------------------------------------*");
-		System.out.println("    1. 추가    2. 삭제    3. 도서아이디 조회    4. 도서목록 조회    6. 전체목록 조회    7. 종료"    );
+		System.out.println("    1. 추가     2.수정     3. 삭제    4. 도서아이디 조회    5. 도서목록 조회    6. 전체목록 조회    7. 종료"    );
 		System.out.println("*-------------------------------------------------*");
 		System.out.print("▶ 메뉴선택 : ");
 		
@@ -70,14 +70,19 @@ public class Menu {
 			switch(menuNo) {
 			case 1: // 도서관리
 				bc.bookAdd(bookInput());
+				// bookInput => dto의 멤버변수 즉, 멤버변수값을 넣어 넘겨줌
+				//bc.bookAdd(new BookDTO("하얼빈","김훈","장비",15000))
 				
 				break;
 				
 			case 2:
-
+				bc.bookedit(bookUpdate());
+				
 				break;
 				
 			case 3:
+				
+				bc.bookdelete(bookDelete());
 
 				break;
 				
@@ -110,24 +115,51 @@ public class Menu {
 		// BookDTO 생성
 		BookDTO dto = new BookDTO();
 		
-		System.out.print("도서명 : ");
+		System.out.print("▷도서명 : ");
 		String title = scan.nextLine();
 		dto.setTitle(title);
 		
-		System.out.print("저자 : ");
+		System.out.print("▷저자 : ");
 		String author = scan.nextLine();
 		dto.setAuthor(author);
 		
-		System.out.print("출판사 : ");
+		System.out.print("▷출판사 : ");
 		String publisher = scan.nextLine();
 		dto.setPublisher(publisher);
 		
-		System.out.print("가격 : ");
+		System.out.print("▷가격 : ");
 		int price = scan.nextInt();
 		dto.setPrice(price);
 		
 		return dto;
 	}
+	
+	public BookDTO bookUpdate() {
+		
+		// 콘솔에서 입력받은 값을 통해 어떤 책을 수정할건지 판단
+		BookDTO dto = new BookDTO();
+		
+		System.out.print("▷정보를 수정할 도서 번호를 입력하세요. :");
+		int num = scan.nextInt();
+		String skip = scan.nextLine();  //스킵되는거 막기
+		
+		dto = bookInput();
+		dto.setBookId(num);
+		
+		return dto;
+	}
+	
+	
+	
+	// 도서삭제
+	public int bookDelete() {
+		BookDTO dto = new BookDTO();
+		System.out.print("삭제하고싶은 도서 번호를 입력하세요 :");
+		int num = scan.nextInt();
+		dto.setBookId(num);
+		return num;
+	}
+	
 	
 	// ------------------------------------------
 	// 2. 게시판 메뉴

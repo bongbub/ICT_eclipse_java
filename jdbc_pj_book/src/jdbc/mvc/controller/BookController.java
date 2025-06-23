@@ -2,6 +2,7 @@ package jdbc.mvc.controller;
 
 import jdbc.mvc.dto.BookDTO;
 import jdbc.mvc.service.BookServiceImpl;
+import jdbc.mvc.view.BookView;
 
 /*
  *   작성일 : 2025.6.18
@@ -17,19 +18,48 @@ import jdbc.mvc.service.BookServiceImpl;
 
 public class BookController {
 	
-	BookServiceImpl sevice = new BookServiceImpl();
+	BookServiceImpl service = new BookServiceImpl();
+	BookView bv = new BookView();
 	
 	// 1. 도서 추가
 	public void bookAdd(BookDTO dto) {
 		System.out.println(" -- bookInsert() --");
-		sevice.bookInsert(dto);
 		System.out.println(dto.toString());
+		
+		int biNum = service.bookInsert(dto);  // BookServiceImpl의 return 값이 1인지 0인지
+		if(biNum > 0) {  // 0보다 크면, 즉 1이면
+			System.out.println(" == 추가성공 ==");
+		}
+		else {
+			bv.bookErrorMsg("insert");
+		}
 	}
 	
 	// 2. 도서 수정
-	
+	public void bookedit(BookDTO dto) {
+		System.out.println(" -- bookedit -- ");
+		System.out.println(dto.toString());
+		
+		int biNum = service.bookUpdate(dto);
+		if(biNum > 0) {  // 0보다 크면, 즉 1이면
+			System.out.println(" == 수정성공 ==");
+		}
+		else {
+			bv.bookErrorMsg("update");
+		}
+	}
 	
 	// 3. 도서 삭제
+	public void bookdelete(int bookid) {
+		int biNum = service.bookDelete(bookid);
+		//System.out.println(biNum);
+		if(biNum > 0) {
+			System.out.println( " == 삭제성공 == ");
+		}
+		else {
+			bv.bookErrorMsg("delete");
+		}
+	}
 	
 	
 	// 4. 도서아이디 조회

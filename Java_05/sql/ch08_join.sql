@@ -431,3 +431,211 @@ SELECT e.EMPLOYEE_ID 사번
  WHERE e.EMPLOYEE_ID = 101
    AND jh.START_DATE = '97/09/21';
 
+-- HR 계정에서 진행
+-- [ 6. 조인을 사용하여 'Seattle' city에서 근무하는 사원의 이름과 급여를 출력하세요. ] -- 18건  사원 부서 위치
+-- [방법1]
+SELECT e.LAST_NAME 이름
+	 , e.SALARY 급여
+  FROM EMPLOYEES e
+     , DEPARTMENTS d
+     , LOCATIONS l
+ WHERE e.DEPARTMENT_ID = d.DEPARTMENT_ID
+   AND d.LOCATION_ID = l.LOCATION_ID
+   AND l.CITY = 'Seattle';
+
+-- [방법2]
+SELECT e.LAST_NAME 이름
+	 , e.SALARY 급여
+  FROM EMPLOYEES e
+  JOIN DEPARTMENTS d
+    ON e.DEPARTMENT_ID = d.DEPARTMENT_ID
+  JOIN LOCATIONS l
+    ON d.LOCATION_ID = l.LOCATION_ID
+ WHERE l.CITY = 'Seattle';
+
+
+-- 7. country_id가 'US'를 포함할 때의 countrys 테이블의 모든 정보 조회
+SELECT *
+  FROM COUNTRIES c
+ WHERE c.COUNTRY_ID LIKE '%US%';
+
+-- 8. 'IT'가 포함된 부서명을 가진 부서의 사번, 
+-- 이름(last_name-first_name), 입사일, 부서ID, 부서명 조회 -- 5건
+-- [방법1] 
+SELECT e.LAST_NAME || '-' || e.FIRST_NAME 이름
+	 , e.HIRE_DATE 입사일
+	 , d.DEPARTMENT_ID 부서ID
+	 , d.DEPARTMENT_NAME 부서명
+  FROM EMPLOYEES e
+     , DEPARTMENTS d
+ WHERE e.DEPARTMENT_ID = d.DEPARTMENT_ID
+   AND d.DEPARTMENT_NAME LIKE '%IT%';
+
+-- [방법2]
+SELECT e.LAST_NAME || '-' || e.FIRST_NAME "이름"
+	 , e.HIRE_DATE 입사일
+	 , d.DEPARTMENT_ID 부서ID
+	 , d.DEPARTMENT_NAME 부서명
+  FROM EMPLOYEES e
+  JOIN DEPARTMENTS d
+    ON e.DEPARTMENT_ID = d.DEPARTMENT_ID
+ WHERE d.DEPARTMENT_NAME LIKE '%IT%';
+
+
+
+
+
+
+-----------------------------------------------------------------------------------
+-- 2025.6.23
+--OuterJoin
+
+/*
+ * 면접
+ *    Outer join
+ *  두 테이블간 조인 수행에서 조인 기준열의 어느 한쪽이 null이어도 강제로 출력하는 방식을
+ *  외부조인(outer join)이라고 한다.
+ * 
+ * (+) => 부족한 쪽 즉 null일때 강제출력
+ * - left outer join : left가 데이터가 많은쪽 즉 기준이 되는 쪽임
+ *   왼쪽 외부조인(Left Outer Join)
+ *           예) WHERE table1.col1 = table2.col1(+)
+ *            또는 FROM table1 LEFT OUTER JOIN table2 ON 조인조건식
+ * 
+ * 
+ * - right outer join : right가 데이터가 많은쪽 즉 기준이 되는 쪽임
+ *   오른쪽 외부조인(Right Outer Join)
+ *           예) WHERE table1.col1(+)  = table2.col1
+ *            또는 FROM table1 RIGHT OUTER JOIN table2 ON 조인조건식
+ * 
+ * - full outer join : FROM table1 FULL OUTER JOIN table2 ON 조인조건식
+ */
+-- 부서ID : 사원테이블(10~110, null) 중복제거 => 11건, null 
+
+
+
+
+SELECT e.EMPLOYEE_ID
+     , e.DEPARTMENT_ID
+     , e.DEPARTMENT_ID
+     , d.DEPARTMENT_NAME
+  FROM DEPARTMENTS d
+     , EMPLOYEES e
+where d.DEPARTMENT_ID = e.DEPARTMENT_ID(+); -- 10~110 + 120~270;
+
+
+-- 부서테이블 조회(27건) => 부모 10~270
+SELECT DEPARTMENT_ID
+     , DEPARTMENT_NAME
+  FROM DEPARTMENTS;
+
+-- 사원테이블 조회(11건), null => 자식테이블  : 10~110, null
+SELECT DISTINCT DEPARTMENT_ID
+  FROM EMPLOYEES
+ORDER BY DEPARTMENT_ID;
+
+-->  == 부서테이블 수 > 사원테이블 수
+--      null이 많은 곳,즉 사원테이블에 (+)주기
+
+-- 10~110 : 부서T, 사원T 모두 존재
+-- 120~270 : 부서T 존재, 사원T null
+-- 방법1. 
+SELECT d.DEPARTMENT_ID
+     , d.DEPARTMENT_NAME
+     , e.EMPLOYEE_ID
+     , e.DEPARTMENT_ID
+  FROM DEPARTMENTS d
+     , EMPLOYEES e
+ WHERE d.DEPARTMENT_ID = e.DEPARTMENT_ID(+)
+ORDER BY d.DEPARTMENT_ID ASC;
+
+-- 방법2.
+SELECT d.DEPARTMENT_ID
+     , d.DEPARTMENT_NAME
+     , e.EMPLOYEE_ID
+     , e.DEPARTMENT_ID
+  FROM DEPARTMENTS d
+LEFT OUTER JOIN EMPLOYEES e
+    ON e.DEPARTMENT_ID = d.DEPARTMENT_ID
+ORDER BY d.DEPARTMENT_ID ASC;
+
+
+-- [ LEFT OUTER JOIN ]
+-- 왼쪽 테이블이 기준(모든 데이터를 가지고 있음), 오른쪽 테이블에 null 포함
+
+-- [ RIGHT OUTER JOIN ]
+-- 오른쪽 테이블이 기준(모든 데이터를 가지고 있음), 왼쪽 테이블에 null 포함
+
+-- 방법1. 
+SELECT d.DEPARTMENT_ID
+     , d.DEPARTMENT_NAME
+     , e.EMPLOYEE_ID
+     , e.DEPARTMENT_ID
+  FROM DEPARTMENTS d
+     , EMPLOYEES e
+ WHERE d.DEPARTMENT_ID(+) = e.DEPARTMENT_ID
+ORDER BY d.DEPARTMENT_ID ASC;
+
+--방법2
+SELECT d.DEPARTMENT_ID
+     , d.DEPARTMENT_NAME
+     , e.EMPLOYEE_ID
+     , e.DEPARTMENT_ID
+  FROM DEPARTMENTS d
+RIGHT OUTER JOIN EMPLOYEES e
+    ON e.DEPARTMENT_ID = d.DEPARTMENT_ID
+ORDER BY d.DEPARTMENT_ID ASC;
+
+
+
+-- [ FULL OUTER JOIN ]  => LEFT OUTER JOIN 16건 + RIGHT OUTER JOIN 1건 추가
+-- 어디가 null이든 출력하기 (서로 null일때 나왔던 데이터 출력)
+-- full outer join을 쓸 때는 join-on(방법2) 방식만 가능하다
+
+SELECT d.DEPARTMENT_ID
+     , d.DEPARTMENT_NAME
+     , e.EMPLOYEE_ID
+     , e.DEPARTMENT_ID
+  FROM DEPARTMENTS d
+FULL OUTER JOIN EMPLOYEES e
+    ON e.DEPARTMENT_ID = d.DEPARTMENT_ID
+ ORDER BY d.DEPARTMENT_ID ASC;
+
+
+----------------------
+
+-- SELF JOIN
+
+-- [ 셀프 조인 ]
+-- 사원테이블 e, 매니저테이블 copy_e
+-- 사번, 사원명, 매니저id, 매니저명, 매니저 사번
+-- 143   Matos-Randall   124   Mourgos-Kevin   124
+-- 방법1.
+SELECT e.employee_id -- 사번
+     , e.last_name || '-' || e.first_name AS 사원명  -- 사원명
+     , e.manager_id  -- 매니저id
+     , m.last_name || '-' || m.first_name AS 매니저명   -- 매니저명
+     , m.employee_id -- 매니저사번
+  FROM employees e   -- 사원 테이블
+     , employees m   -- 매니저 테이블
+ WHERE  e.manager_id = m.employee_id  
+  AND e.employee_id in (143, 124);
+ 
+-- 143   Matos-Randall   124   Mourgos-Kevin   124 
+
+-- 방법2.
+SELECT e.employee_id -- 사번
+     , e.last_name || '-' || e.first_name AS 사원명  -- 사원명
+     , e.manager_id  -- 매니저id
+     , m.last_name || '-' || m.first_name AS 매니저명   -- 매니저명
+     , m.employee_id -- 매니저사번
+  FROM employees e   -- 사원 테이블
+  JOIN employees m   -- 매니저 테이블
+    ON e.manager_id = m.employee_id  
+  WHERE e.employee_id = 143;   
+
+
+
+
+
+

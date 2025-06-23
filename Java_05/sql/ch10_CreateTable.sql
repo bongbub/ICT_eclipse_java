@@ -290,6 +290,11 @@ SELECT constraint_name
 WHERE table_name IN('DEPT_TBL', 'EMP_TBL');  -- 테이블명은 반드시 대문자
  
 
+
+
+
+
+
  
  
  
