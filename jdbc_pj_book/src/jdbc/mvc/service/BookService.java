@@ -20,7 +20,7 @@ public interface BookService {
 	
 	
 	
-	// 5. 도서목록 조회
+	// 5. 도서타이틀목록 조회
 	
 	
 	// 6. 전체목록 조회

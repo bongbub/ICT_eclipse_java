@@ -35,7 +35,7 @@ public class BookController {
 		}
 	}
 	
-	// 2. 도서 수정
+	// 2. 도서 수정(내가한방법)
 	public void bookedit(BookDTO dto) {
 		System.out.println(" -- bookedit -- ");
 		System.out.println(dto.toString());
@@ -48,9 +48,23 @@ public class BookController {
 			bv.bookErrorMsg("update");
 		}
 	}
+	// 2. 도서 수정	(쌤이한방법)
+	public void bookedit2(int bookid, BookDTO dto) {
+		System.out.println(" -- bookedit -- ");
+		System.out.println(dto.toString());
+		
+		int biNum = service.bookUpdate(dto);
+		if(biNum > 0) {  // 0보다 크면, 즉 1이면
+			System.out.println(" == 수정성공 ==");
+		}
+		else {
+			bv.bookErrorMsg("update");
+		}
+	}
+	
 	
 	// 3. 도서 삭제
-	public void bookdelete(int bookid) {
+	public void bookDelete(int bookid) {
 		int biNum = service.bookDelete(bookid);
 		//System.out.println(biNum);
 		if(biNum > 0) {
@@ -63,12 +77,21 @@ public class BookController {
 	
 	
 	// 4. 도서아이디 조회
+	public void bookSelectId(int bookid) {
+		System.out.println("<<< bookSelectId() >>>");
+	}
 	
 	
-	// 5. 도서목록 조회
+	// 5. 도서목록타이틀 조회
+	public void bookSelectTitle(String bookTitle) {
+		System.out.println("<<< bookSelectTitle() >>>");
+	}
 	
 	
 	// 6. 전체목록 조회
+	public void bookSelectAll() {
+		System.out.println("<<< bookSelectAll() >>>");
+	}
 	
 	
 

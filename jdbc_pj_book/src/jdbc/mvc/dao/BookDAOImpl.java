@@ -110,7 +110,6 @@ public class BookDAOImpl implements BookDAO{
 			
 			pstmt.setInt(1, bookId);
 			deleteCnt = pstmt.executeUpdate();
-			// executeUpdate 영
 			
 			
 		} catch(SQLException e) {
@@ -123,7 +122,6 @@ public class BookDAOImpl implements BookDAO{
 			}catch(SQLException e){
 				e.printStackTrace();
 			}
-			//System.out.println("bbokDelete - "+deleteCnt);
 		}
 		
 		return deleteCnt;

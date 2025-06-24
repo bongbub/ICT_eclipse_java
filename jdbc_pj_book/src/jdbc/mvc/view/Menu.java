@@ -59,7 +59,7 @@ public class Menu {
 		
 		System.out.println("도서관리메뉴 (book_menu)");
 		System.out.println("*-------------------------------------------------*");
-		System.out.println("    1. 추가     2.수정     3. 삭제    4. 도서아이디 조회    5. 도서목록 조회    6. 전체목록 조회    7. 종료"    );
+		System.out.println("    1. 추가     2.수정     3. 삭제    4. 도서아이디 조회    5. 도서목록타이틀 조회    6. 전체목록 조회    7. 종료"    );
 		System.out.println("*-------------------------------------------------*");
 		System.out.print("▶ 메뉴선택 : ");
 		
@@ -76,13 +76,14 @@ public class Menu {
 				break;
 				
 			case 2:
-				bc.bookedit(bookUpdate());
+				bc.bookedit(bookUpdate());  //내가한방법
+				bc.bookedit2(bookId(),bookInput());    // 쌤이 한 방법
 				
 				break;
 				
 			case 3:
 				
-				bc.bookdelete(bookDelete());
+				bc.bookDelete(bookDelete());
 
 				break;
 				
@@ -132,6 +133,18 @@ public class Menu {
 		dto.setPrice(price);
 		
 		return dto;
+	}
+	
+	// 변경할 도서 아이디를 입력받는 메서드
+	public int bookId() {
+		System.out.print("변경 도서 ID 입력 :");
+		return Integer.parseInt(scan.nextLine());  //Integer.parseInt -> String을 Int 형으로 변경
+	}
+	
+	// 조회할 도서 제목 받는 메서드
+	public String bookTitle() {
+		System.out.print("조회할 도서 제목 입력 :");
+		return scan.nextLine();
 	}
 	
 	public BookDTO bookUpdate() {
