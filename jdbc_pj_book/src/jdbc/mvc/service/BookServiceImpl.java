@@ -15,11 +15,11 @@ public class BookServiceImpl implements BookService{
 	}
 
 	@Override
-	public int bookUpdate(BookDTO dto) {
+	public int bookUpdate(int bookid, BookDTO dto) {
 		System.out.println("BookServiceImpl - bookUpdate()");
 		// dao에서 처리받은 값을 다시 servieceimpl을 통해 전달
 		BookDAOImpl dao = new BookDAOImpl();
-		int updateCnt = dao.bbookUpdate(dto);
+		int updateCnt = dao.bbookUpdate(bookid, dto);
 		System.out.println(updateCnt);
 		return updateCnt;
 	}
@@ -33,7 +33,17 @@ public class BookServiceImpl implements BookService{
 		//System.out.println("bbookDelete- deleteCnt"+ deleteCnt);
 		return deleteCnt;
 	}
-	
+
+	@Override
+	public BookDTO bookSelectById(int bookId) {
+		System.out.println("BookServiceImpl - bookSelectById() ");
+		
+		// dao 호출
+		BookDAOImpl dao = new BookDAOImpl();
+		BookDTO book = dao.sselectBookById(bookId);
+		
+		return book;
+	}
 	
 
 }

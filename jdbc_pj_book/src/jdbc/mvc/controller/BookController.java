@@ -21,6 +21,7 @@ public class BookController {
 	BookServiceImpl service = new BookServiceImpl();
 	BookView bv = new BookView();
 	
+	
 	// 1. 도서 추가
 	public void bookAdd(BookDTO dto) {
 		System.out.println(" -- bookInsert() --");
@@ -36,24 +37,24 @@ public class BookController {
 	}
 	
 	// 2. 도서 수정(내가한방법)
-	public void bookedit(BookDTO dto) {
-		System.out.println(" -- bookedit -- ");
-		System.out.println(dto.toString());
-		
-		int biNum = service.bookUpdate(dto);
-		if(biNum > 0) {  // 0보다 크면, 즉 1이면
-			System.out.println(" == 수정성공 ==");
-		}
-		else {
-			bv.bookErrorMsg("update");
-		}
-	}
+//	public void bookedit(BookDTO dto) {
+//		System.out.println(" -- bookedit -- ");
+//		System.out.println(dto.toString());
+//		
+//		int biNum = service.bookUpdate(dto);
+//		if(biNum > 0) {  // 0보다 크면, 즉 1이면
+//			System.out.println(" == 수정성공 ==");
+//		}
+//		else {
+//			bv.bookErrorMsg("update");
+//		}
+//	}
 	// 2. 도서 수정	(쌤이한방법)
 	public void bookedit2(int bookid, BookDTO dto) {
 		System.out.println(" -- bookedit -- ");
 		System.out.println(dto.toString());
 		
-		int biNum = service.bookUpdate(dto);
+		int biNum = service.bookUpdate(bookid, dto);
 		if(biNum > 0) {  // 0보다 크면, 즉 1이면
 			System.out.println(" == 수정성공 ==");
 		}
@@ -79,6 +80,14 @@ public class BookController {
 	// 4. 도서아이디 조회
 	public void bookSelectId(int bookid) {
 		System.out.println("<<< bookSelectId() >>>");
+		BookDTO dto = service.bookSelectById(bookid);
+		if(bookid == 0 || dto == null) {
+			bv.bookErrorMsg("select");
+		}
+		else {
+			System.out.println("-- 조회결과 --");
+			bv.bookSelect(dto);
+		}
 	}
 	
 	

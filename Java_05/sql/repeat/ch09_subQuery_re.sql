@@ -70,48 +70,122 @@ SELECT max(salary) 최대급여
 --     => 서브쿼리정보(12건)의 급여만 일치하는 정보를 가져와라
  SELECT e.LAST_NAME 사원명
       , e.DEPARTMENT_ID 부서번호
-      , round(max(e.SALARY),0) 최대급여
    FROM EMPLOYEES e
-  WHERE max(salary) = (SELECT round(max(e.sSALARY),0)
-                         FROM employees e)
-  
+  WHERE (e.department_id,salary) IN (SELECT DEPARTMENT_ID		-- 서브쿼리문의 결과값 갯수(department_id, salary)와 메인쿼리 갯수값을 맞춰줘야함
+  								 , round(max(SALARY),0) 
+                         	FROM employees
+                           GROUP BY department_id)
+ORDER BY department_id asc;		-- 11건
+/*
+Whalen	10
+Hartstein	20
+Raphaely	30
+Mavris	40
+Fripp	50
+Hunold	60
+Baer	70
+Russell	80
+King	90
+Greenberg	100
+Higgins	110
+ */
 
  
+-- 2) ANY, SOME - 메인쿼리의 비교조건이 서브쿼리의 결과와 하나 이상이 일치하면 참이다.
+--  > ANY : 메인쿼리 결과값 > 서브쿼리의 최소값
+--  < ANY : 메인쿼리 결과값 < 서브쿼리의 최대값   
+-- 30번 부서의 최소 salary(2500)보다 큰 정보 ANY
+ SELECT salary 급여
+      , department_id 부서번호
+   FROM employees
+  WHERE salary < ANY (SELECT min(salary)
+                      FROM employees
+                     WHERE DEPARTMENT_ID = 30)
+ORDER BY salary ASC;
+  
  
- -- 30번 부서의 최소 salary(2500)보다 큰 정보 ANY
+                  
+-- 30번 부서의 최대 salary(11000)보다 큰 정보
+SELECT department_id
+	 , salary
+  FROM employees
+ WHERE salary > ANY (SELECT salary
+                      FROM employees
+                     WHERE DEPARTMENT_ID = 30)
+ order BY salary ASC;
  
  
- -- 30번 부서의 최대 salary(11000)보다 큰 정보
- 
- 
- -- 4) EXISTS : 서브쿼리에 결과값이 하나이상 존재하면 조건식이 모두 TRUE, 존재하지 않으면 모두 false
+-- 4) EXISTS : 서브쿼리에 결과값이 하나이상 존재하면 조건식이 모두 TRUE, 존재하지 않으면 모두 false
 -- EXISTS가 false이면 검색결과가 없다.
+ SELECT department_id
+	 , salary
+  FROM employees
+ WHERE  EXISTS (SELECT salary
+                      FROM employees
+                     WHERE DEPARTMENT_ID = 30)
+   AND DEPARTMENT_ID = 30
+ order BY salary ASC;
+/*
+30	2600
+30	2800
+30	2900
+30	3100
+30	11000
+ */
+ SELECT department_id
+	 , salary
+  FROM employees
+ WHERE exists(SELECT salary
+                      FROM employees
+                     WHERE DEPARTMENT_ID = 300)
+   AND DEPARTMENT_ID = 300
+ order BY salary ASC;
+-- 출력되는 값이 없다.
+
  
- 
- -- EXISTS 조인응용 부서명 가져오기
- 
- 
+ -- 30번부서 최대급여 EXISTS 조인응용 부서명 가져오기
+ SELECT e.DEPARTMENT_ID 부서번호
+ 	  ,	e.SALARY 급여
+ 	  ,	d.DEPARTMENT_NAME 부서명
+   FROM EMPLOYEES e
+   	  , departments d
+  WHERE d.DEPARTMENT_ID = e.DEPARTMENT_ID
+    AND exists(SELECT max(salary)
+  				  FROM employees
+  				WHERE department_id = 30)
+    AND d.DEPARTMENT_ID = 30
+ORDER BY d.DEPARTMENT_ID ASC; 
 
  -- 5)스칼라 서브쿼리 : SELECT 절에서 사용하는 서브쿼리
  -- 반드시 한 컬럼만 반환하는 서브쿼리이다. 만약 한컬럼이 여러개의 값을 가지면 오류가 발생한다.
-
-
+SELECT e.EMPLOYEE_ID 
+     , e.LAST_NAME
+     , (SELECT round(avg(salary)) FROM employees) AS 평균급여
+     , e.DEPARTMENT_ID
+     , (SELECT d.department_name FROM departments d 
+     			WHERE e.DEPARTMENT_ID = d.department_id) AS 부서명
+     , (SELECT d.DEPARTMENT_NAME FROM departments d, employees e
+     		WHERE d.DEPARTMENT_ID = e.DEPARTMENT_ID
+     		AND d.DEPARTMENT_ID = 10)
+  FROM employees e;
 
 
 
 -- 6-1) 인라인뷰 : FROM절에서 사용하는 서브쿼리
 -- 특정 테이블 전체가 아닌, SELECT문을 통해 일부 데이터를 추출한 후 별칭을 주어 사용
 -- 10번 부서의 사번, 이름, 직무, 급여, 부서코드, 부서명 가져오기
-
-
-
--- from에서 departments는 부서테이블에서 모든걸 가져와라, 
---    employees의 의미는 부서번호가 10번인걸 가져와라 이므로
---    employees를 고칠수있음
-    -- 이렇게 사용을 자주함!!!!! 잘 알아둘 것
-
-
-
+SELECT e.EMPLOYEE_ID 사번
+     , e.LAST_NAME 이름
+     , e.JOB_ID 직무
+     , e.SALARY
+     , d.DEPARTMENT_ID
+  FROM (SELECT department_id
+          FROM DEPARTMENTS
+          WHERE DEPARTMENT_ID = 10) d
+     , EMPLOYEES e
+ WHERE d.DEPARTMENT_ID = e.DEPARTMENT_ID;
+ 
+ 
 
 -- 6-2). with절 : 인라인뷰를 가독성있게 사용할 경우
 /* 테이블내 데이터 규모가 크거나, 현재 작업에 불필요한 열이 너무 많아, 행과 열만 사용하고자 할 때 사용
@@ -126,6 +200,16 @@ SELECT max(salary) 최대급여
  */  
 
 
+WITH
+d AS (SELECT department_id FROM departments WHERE DEPARTMENT_ID = 10)
+SELECT e.EMPLOYEE_ID 사번
+     , e.LAST_NAME 이름
+     , e.JOB_ID 직무
+     , e.SALARY
+     , d.DEPARTMENT_ID
+  FROM d
+     , employees e
+ WHERE e.department_id = d.DEPARTMENT_ID;
 
 
 

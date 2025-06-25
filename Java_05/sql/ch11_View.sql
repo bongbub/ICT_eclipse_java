@@ -219,3 +219,131 @@ select * from tab;     -- 테이블 목록 확인
 INSERT INTO v_emp_readonly(empno, ename, hire_date, deptno, salary)
  values(106, '롤스토이', sysdate, 60, 60000 );
 
+
+
+
+
+----------------------------------------------------------------------------------------
+-- 2025.6.25
+
+
+/*
+  	중요
+  
+ 	인라인뷰 : 일회성으로 만들어서 사용하는뷰
+ 	
+ 	 
+ */
+
+
+SELECT rownum AS 순위			-- rownum => 행(row)의 고유 번호, 넘버링
+ 	 , e.*
+  FROM emp_tbl e
+ORDER BY e.empno desc;	
+
+
+
+-- 최근 회원가입순으로 2명 출력 (인라인뷰)
+SELECT rownum AS 순위
+	 , e.* 
+  FROM emp_tbl e
+WHERE rownum < 3;
+
+
+------------------------ hr 계정으로 테스트
+-- 2) 입사일이 빠른 순서로 5명 출력 (인라인뷰 + 서브쿼리)
+
+SELECT EMPLOYEE_ID 사번
+	 , LAST_name
+	 , hire_date
+	 , salary
+  FROM EMPLOYEES
+ ORDER BY hire_date ASC;	-- 107건
+
+
+SELECT rownum AS 순위
+	 , e.* 
+  FROM (SELECT EMPLOYEE_ID
+	 	, LAST_name
+	 	, hire_date
+	 	, salary
+  	  	FROM EMPLOYEES
+	 	ORDER BY hire_date ASC) e
+  WHERE rownum < 6;                -- 5건
+
+
+-- 3) 고액 급여 5명 출력(인라인뷰 + 서브쿼리)
+SELECT rownum AS 순위
+	 , e.* 
+  FROM (SELECT EMPLOYEE_ID
+	 	, LAST_name
+	 	, hire_date
+	 	, salary
+  	  	FROM EMPLOYEES
+	 	ORDER BY salary desc) e			-- desc로 해야, 넘버링이 늘어날수록 급여가 적어짐.(급여가높은사람부터 보임)
+  WHERE rownum < 6;                -- 5건
+
+/*
+1	100	King	1055775600000	24000
+2	101	Kochhar	1127228400000	17000
+3	102	De Haan	979311600000	17000
+4	145	Russell	1096556400000	14000
+5	146	Partners	1104850800000	13500		-- 입사일 hire_date가 이상하게 출력되는것은 툴이 날짜를 밀리초 숫자로 전환하는등의 날짜포맷처리 오류로 일어나는 일이라고 함..
+ */
+
+
+
+ -- 4) 인라인 뷰 (WITH절 사용) - 가독성
+
+WITH 								-- 나는 emp라는 별칭에 대해 설명한다
+ emp AS (SELECT EMPLOYEE_ID
+	 	, LAST_name
+	 	, hire_date
+	 	, salary
+  	  	FROM EMPLOYEES
+	 	ORDER BY salary desc)
+SELECT rownum AS 순위
+	 , emp.* 
+  FROM emp     			-- 별칭만 준다
+  WHERE rownum < 6;
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

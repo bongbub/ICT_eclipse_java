@@ -312,25 +312,57 @@ SELECT c.NAME 고객명
    AND b.PRICE >= 20000;
 
 
---3-27 도서를 구매하지 않은 고객의 포함하여 고객의 이름과 고객이 주문한 도서의 판매가격을 구하시오.
+--3-27 도서를 구매하지 않은 고객을 포함하여 고객의 이름과 고객이 주문한 도서의 판매가격을 구하시오.
+SELECT c.NAME
+	 , o.SALEPRICE
+  FROM orders o
+  	 , CUSTOMER c
+ WHERE o.CUSTID(+) = c.CUSTID;
+  
  
-
 --3.3.2 부속질의
 --3-28 가장 비싼 도서의 이름을 보이시오.
-
-  
+SELECT b.BOOKNAME 도서명
+  FROM BOOK b
+ WHERE b.PRICE = (SELECT max(price) FROM book);
 
 --3-29 도서를 구매한 적이 있는 고객의 이름을 검색하시오.
-
+SELECT c.NAME 이름
+  FROM CUSTOMER c
+ WHERE c.CUSTID = any(SELECT o.CUSTID
+ 					 FROM orders o);
+  
 --3-30 대한미디어에서 출판한 도서를 구매한 고객의 이름을 보이시오.
+SELECT c.NAME 이름
+	 , o.BOOKID 도서아이디
+  FROM CUSTOMER c
+  	 , orders o
+ WHERE o.BOOKID in(SELECT b.BOOKID
+                     FROM book b
+                    WHERE b.PUBLISHER like '%대한미디어%')
+   AND o.CUSTID = c.CUSTID;
+
 
 --3-31 출판사별로 출판사의 평균 도서 가격보다 비싼 도서를 구하시오.
+SELECT b.BOOKNAME 책이름
+	 , b.PUBLISHER
+  FROM book b
+ WHERE b.PRICE > (SELECT round(avg(b2.PRICE))
+                    	FROM BOOK b2
+				  		WHERE b2.PUBLISHER = b.PUBLISHER)
 
 --3-32 도서를 주문하지 않은 고객의 이름을 보이시오.
+SELECT c.NAME 고객명
+  FROM CUSTOMER c
+ WHERE c.CUSTID NOT in (SELECT o.CUSTID
+                    FROM orders o);
 
 --3-33 주문이 있는 고객의 이름과 주소를 보이시오.
-
-
+SELECT c.NAME 이름
+	 , c.ADDRESS 주소
+  FROM CUSTOMER c
+ WHERE c.CUSTID in (SELECT DISTINCT o.CUSTID
+                    	 FROM orders o);
 
 
 --4.1 CREATE 문

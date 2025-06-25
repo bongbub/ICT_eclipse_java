@@ -56,7 +56,8 @@ public class Menu {
 	// ----------------------------------------------------------
 	// 1. 도서관리 메뉴
 	public void book_menu() {
-		
+		while(true) {
+		System.out.println("");
 		System.out.println("도서관리메뉴 (book_menu)");
 		System.out.println("*-------------------------------------------------*");
 		System.out.println("    1. 추가     2.수정     3. 삭제    4. 도서아이디 조회    5. 도서목록타이틀 조회    6. 전체목록 조회    7. 종료"    );
@@ -76,19 +77,20 @@ public class Menu {
 				break;
 				
 			case 2:
-				bc.bookedit(bookUpdate());  //내가한방법
+				//bc.bookedit(bookUpdate());  //내가한방법
+				System.out.print("변경 도서 ID 입력 :");
 				bc.bookedit2(bookId(),bookInput());    // 쌤이 한 방법
 				
 				break;
 				
 			case 3:
-				
-				bc.bookDelete(bookDelete());
+				bc.bookDelete(bookId());
 
 				break;
 				
 			case 4:
-				
+				System.out.print("조회 도서 ID 입력 :");
+				bc.bookSelectId(bookId());
 				break;
 				
 			case 5:
@@ -107,6 +109,8 @@ public class Menu {
 				System.out.println("메뉴를 다시 선택해주세요.");
 				
 			}
+		}
+
 		}
 		
 	// 1-1. book 추가
@@ -137,7 +141,6 @@ public class Menu {
 	
 	// 변경할 도서 아이디를 입력받는 메서드
 	public int bookId() {
-		System.out.print("변경 도서 ID 입력 :");
 		return Integer.parseInt(scan.nextLine());  //Integer.parseInt -> String을 Int 형으로 변경
 	}
 	
@@ -147,31 +150,19 @@ public class Menu {
 		return scan.nextLine();
 	}
 	
+	
 	public BookDTO bookUpdate() {
-		
 		// 콘솔에서 입력받은 값을 통해 어떤 책을 수정할건지 판단
 		BookDTO dto = new BookDTO();
-		
 		System.out.print("▷정보를 수정할 도서 번호를 입력하세요. :");
 		int num = scan.nextInt();
 		String skip = scan.nextLine();  //스킵되는거 막기
-		
 		dto = bookInput();
 		dto.setBookId(num);
-		
 		return dto;
 	}
 	
 	
-	
-	// 도서삭제
-	public int bookDelete() {
-		BookDTO dto = new BookDTO();
-		System.out.print("삭제하고싶은 도서 번호를 입력하세요 :");
-		int num = scan.nextInt();
-		dto.setBookId(num);
-		return num;
-	}
 	
 	
 	// ------------------------------------------

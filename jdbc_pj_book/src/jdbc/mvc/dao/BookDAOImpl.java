@@ -66,7 +66,7 @@ public class BookDAOImpl implements BookDAO{
 	}
 
 	@Override
-	public int bbookUpdate(BookDTO dto) {
+	public int bbookUpdate(int bookid, BookDTO dto) {
 		
 		int updateCnt = 0;
 		//--UPDATE [테이블] SET [열] = '변경할값' WHERE [조건]
@@ -82,7 +82,7 @@ public class BookDAOImpl implements BookDAO{
 			pstmt.setString(2, dto.getAuthor());
 			pstmt.setString(3, dto.getPublisher());	
 			pstmt.setInt(4, dto.getPrice());	
-			pstmt.setInt(5, dto.getBookId());
+			pstmt.setInt(5, bookid);
 			
 			updateCnt = pstmt.executeUpdate();
 			
@@ -126,5 +126,46 @@ public class BookDAOImpl implements BookDAO{
 		
 		return deleteCnt;
 	}
+	
+	@Override
+	public BookDTO sselectBookById(int bookId) {
+		String query = "SELECT * FROM mvc_book_tbl WHERE bookid = ? ";
+		BookDTO dto = null;
+		try {
+			conn = DriverManager.getConnection(dbUrl, dbID, dbPassword);
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setInt(1, bookId);
+			rs = pstmt.executeQuery();
+			if(rs.next()) { // rs에 값이 존재하면
+				dto = new BookDTO();
+				dto.setBookId(rs.getInt("bookId"));
+				dto.setAuthor(rs.getString("author"));
+				dto.setTitle(rs.getString("title"));
+				dto.setPublisher(rs.getString("publisher"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPubdate(rs.getString("pubdate"));
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			} catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return dto;
+	}
+	
+	
+	
+	
+	
+	
+	
 
 }

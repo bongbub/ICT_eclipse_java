@@ -9,7 +9,7 @@ public interface BookService {
 	public int bookInsert(BookDTO dto) ;
 	
 	// 2. 도서 수정
-	public int bookUpdate(BookDTO dto);
+	public int bookUpdate(int bookid, BookDTO dto);
 	
 	
 	// 3. 도서 삭제
@@ -17,7 +17,7 @@ public interface BookService {
 	
 	
 	// 4. 도서아이디 조회
-	
+	public BookDTO bookSelectById(int bookId);
 	
 	
 	// 5. 도서타이틀목록 조회

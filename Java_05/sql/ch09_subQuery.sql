@@ -123,7 +123,7 @@ SELECT DEPARTMENT_ID 부서번호
      						 		   , max(salary) 최대급여
   						  			FROM EMPLOYEES
  						 		GROUP BY DEPARTMENT_ID)
-ORDER BY DEPARTMENT_ID asc;	
+ORDER BY DEPARTMENT_ID asc;				-- 11건
 
 
 -- 2) ANY, SOME - 메인쿼리의 비교조건이 서브쿼리의 결과와 하나 이상이 일치하면 참이다.
@@ -206,8 +206,8 @@ ORDER BY SALARY DESC;
    FROM employees
   WHERE EXISTS (SELECT min(SALARY)   
   						FROM employees 
- 						WHERE department_id = 30)   -- 존재안함
-    AND department_id = 30    -- 존재안함
+ 						WHERE department_id = 30) 
+    AND department_id = 30    
 ORDER BY SALARY DESC;
 
 
@@ -233,8 +233,8 @@ ORDER BY SALARY DESC;
   WHERE e.DEPARTMENT_ID = d.DEPARTMENT_ID
   AND EXISTS (SELECT min(SALARY)   
 				FROM employees 
-				WHERE department_id = 30)   -- 존재안함
-    AND d.department_id = 30    -- 존재안함
+				WHERE department_id = 30)  
+    AND d.department_id = 30  
 ORDER BY SALARY DESC;
 
 
