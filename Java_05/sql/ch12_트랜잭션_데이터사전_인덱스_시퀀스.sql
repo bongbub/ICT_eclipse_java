@@ -361,26 +361,26 @@ CREATE SEQUENCE ex_emp_sequence
 INSERT INTO dept_seq_tbl(deptno, deptname, loc)
  VALUES (ex_dept_sequence.nextval, 'IT', '뉴욕');
 INSERT INTO dept_seq_tbl(deptno, deptname, loc)
- VALUES (ex_dept_sequence.currval,'마케팅', '캐나다');
+ VALUES (ex_dept_sequence.nextval,'마케팅', '캐나다');
 INSERT INTO dept_seq_tbl(deptno, deptname, loc)
- VALUES (ex_dept_sequence.currval,'회계', '파리');
+ VALUES (ex_dept_sequence.nextval,'회계', '파리');
 INSERT INTO dept_seq_tbl(deptno, deptname, loc)
- VALUES (ex_dept_sequence.currval,'인사과', '맨하튼');
+ VALUES (ex_dept_sequence.nextval,'인사과', '맨하튼');
 INSERT INTO dept_seq_tbl(deptno, deptname, loc)
- VALUES (ex_dept_sequence.currval,'경리과', '서울');
+ VALUES (ex_dept_sequence.nextval,'경리과', '서울');
 SELECT * FROM dept_seq_tbl; 
 
 
 INSERT INTO emp_seq_tbl(empno, ename, hire_date, salary, deptno, email)
-  VALUES (ex_emp_sequence.nextval, '아이유', '2025/1/20', 10000, 10, 'iu@gmail.com');
+  VALUES (ex_emp_sequence.nextval, '아이유', '2025/1/20', 10000, ex_dept_sequence.currval, 'iu@gmail.com');
 INSERT INTO emp_seq_tbl(empno, ename, hire_date, salary, deptno, email)
-  VALUES (ex_emp_sequence.nextval, '배수지', '2025/2/10', 70000, 20, 'suzi@gmail.com');
+  VALUES (ex_emp_sequence.nextval, '배수지', '2025/2/10', 70000, ex_dept_sequence.currval, 'suzi@gmail.com');
 INSERT INTO emp_seq_tbl(empno, ename, hire_date, salary, deptno, email)
-  VALUES (ex_emp_sequence.nextval, '소지섭', '2025/3/20', 80000, 30, 'sjs@gmail.com');
+  VALUES (ex_emp_sequence.nextval, '소지섭', '2025/3/20', 80000, ex_dept_sequence.currval, 'sjs@gmail.com');
 INSERT INTO emp_seq_tbl(empno, ename, hire_date, salary, deptno, email)
-  VALUES (ex_emp_sequence.nextval, '박나래', '2025/4/20', 90000, 40, 'park@gmail.com');
+  VALUES (ex_emp_sequence.nextval, '박나래', '2025/4/20', 90000, ex_dept_sequence.currval, 'park@gmail.com');
 INSERT INTO emp_seq_tbl(empno, ename, hire_date, salary, deptno, email)
-  VALUES (ex_emp_sequence.nextval, '유느님', '2025/5/20', 50000, 50, 'you@gmail.com');
+  VALUES (ex_emp_sequence.nextval, '유느님', '2025/5/20', 50000, ex_dept_sequence.currval, 'you@gmail.com');
 COMMIT;
 SELECT * FROM emp_seq_tbl;
 
