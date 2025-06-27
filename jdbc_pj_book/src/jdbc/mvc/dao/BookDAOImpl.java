@@ -5,6 +5,8 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import jdbc.mvc.dto.BookDTO;
 
@@ -24,6 +26,7 @@ public class BookDAOImpl implements BookDAO{
 	PreparedStatement pstmt = null;   // SQL 문장을 담음(제공클래스 java.sql)
 	ResultSet rs = null;	// SQL 실행결과(SELECT절에서만 사용)
 
+	// 도서추가
 	@Override
 	public int bbookInsert(BookDTO dto) {
 		System.out.println("BookDAOImpl - bookInsert()");
@@ -65,6 +68,7 @@ public class BookDAOImpl implements BookDAO{
 		return insertCnt;  // 결과값을 리턴
 	}
 
+	// 도서수정
 	@Override
 	public int bbookUpdate(int bookid, BookDTO dto) {
 		
@@ -99,6 +103,7 @@ public class BookDAOImpl implements BookDAO{
 		return updateCnt;
 	}
 
+	// 도서제거
 	@Override
 	public int bbookDelete(int bookId) {
 		int deleteCnt = 0;
@@ -127,6 +132,7 @@ public class BookDAOImpl implements BookDAO{
 		return deleteCnt;
 	}
 	
+	// 도서아이디로 조회
 	@Override
 	public BookDTO sselectBookById(int bookId) {
 		String query = "SELECT * FROM mvc_book_tbl WHERE bookid = ? ";
@@ -139,8 +145,8 @@ public class BookDAOImpl implements BookDAO{
 			rs = pstmt.executeQuery();
 			if(rs.next()) { // rs에 값이 존재하면
 				dto = new BookDTO();
-				dto.setBookId(rs.getInt("bookId"));
-				dto.setAuthor(rs.getString("author"));
+				dto.setBookId(rs.getInt("bookId"));		// dto.setter로 컬럼내의 값을 BookDTO에 담는다
+				dto.setAuthor(rs.getString("author"));  // bookId => 컬럼명
 				dto.setTitle(rs.getString("title"));
 				dto.setPublisher(rs.getString("publisher"));
 				dto.setPrice(rs.getInt("price"));
@@ -159,6 +165,68 @@ public class BookDAOImpl implements BookDAO{
 		}
 		
 		return dto;
+	}
+
+	// 도서제목으로 조회
+	@Override
+	public BookDTO bbookSelectbyTitle(String title) {
+
+		
+		
+		return null;
+	}
+	
+
+	// 도서목록 전체조회
+	@Override
+	public List<BookDTO> bbookSelectAll() {
+		System.out.println("BookDAOImpl - bbookSelectAll() ");
+		
+		// 리스트생성
+		List<BookDTO> list = new ArrayList<BookDTO>();
+		String query = "SELECT * FROM mvc_book_tbl ORDER BY bookid asc";
+		BookDTO dto = null;
+		
+		// bookid로 정렬해서 전체 정보 조회
+		
+		try {
+			// 연결
+			conn = DriverManager.getConnection(dbUrl, dbID, dbPassword);
+			pstmt = conn.prepareStatement(query);
+			
+			// 조회 실행
+			rs = pstmt.executeQuery();
+			
+			// 값이 존재하는 동안 반복
+			while(rs.next()) {
+				
+				// DTO생성 -> rs값을 setter -> list에 추가
+				dto = new BookDTO();	// 각각의 DTO가 필요하기 때문에 While문 내에서 초기화.
+				dto.setBookId(rs.getInt("bookId"));
+				dto.setAuthor(rs.getString("author"));
+				dto.setTitle(rs.getString("title"));
+				dto.setPublisher(rs.getString("publisher"));
+				dto.setPrice(rs.getInt("price"));
+				dto.setPubdate(rs.getString("pubdate"));
+				
+				list.add(dto);
+				
+			}
+			 //System.out.println(list);
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null ) rs.close(); //rs는 select(조회)문에만 있음
+				if(pstmt != null) pstmt.close();
+				if(conn != null) conn.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		return list;
 	}
 	
 	

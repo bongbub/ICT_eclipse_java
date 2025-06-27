@@ -44,3 +44,15 @@ alter user hr identified by tiger;
 
 
 
+-- 3. 오라클 DBMS 에서 아래 보기처럼 SCOTT 계정의 정보를 출력하시오.(사용자이름, 계정상태, 테이블공간, 생성일자)
+-- SYSTEM 계정에서 실행
+SELECT username, account_status, default_tablespace, created 
+  FROM dba_users
+ WHERE username = 'SCOTT_05'; 
+
+
+
+
+
+
+

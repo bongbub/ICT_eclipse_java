@@ -8,7 +8,7 @@
 -- 1) 도서정보 테이블
 DROP TABLE mvc_book_tbl CASCADE CONSTRAINTS;
 CREATE TABLE mvc_book_tbl(
-	bookid 		NUMBER(4)		PRIMARY KEY,	-- 도서번호
+	bookId 		NUMBER(4)		PRIMARY KEY,	-- 도서번호
 	title       VARCHAR2(50)	NOT NULL,		-- 도서명
 	author		VARCHAR2(50)	NOT NULL,		-- 저자
 	publisher	VARCHAR2(50)	NOT NULL, 		-- 출판사

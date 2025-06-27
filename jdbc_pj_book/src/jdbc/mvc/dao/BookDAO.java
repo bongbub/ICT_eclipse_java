@@ -1,5 +1,7 @@
 package jdbc.mvc.dao;
 
+import java.util.List;
+
 import jdbc.mvc.dto.BookDTO;
 
 public interface BookDAO {
@@ -18,14 +20,14 @@ public interface BookDAO {
 	// bookID가 같을 때만 삭제해야하므로 매개변수로 가져와야함
 	public int bbookDelete(int bookId);
 	
-	// 4. 도서아이디 조회
+	// 4. 도서아이디로 조회
 	public BookDTO sselectBookById(int bookId);
 	
-	// 5. 도서타이틀 조회
-	
+	// 5. 도서타이틀로 조회
+	public BookDTO bbookSelectbyTitle(String title);
 
 	// 6. 전체목록 조회
-	
+	public List<BookDTO> bbookSelectAll();
 	
 	
 	

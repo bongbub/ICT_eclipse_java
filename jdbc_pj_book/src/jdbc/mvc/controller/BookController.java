@@ -1,5 +1,8 @@
 package jdbc.mvc.controller;
 
+
+import java.util.List;
+
 import jdbc.mvc.dto.BookDTO;
 import jdbc.mvc.service.BookServiceImpl;
 import jdbc.mvc.view.BookView;
@@ -81,12 +84,12 @@ public class BookController {
 	public void bookSelectId(int bookid) {
 		System.out.println("<<< bookSelectId() >>>");
 		BookDTO dto = service.bookSelectById(bookid);
-		if(bookid == 0 || dto == null) {
-			bv.bookErrorMsg("select");
-		}
-		else {
+		if(bookid == dto.getBookId()) {
 			System.out.println("-- 조회결과 --");
 			bv.bookSelect(dto);
+		}
+		else {
+			bv.bookErrorMsg("select");
 		}
 	}
 	
@@ -100,8 +103,17 @@ public class BookController {
 	// 6. 전체목록 조회
 	public void bookSelectAll() {
 		System.out.println("<<< bookSelectAll() >>>");
+		
+		List<BookDTO> list = service.bookSelectAll();
+		System.out.println("북컨트"+list);
+		
+		if(!list.isEmpty()) {
+			bv.bookListAll(list);
+		}
+		else {
+			bv.bookErrorMsg("select");
+		}
 	}
-	
 	
 
 }
