@@ -57,15 +57,24 @@ SELECT * FROM CUSTOMER;
 --4	추신수	미국 클리브랜드	000-8000-0001
 --5	박세리	대한민국 부산	
 
---3-48 Customer 테이블에서 박세리 고개의 주소를 김연아 고객의 주소로 변경하시오.
+--3-48 Customer 테이블에서 박세리 고객의 주소를 김연아 고객의 주소로 변경하시오.
 UPDATE CUSTOMER
-  SET ADDRESS
-  WHERE (SELECT CUSTID FROM CUSTOMER WHERE NAME = '김연아')
+SET address 
 
 
 --3-49 Customer 테이블에서 고객번호가 5인 고객을 삭제하시오.
+DELETE FROM customer
+WHERE custid = 5;
+
+SELECT * FROM customer;
+
+--1	박지성	영국 멘체스터	000-5000-0001
+--2	김연아	대한민국 서울	000-6000-0001
+--3	장미란	대한민국 강원도	000-7000-0001
+--4	추신수	미국 클리브랜드	000-8000-0001
 
 --3-50 모든 고객을 삭제하시오.
+
 
 --1.1.1 수학함수
 --4-1 -78과 +78의 절댓값을 구하시오.
