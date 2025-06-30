@@ -97,6 +97,9 @@ public class BookController {
 	// 5. 도서목록타이틀 조회
 	public void bookSelectTitle(String bookTitle) {
 		System.out.println("<<< bookSelectTitle() >>>");
+		
+		
+		
 	}
 	
 	
@@ -105,7 +108,6 @@ public class BookController {
 		System.out.println("<<< bookSelectAll() >>>");
 		
 		List<BookDTO> list = service.bookSelectAll();
-		System.out.println("북컨트"+list);
 		
 		if(!list.isEmpty()) {
 			bv.bookListAll(list);

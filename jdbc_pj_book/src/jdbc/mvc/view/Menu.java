@@ -94,6 +94,7 @@ public class Menu {
 				break;
 				
 			case 5:
+				bc.bookSelectTitle(bookTitle());
 				
 				break;
 				

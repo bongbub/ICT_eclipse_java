@@ -52,6 +52,10 @@ public class BookServiceImpl implements BookService{
 	// 도서타이틀로 조회
 	@Override
 	public BookDTO bookSelectByTitle(String title) {
+		System.out.println(" <<< ServiceImpl - bookSelectByTitle >>>");
+		
+		BookDAOImpl dao = new BookDAOImpl();
+		
 		
 		return null;
 	}

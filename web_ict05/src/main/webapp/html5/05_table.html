@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>요안드라 객실예제</title>
+
+<style>
+	th, td{
+		padding : 10px; /* 안쪽 여백 : 10px */
+		color : #000080; /* 글자색 */
+	}
+	thead {
+		background-color: pink;	/* 배경색 변경 */
+	}
+	
+</style>
+
+</head>
+<body>
+	<h3>요안도라 객실</h3>
+
+	   <!-- 
+	   
+	   colspan : 열 합치기
+	   rowspan : 행 합치기
+	   
+      <thead> ~ </thead> : 제목 셀 그룹
+      <tbody> ~ </tbody> : 본문 셀그룹
+      <tfoot> ~ </tfoot> : 요약 셀 그룹
+      <col>, <colgroup> : 열끼리 묶어 스타일 지정
+      
+      정렬 - 가로
+         <td align="left" | "right" | "center">
+      정렬 - 세로
+         <td valign="top" | "middle" | "bottom">
+    	-->
+    	
+    	<table border="1" width="600px">
+    		<colgroup> <!-- 컬럼의 갯수만큼 지정 -->
+    			<col style="background-color:#d4ebb6">
+    			<col span="2" style="background-color:#e4eef6">
+    			<col style="background-color:#f6e4e5">
+    		
+    		<thead>
+    			<tr>
+	    			<th width="100px" style="background-color:#ddf2ec"> 방 이름</th>
+	    			<th width="100px" style="background-color:#ddf2ec"> 대상</th>
+	    			<th width="80px" style="background-color:#ddf2ec"> 크기</th>
+	    			<th width="100px" style="background-color:#ddf2ec"> 가격</th>
+    			</tr>
+    		</thead>
+    		<tbody>
+    			<tr>	
+	    			<td align="center">유채방</td>
+	    			<td>여성도미토리</td>
+	    			<td rowspan="3" align="center">4인실</td>
+	    			<td rowspan="4" align="center">1인 20,000원</td>
+	    		</tr>
+	    		<tr>
+	    			<td rowspan="2" align="center">동백방</td>
+	    			<td>동성도미토리</td>
+	    			
+	    		</tr>
+	    		<tr>
+	    			<td>가족도미토리</td>
+	    		</tr>
+	    		<tr>
+	    			<td align="center">천혜향방</td>
+	    			<td align="center">-</td>
+	    			<td align="center">2인실</td>
+	    		</tr>
+    		</tbody>
+    		<tfoot>
+    			<tr>
+    				<th colspan="4" style="background-color:#ddf2ec">바깥채 전체를 렌트합니다</th>
+    			</tr>
+    	
+    	</table>
+    	
+</body>
+</html>

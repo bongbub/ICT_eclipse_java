@@ -170,7 +170,28 @@ public class BookDAOImpl implements BookDAO{
 	// 도서제목으로 조회
 	@Override
 	public BookDTO bbookSelectbyTitle(String title) {
-
+		// 쿼리
+		String query = "SELECT * FROM mvc_book_tbl WHERE title like '%'+?+'%'";
+		
+		// try-catch문
+		try {
+			// 연결
+			conn = DriverManager.getConnection(dbUrl, dbID, dbPassword);
+			pstmt = conn.prepareStatement(query);
+			
+			// 물음표 대입
+			
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		finally {
+			try {
+				
+			}catch(SQLException e) {
+				
+			}
+		}
 		
 		
 		return null;
