@@ -98,7 +98,13 @@ public class BookController {
 	public void bookSelectTitle(String bookTitle) {
 		System.out.println("<<< bookSelectTitle() >>>");
 		
-		
+		List<BookDTO> list = service.bookSelectByTitle(bookTitle);
+		if(!list.isEmpty()) {
+			bv.bookListAll(list);
+		}
+		else {
+			bv.bookErrorMsg("select");
+		}
 		
 	}
 	

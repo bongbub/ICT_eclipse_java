@@ -23,7 +23,7 @@ public interface BookService {
 	
 	
 	// 5. 도서타이틀 조회
-	public BookDTO bookSelectByTitle(String title);
+	public List<BookDTO> bookSelectByTitle(String title);
 	
 	// 6. 전체목록 조회
 	public List<BookDTO> bookSelectAll();

@@ -24,7 +24,7 @@ public interface BookDAO {
 	public BookDTO sselectBookById(int bookId);
 	
 	// 5. 도서타이틀로 조회
-	public BookDTO bbookSelectbyTitle(String title);
+	public List<BookDTO> bbookSelectbyTitle(String title);
 
 	// 6. 전체목록 조회
 	public List<BookDTO> bbookSelectAll();

@@ -138,6 +138,7 @@ public class Menu {
 		int price = scan.nextInt();
 		dto.setPrice(price);
 		
+		
 		return dto;
 	}
 	

@@ -13,7 +13,20 @@ import jdbc.mvc.dto.BookDTO;
 // DAO - DB처리(DB연결, 데이터 CRUD(입력수정삭제조회))
 public class BookDAOImpl implements BookDAO{
 	
-	// 추후 싱글톤으로 변경
+	// 싱글톤 변경
+	// 자기를 private로 생성해서 (static)(private)
+	private static BookDAOImpl instance = new BookDAOImpl();
+	// 생성자를 private로 막기
+	private BookDAOImpl() {
+		
+	}
+	// 외부에서 인스턴스를 받을 수 있는 메서드
+	public static BookDAOImpl getInstance() {
+		if(instance == null) {
+			instance = new BookDAOImpl();
+		}
+		return instance;
+	}
 	
 	
 	// DB연결
@@ -33,8 +46,8 @@ public class BookDAOImpl implements BookDAO{
 		
 		int insertCnt = 0;
 		
-		String query = "INSERT INTO mvc_book_tbl(bookid, title, author, publisher, price)"
-				+ " VALUES((SELECT nvl(max(bookId) + 1, 1) FROM MVC_BOOK_TBL mbt), ?, ?, ?, ?)";
+		String query = "INSERT INTO mvc_book_tbl(bookid, title, author, publisher, price, pubDate)"
+				+ " VALUES((SELECT nvl(max(bookId) + 1, 1) FROM MVC_BOOK_TBL mbt), ?, ?, ?, ?, ?)";
 				// getter로 가져오면 문장이 길어짐. ex) dto.getBookId, dto.getBookTitle....)
 				// --> dto 자리를 ?로 줌 ==> 현재에서 설정하지 않겠다
 				// 또한 Values 앞이든, into문 괄호 끝 뒤든, 공백하나 줘야함.!!!!! 중요
@@ -51,6 +64,7 @@ public class BookDAOImpl implements BookDAO{
 			pstmt.setString(2, dto.getAuthor());	// 2번물음표에 getAuthor()이 들어감
 			pstmt.setString(3, dto.getPublisher());	// 3번 물음표에 getPub..()이 들어감
 			pstmt.setInt(4, dto.getPrice());	// 4번 물음표에 getPrice()들어감
+			pstmt.setString(5, dto.getPubdate());
 			
 			insertCnt = pstmt.executeUpdate();              // 실행하다
 			
@@ -169,11 +183,11 @@ public class BookDAOImpl implements BookDAO{
 
 	// 도서제목으로 조회
 	@Override
-	public BookDTO bbookSelectbyTitle(String title) {
+	public List<BookDTO> bbookSelectbyTitle(String title) {
 		// 쿼리
-		String query = "SELECT * FROM mvc_book_tbl WHERE title like '%'+?+'%'";
+		String query = "SELECT * FROM mvc_book_tbl WHERE title like ?";
 		BookDTO dto = null;
-		List<BookDTO> list = null;
+		List<BookDTO> list = new ArrayList<BookDTO>();
 		
 		// try-catch문
 		try {
@@ -182,10 +196,10 @@ public class BookDAOImpl implements BookDAO{
 			pstmt = conn.prepareStatement(query);
 			
 			// 물음표 대입
-			pstmt.setString(1, title);
+			pstmt.setString(1, "%" + title + "%");
 			// 반환결과
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
+			while(rs.next()) {
 				dto = new BookDTO();
 				dto.setBookId(rs.getInt("bookId"));
 				dto.setAuthor(rs.getString("author"));
@@ -208,7 +222,7 @@ public class BookDAOImpl implements BookDAO{
 			}
 		}
 		
-		return null;
+		return list;
 	}
 	
 
