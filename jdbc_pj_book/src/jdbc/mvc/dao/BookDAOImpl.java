@@ -172,6 +172,8 @@ public class BookDAOImpl implements BookDAO{
 	public BookDTO bbookSelectbyTitle(String title) {
 		// 쿼리
 		String query = "SELECT * FROM mvc_book_tbl WHERE title like '%'+?+'%'";
+		BookDTO dto = null;
+		List<BookDTO> list = null;
 		
 		// try-catch문
 		try {
@@ -180,19 +182,31 @@ public class BookDAOImpl implements BookDAO{
 			pstmt = conn.prepareStatement(query);
 			
 			// 물음표 대입
-			
+			pstmt.setString(1, title);
+			// 반환결과
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				dto = new BookDTO();
+				dto.setBookId(rs.getInt("bookId"));
+				dto.setAuthor(rs.getString("author"));
+				dto.setTitle(rs.getString("title"));
+				dto.setPublisher(rs.getString("publisher"));
+				dto.setPrice(rs.getInt("price"));
+				
+				list.add(dto);
+			}
 			
 		} catch(SQLException e) {
 			e.printStackTrace();
 		}
 		finally {
 			try {
-				
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
 			}catch(SQLException e) {
-				
+				e.printStackTrace();
 			}
 		}
-		
 		
 		return null;
 	}
