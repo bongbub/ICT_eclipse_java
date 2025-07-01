@@ -2,6 +2,7 @@ package jdbc.mvc.view;
 
 import java.util.Scanner;
 
+import jdbc.mvc.controller.BoardController;
 import jdbc.mvc.controller.BookController;
 import jdbc.mvc.dto.BookDTO;
 
@@ -10,8 +11,10 @@ public class Menu {
 	// 1. 도서관리  2. 게시판   3.찜한도서      4. 종료
 	// 입력을 위한 스캐너
 	Scanner scan = new Scanner(System.in);
-	
+	// 도서관리 컨트롤러
 	BookController bc = new BookController();
+	// 게시판 컨트롤러
+	BoardController bcon = new BoardController();
 		
 		
 	public void displayMenu() {
@@ -45,13 +48,9 @@ public class Menu {
 				
 			}
 			
-			
 		}
 		
-		
 	}
-	
-	
 	
 	// ----------------------------------------------------------
 	// 1. 도서관리 메뉴
@@ -69,7 +68,7 @@ public class Menu {
 		
 		
 			switch(menuNo) {
-			case 1: // 도서관리
+			case 1: // 도서추가
 				bc.bookAdd(bookInput());
 				// bookInput => dto의 멤버변수 즉, 멤버변수값을 넣어 넘겨줌
 				//bc.bookAdd(new BookDTO("하얼빈","김훈","장비",15000))
@@ -159,20 +158,66 @@ public class Menu {
 		BookDTO dto = new BookDTO();
 		System.out.print("▷정보를 수정할 도서 번호를 입력하세요. :");
 		int num = scan.nextInt();
-		String skip = scan.nextLine();  //스킵되는거 막기
+		scan.nextLine();  //스킵되는거 막기
 		dto = bookInput();
 		dto.setBookId(num);
 		return dto;
 	}
 	
-	
-	
-	
 	// ------------------------------------------
 	// 2. 게시판 메뉴
 	public void board_menu() {
+		while(true) {
+		System.out.println("");
 		System.out.println("게시판메뉴 (board_menu)");
+		System.out.println("*-------------------------------------------------*");
+		System.out.println("    1. 게시글 작성     2.게시글 수정     3. 게시글 삭제    4. 글번호 검색" );
+		System.out.println("*-------------------------------------------------*");
+		System.out.println("*-------------------------------------------------*");
+		System.out.println("    5. 글제목 검색     6.전체글목록 보기     7. 종료"    );
+		System.out.println("*-------------------------------------------------*");
+		System.out.print("▶ 메뉴선택 : ");
+		int menuNo = scan.nextInt();
+		scan.nextLine();		// 인풋이 꼬이지 않도록
 		
+		
+		switch(menuNo) {
+		case 1: // 게시글 작성
+			bcon.boardAdd();
+			break;
+			
+		case 2:
+			bcon.boardEdit();
+			break;
+			
+		case 3:
+			bcon.boardDelete();
+			break;
+			
+		case 4:
+			bcon.boardSelectId();
+			
+			break;
+			
+		case 5:
+			bcon.boardSelectTitle();
+			break;
+			
+		case 6:
+			bcon.boardSelectAll();
+			break;
+			
+		case 7:
+			System.out.println(" 프로그램을 종료합니다. ");
+			System.out.println();
+			return;
+		default :
+			System.out.println("메뉴를 다시 선택해주세요.");
+			
+		}
+		
+		
+		}
 	}
 	
 	// 3. 찜 메뉴

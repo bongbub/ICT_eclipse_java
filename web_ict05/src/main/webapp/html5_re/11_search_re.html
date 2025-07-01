@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>폼 관련 태그</title>
+<style>
+
+</style>
+
+<script text="text/javascript">
+	function zipCodeSearch(){
+		alert("우편번호를 입력하세요")
+	}
+	
+
+</script>
+
+</head>
+<body>
+	<h3>폼과 관련된 태그들</h3>
+	
+	<form action="#" method="post">
+		<fieldset>
+			<legend>검색</legend>
+			<table>
+				<tr>
+					<td><input type="search"></td>
+					<td><input type="submit" value="검색"></td>
+				</tr>
+			</table>
+		</fieldset>
+			<fieldset>
+			<legend>우편번호 검색</legend>
+			<table>
+				<tr>
+					<td colspan="2">
+					<td><input type="button" value="우편번호 검색"
+						onClick="zipCodeSearch()"></td>
+				</tr>
+			</table>
+		</fieldset>
+			<fieldset>
+			<legend>파일첨부</legend>
+			<table>
+				<tr>
+					<td><input type="file" name="attachFile"></td>
+				</tr>
+			</table>
+		</fieldset>
+		
+		<fieldset>
+			<legend>조회기간 선택</legend>
+			<table>
+				<tr>
+					<th><label for="startMonth"> 현재월</label></th>
+					<td><input type="month" id="startMonth" value="2025-07"></td>
+				</tr>
+			</table>
+		</fieldset>
+		
+		<fieldset>
+			<legend>조회기간 선택</legend>
+			<table>
+				<tr>
+					<th><label for="startDay"> 시작일</label></th>
+					<td><input type="date" id="startDay"> ~</td>
+					
+					<th><label for="endDay"> 종료일</label></th>
+					<td><input type="date" id="endDay"> </td>
+				</tr>
+				
+				<tr>
+					<th><label for="startWeek"> 개강주</label></th>
+					<td><input type="week" id="startWeek"> ~</td>
+					
+					<th><label for="endWeek"> 종강주</label></th>
+					<td><input type="week" id="endWeek"> </td>
+				</tr>
+				
+				<tr>
+					<th><label for="startTime"> 시작시간</label></th>
+					<td><input type="week" id="startTime"> ~</td>
+					
+					<th><label for="endTime"> 종료시간</label></th>
+					<td><input type="week" id="endTime"> </td>
+				</tr>
+			</table>
+		</fieldset>
+		
+	
+	</form>
+
+</body>
+</html>

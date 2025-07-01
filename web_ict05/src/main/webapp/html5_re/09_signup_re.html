@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입 페이지</title>
+
+<style>
+	.login {
+		border:none;
+		border-bottom:1px solid gray;
+		outline : none;
+	}
+	
+</style>
+</head>
+<body>
+	<h3>회원가입</h3>
+	<form action="09_next_re.html" method="post">
+		<fieldset>
+			<legend>회원가입</legend>
+			<table>
+				<tr>
+					<th align="right"><label for="user_id"> * 아이디</label></th>
+					<td><input type="text" id="user_id" name="userID" class="login"
+						size="30" placeholder="아이디 입력" autofocus required>
+					</td>
+				</tr>
+				
+				<tr>
+					<th align="right"><label for="user_pw"> * 비밀번호</label></th>
+					<td><input type="password" id="user_pw" name="userPW" class="login"
+						size="30" placeholder="비밀번호 입력" required>
+					</td>
+				</tr>
+				<tr>
+					<th align="right"><label for="user_pw_check"> * 비밀번호 확인</label></th>
+					<td><input type="password" id="user_pw_check" name="userPWcheck" 
+						class="login" size="30" placeholder="비밀번호 입력확인" required>
+					</td>
+				</tr>
+				<tr>
+					<th align="right"><label for="user_name"> * 이름</label></th>
+					<td><input type="text" id="user_name" name="userName" 
+						class="login" size="30" placeholder="이름을 입력하세요" required>
+					</td>
+				</tr>
+				<tr>
+					<th align="right"><label for="user_email"> * 이메일</label></th>
+					<td><input type="email" id="user_email" name="userEmail" 
+						class="login" size="30" placeholder="이메일을 입력하세요" required>
+					</td>
+				</tr>
+				<tr>
+					<th align="right"><label for="user_email"> * 성별</label></th>
+					<td colspan="2">
+						<div align="center">
+							<input type="radio" name="userGender" value ="FM" checked>여성
+							<input type="radio" name="userGender" value ="M" >남성
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th align="right"><label for="user_birth">생년월일</label></th>
+					<td>
+						<input type="date" id= "user_birth" >
+					</td>
+				</tr>
+				
+				<tr>
+					<th align="right"><label for="user_id"> 등급 </label></th>
+					<td><input type="text" id="user_id" name="userID" 
+						size="30" placeholder="비회원" disabled>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div align="center">
+							<input type="submit" value="회원가입">
+							<input type="reset" value="재입력">
+						</div>
+					</td>
+				</tr>
+			
+			</table>
+		</fieldset>
+	
+	</form>
+</body>
+</html>

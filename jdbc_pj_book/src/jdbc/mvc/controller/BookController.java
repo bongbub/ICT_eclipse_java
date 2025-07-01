@@ -5,7 +5,7 @@ import java.util.List;
 
 import jdbc.mvc.dto.BookDTO;
 import jdbc.mvc.service.BookServiceImpl;
-import jdbc.mvc.view.BookView;
+import jdbc.mvc.view.View;
 
 /*
  *   작성일 : 2025.6.18
@@ -22,7 +22,7 @@ import jdbc.mvc.view.BookView;
 public class BookController {
 	
 	BookServiceImpl service = new BookServiceImpl();
-	BookView bv = new BookView();
+	View bv = new View();
 	
 	
 	// 1. 도서 추가

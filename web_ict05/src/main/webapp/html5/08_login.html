@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인 정보</title>
+<style>
+	fieldset {
+		/* {속성명 : 속성값} */
+		max-width : 400px;   	/* 최대폭 */
+		/* margin : 바깥여백, padding : 안쪽여백 */
+		margin : 15px 10px 		/* 바깥여백 -> 상하여백 15px, 좌우여백 : 10px */
+	}
+	legend {
+		font-size :18px;		/* 글자크기 */
+		font-weight : bold;		/* 글자 두께 */
+		color : black;			/* 글자색 */
+	}
+	label {
+		font-size:14px;			/* 글자크기 */
+		font-weight:bold; 		/* 글자두께 */
+		width : 120px;			/* 너비 */
+	}
+	th, td {
+		/* 셀 테두리와 내용간의 공백 */
+		padding : 5px;
+	}
+
+</style>
+</head>
+<body>
+
+	<!-- 
+		<fieldset> : 폼요소들을 그룹으로 묶음
+		<legend> : 그룹의 제목
+		placeholder : inut에 힌트 표시하기
+		autofocus : 폼이 실행하자마자 원하는 항복의 입력박스에 커서 표시하기
+		required : 필수 항목 지정하기
+	
+	 -->
+	
+	<h3> 로그인 정보</h3>
+	
+	<form action ="08_next.html" method="post">
+		<fieldset>
+			<legend> 로그인 정보 </legend>
+			
+			<table>
+				<tr>  <!-- style="border:none; border-bottom:1px solid gray; outline:none;"  -->
+					<th align="right"><label for="la_id">아이디</label></th>
+					<td><input
+					placeholder="공백없이 아이디 입력" type="text" id="la_id" 
+					name="userID" size="30" autofocus required></td>
+				</tr>
+				<!--  style="border:none; border-bottom:1px solid gray; outline:none;" -->
+				<tr>
+					<th align="right"><label for="la_password">비밀번호</label></th>  
+					<td><input
+					placeholder="영문자+숫자 10자리 이상" type="password" id="la_password" 
+					name="userPassword" size="30" required></td>
+				</tr>
+				
+				<tr>  <!-- style="border:none; border-bottom:1px solid gray; outline:none;"  -->
+					<th align="right"><label for="la_check_password">비밀번호 확인</label></th>
+					<td><input 
+					placeholder="비밀번호 확인" type="password" id="la_check_password" 
+					name="checkuserPassword" size="30" required></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<br>
+						<div align="center">
+							<input type="submit" value="전송">
+							<input type="reset" value="취소">
+						</div>
+					</td>
+				</tr>
+			</table>
+			
+		</fieldset> 
+	</form>
+	
+	
+	
+	
+</body>
+</html>

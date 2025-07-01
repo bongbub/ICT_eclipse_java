@@ -11,7 +11,7 @@ import jdbc.mvc.dto.BookDTO;
  * 		Book에 정보 출력, Book 에러메세지, Book 결과 조회
  */
 
-public class BookView {
+public class View {
 
 	
 	// 에러메세지

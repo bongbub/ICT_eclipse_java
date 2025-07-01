@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>라디오/체크박스</title>
+</head>
+<body>
+	<h3>라디오/체크박스</h3>
+
+	<form action="#" method="post">
+	
+		<fieldset>
+			<legend> 수강과목 <small>(1과목선택가능)</small></legend>
+			<table>
+				<tr>
+					<td><label><input type="radio" name="conversation" 
+					value="low" checked> 영어회화(초급)</label>
+				</tr>
+				<tr>
+					<td><label><input type="radio" name="conversation" 
+					value="mid" > 영어회화(중급)</label>
+				</tr>
+				<tr>
+					<td><label><input type="radio" name="conversation" 
+					value="high" > 영어회화(고급)</label>
+				</tr>
+			</table>
+		</fieldset>
+		
+		<fieldset>
+			<legend> 관심분야 <small>(중복 선택가능)</small></legend>
+			<table>
+				<tr>
+					<td><label><input type="checkbox" name="language" 
+					value="grammer" checked>문법</label>
+				</tr>
+				<tr>
+					<td><label><input type="checkbox" name="language" 
+					value="voca" > 어휘</label>
+				</tr>
+				<tr>
+					<td><label><input type="checkbox" name="language" 
+					value="conv" > 회화</label>
+				</tr>
+				<tr>
+					<td><label><input type="checkbox" name="language" 
+					value="listening" > 듣기</label>
+				</tr>
+			</table>
+		</fieldset>
+		
+		<fieldset>
+			<legend>선호색상</legend>
+			<table>
+				<tr>
+					<td>
+						<input type="color" id="preColor" value="#fe2031">
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</form>
+</body>
+</html>
