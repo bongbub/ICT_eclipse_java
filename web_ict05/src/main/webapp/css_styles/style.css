@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+/* 파일생성 : new > CSS File > style.css 
+		또는 new > oter > CSS File > style.css
+ */
+ 
+ /* 
+ 	선택자 { 스타일 속성명 : 속성값 } 
+  */
+
+	ul {
+		color : blue;
+		list-style-type : square;
+	
+	}

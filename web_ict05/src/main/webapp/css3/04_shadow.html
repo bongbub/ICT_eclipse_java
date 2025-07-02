@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>텍스트세도우 예제</title>
+<style>
+	h1 {
+		font-size:100px;
+		font-family:"돋움";
+	}
+	
+	/* 텍스트 그림자 <가로길이: 양수->오른쪽> <세로길이: 양수->아래로> <번짐정도> <색상>    */
+	#shadow1{
+		color:orange;
+		text-shadow: 10px 10px 0px #000;	/* 오른쪽 아래 번짐 10px #000(검정) */
+	}
+	#shadow2{
+		color:orange;
+		text-shadow: -10px -10px 3px #000;	/* 왼쪽 위 번짐 10px, #000 */
+	}
+	#shadow3{
+		color:green;
+		text-shadow: -10px -10px 3px #f00;	/* 왼쪽 위 번짐 10px, #f00 */
+	}
+	
+
+</style>
+</head>
+<body>
+	<h1 id="shadow1">HTML</h1>
+	<h1 id="shadow2">HTML</h1>
+	<h1 id="shadow3">Christmas</h1>
+
+</body>
+</html>

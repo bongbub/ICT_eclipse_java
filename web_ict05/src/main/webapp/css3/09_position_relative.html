@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>position - relative 속성</title>
+
+<style>
+
+	.box0{
+		float:left;
+		width:100px;
+		top:300px;
+		background-color:#0094ff;
+		margin-right:10px;
+		padding: 20px;
+	}
+	
+	/* 기준이 되는 부모요소 */
+	.box1 {
+		/* 왼쪽에 배치 */
+		float:left;
+		width:300px;
+		background-color:#ff0000;
+		margin-right:10px;
+		padding:20px;
+	}
+	
+	/* 자식(작은상자) */
+	.box2 {
+		/* 왼쪽에 배치 */
+		
+		position:relative;		/* 무조건 바로 이전 요소와의 관계 */
+		float:left;				
+		left:-50px;				/* 박스1을 기준으로 왼쪽으로 50만큼 가라 */
+		top:30px;
+		width:100px;
+		background-color:#00ff00;
+		margin-right:10px;
+		padding:20px;
+	}
+
+</style>
+
+</head>
+<body>
+	
+	<h3> position - relative 속성 </h3>
+	
+	<!-- relative 속성 : 
+	 	·자연스럽게 배치
+	 	·고정되어 있지 않고 다른 요소에 의해 바뀔 수 있다
+		·left나 top 속성을 지정할 수 있다. -->
+		
+	<div class="box0">박스 0</div>
+	<div class="box1">박스 1</div>
+	<div class="box2">박스 2</div>
+	
+</body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>position - absolute 속성</title>
+
+<style>
+	/* 나(기준이되는 부모요소) */
+	#wrap{
+		position:relative;
+		width:300px;
+		height:300px;
+		border:5px solid #ccc; 		/* ccc=회색 */
+	}
+	
+	/* 자식(위치를 지정할 작은 상자) */
+	.box {
+		position : absolute;
+		width:50px;
+		height:50px;
+		background-color:#0094ff;
+	}
+	
+	/* 왼쪽 위 */
+	#box1 {
+		top : 0;
+		left:0;	
+	}
+	/* 오른쪽 위 */
+	#box2 {
+		top:0;
+		right:0;
+	}
+	/* 왼쪽아래 */
+	#box3 {
+		bottom:0;
+		left:0;
+	}
+	
+	/* 오른쪽 아래 */
+	#box4 {
+		bottom:0;
+		right:0;
+	}
+	
+	/* 중심 */
+	#box5{
+		top:125px;
+		left:125px;
+	
+	}
+
+</style>
+
+</head>
+<body>
+	
+	<h3> position - absolute 속성 </h3>
+	
+	<!-- absolute 속성 : 
+	 	·문서의 흐름과는 상관없이 원하는 위치에 요소를 배치한다
+	 	·요소의 위치는 가장 가까운 부모요소나 조상요소 중 position이 'relative'인 요소 
+		·left나 right, top, bottom 속성을 이용해서 네 모서리에 얼마나 떨어져있을 수 있는지 지정할 수 있다. -->
+		
+	<div id="wrap">
+	
+		<div class="box" id="box1">박스 1</div>
+		<div class="box" id="box2">박스 2</div>
+		<div class="box" id="box3">박스 3</div>
+		<div class="box" id="box4">박스 4</div>
+		<div class="box" id="box5">박스 5</div>
+		<div class="box" id="box1">박스 1</div>
+	</div>
+	
+</body>
+</html>
