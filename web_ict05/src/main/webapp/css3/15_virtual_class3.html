@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>가상클래스 - :nth-child(n)와 :nth-last-child(n)</title>
+<style>
+   /*   :nth-child(n)와 :nth-last-child(n)
+      - :nth-child(n) -> 앞에서부터 n번째 자식 요소에 스타일 적용
+      - :nth-last-child -> 뒤에서부터 n번째 자식 요소에 스타일 적용
+      
+      예) div p:nth-child(3) -> div 요소중에서 3번째 자식요소인 p요소에 스타일 적용
+      예) div p:nth-child(odd) | div p:nth-child(2n+1)-> div 요소중에서 홀수번째 자식요소인 p요소에 스타일 적용
+      예) div p:nth-child(even) | div p:nth-child(2n)-> div 요소중에서 짝수번째 자식요소인 p요소에 스타일 적용
+   */
+   
+   /* tr 홀수번째 배경색 : lightgray */
+   table tr:nth-child(odd){
+   	background: lightgray;
+   }
+   
+   /* tr 짝수번째 배경색 : lightblue */
+   table tr:nth-child(even){
+   	background: lightblue;
+   }
+
+   
+</style>
+</head>
+<body>
+
+	<h3> 가상클래스 - :nth-child(n)와 :nth-last-child(n)</h3>
+	
+	<table border="1">
+	
+		<tr><td>블루베리</td></tr>
+		<tr><td>귀리</td></tr>
+		<tr><td>토마토</td></tr>
+		<tr><td>사과</td></tr>
+		<tr><td>견과류</td></tr>
+		<tr><td>블루베리</td></tr>
+		<tr><td>블루베리</td></tr>
+		<tr><td>블루베리</td></tr>
+		<tr><td>블루베리</td></tr>
+		<tr><td>블루베리</td></tr>
+	
+	</table>
+
+</body>
+</html>

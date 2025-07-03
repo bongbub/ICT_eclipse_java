@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>flex3 - wrap</title><base>
+
+<style>
+	.wrapper{
+		width:500px;
+		height:100px;
+		margin:0 auto 2px;
+		display:flex;
+		border:2px solid black;
+	}
+	
+	#container1{
+		justify-content:flex-start;
+	}
+	#container2{
+		justify-content:flex-end;
+	}
+	#container3{
+		justify-content:center;
+	}
+	#container4{
+		justify-content:space-between;
+	}
+	#container5{
+		justify-content:space-around;
+	}
+	#container6{
+		justify-content:space-evenly;
+	}
+	h1{
+		text-align:center;
+	}
+	p{
+		font-size:30px;
+		font-weight:bold;
+		text-align:center;
+	}
+	
+
+</style>
+
+</head>
+<body>
+	<h3>justify-content : flex-start(기본값)</h3>
+	<div id="container1" class="wrapper">
+		<div><p>1</div>
+		<div><p>2</div>
+		<div><p>3</div>
+		<div><p>4</div>
+		<div><p>5</div>
+	</div>
+	<h3>justify-content : flex-end</h3>
+	<div id="container2" class="wrapper">
+		<div><p>1</div>
+		<div><p>2</div>
+		<div><p>3</div>
+		<div><p>4</div>
+		<div><p>5</div>
+	</div>
+	<h3>justify-content : center</h3>
+	<div id="container3" class="wrapper">
+		<div><p>1</div>
+		<div><p>2</div>
+		<div><p>3</div>
+		<div><p>4</div>
+		<div><p>5</div>
+	</div>
+	<h3>justify-content : space-between</h3>
+	<div id="container4" class="wrapper">
+		<div><p>1</div>
+		<div><p>2</div>
+		<div><p>3</div>
+		<div><p>4</div>
+		<div><p>5</div>
+	</div>
+	<h3>justify-content : space-around</h3>
+	<div id="container5" class="wrapper">
+		<div><p>1</div>
+		<div><p>2</div>
+		<div><p>3</div>
+		<div><p>4</div>
+		<div><p>5</div>
+	</div>
+	<h3>justify-content : space-evenly</h3>
+	<div id="container6" class="wrapper">
+		<div><p>1</div>
+		<div><p>2</div>
+		<div><p>3</div>
+		<div><p>4</div>
+		<div><p>5</div>
+	</div>
+
+</body>
+</html>

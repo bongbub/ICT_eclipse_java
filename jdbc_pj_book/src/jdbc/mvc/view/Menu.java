@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 import jdbc.mvc.controller.BoardController;
 import jdbc.mvc.controller.BookController;
+import jdbc.mvc.dto.BoardDTO;
 import jdbc.mvc.dto.BookDTO;
 
 public class Menu {
@@ -153,71 +154,93 @@ public class Menu {
 	}
 	
 	
-	public BookDTO bookUpdate() {
-		// 콘솔에서 입력받은 값을 통해 어떤 책을 수정할건지 판단
-		BookDTO dto = new BookDTO();
-		System.out.print("▷정보를 수정할 도서 번호를 입력하세요. :");
-		int num = scan.nextInt();
-		scan.nextLine();  //스킵되는거 막기
-		dto = bookInput();
-		dto.setBookId(num);
-		return dto;
-	}
+//	public BookDTO bookUpdate() {
+//		// 콘솔에서 입력받은 값을 통해 어떤 책을 수정할건지 판단
+//		BookDTO dto = new BookDTO();
+//		System.out.print("▷정보를 수정할 도서 번호를 입력하세요. :");
+//		int num = scan.nextInt();
+//		scan.nextLine();  //스킵되는거 막기
+//		dto = bookInput();
+//		dto.setBookId(num);
+//		return dto;
+//	}
 	
 	// ------------------------------------------
 	// 2. 게시판 메뉴
 	public void board_menu() {
 		while(true) {
-		System.out.println("");
-		System.out.println("게시판메뉴 (board_menu)");
-		System.out.println("*-------------------------------------------------*");
-		System.out.println("    1. 게시글 작성     2.게시글 수정     3. 게시글 삭제    4. 글번호 검색" );
-		System.out.println("*-------------------------------------------------*");
-		System.out.println("*-------------------------------------------------*");
-		System.out.println("    5. 글제목 검색     6.전체글목록 보기     7. 종료"    );
-		System.out.println("*-------------------------------------------------*");
-		System.out.print("▶ 메뉴선택 : ");
-		int menuNo = scan.nextInt();
-		scan.nextLine();		// 인풋이 꼬이지 않도록
-		
-		
-		switch(menuNo) {
-		case 1: // 게시글 작성
-			bcon.boardAdd();
-			break;
+			System.out.println("");
+			System.out.println("게시판메뉴 (board_menu)");
+			System.out.println("*-------------------------------------------------*");
+			System.out.println("    1. 게시글 작성     2.게시글 수정     3. 게시글 삭제    4. 글번호 검색" );
+			System.out.println("*-------------------------------------------------*");
+			System.out.println("*-------------------------------------------------*");
+			System.out.println("    5. 글제목 검색     6.전체글목록 보기     7. 종료"    );
+			System.out.println("*-------------------------------------------------*");
+			System.out.print("▶ 메뉴선택 : ");
+			int menuNo = scan.nextInt();
+			scan.nextLine();		// 인풋이 꼬이지 않도록
 			
-		case 2:
-			bcon.boardEdit();
-			break;
 			
-		case 3:
-			bcon.boardDelete();
-			break;
-			
-		case 4:
-			bcon.boardSelectId();
-			
-			break;
-			
-		case 5:
-			bcon.boardSelectTitle();
-			break;
-			
-		case 6:
-			bcon.boardSelectAll();
-			break;
-			
-		case 7:
-			System.out.println(" 프로그램을 종료합니다. ");
-			System.out.println();
-			return;
-		default :
-			System.out.println("메뉴를 다시 선택해주세요.");
-			
+			switch(menuNo) {
+			case 1: // 게시글 작성
+				bcon.boardAdd(writeBoard());
+				break;
+				
+			case 2:
+				bcon.boardEdit();
+				break;
+				
+			case 3:
+				bcon.boardDelete();
+				break;
+				
+			case 4:
+				bcon.boardSelectId();
+				
+				break;
+				
+			case 5:
+				bcon.boardSelectTitle();
+				break;
+				
+			case 6:
+				bcon.boardSelectAll();
+				break;
+				
+			case 7:
+				System.out.println(" 프로그램을 종료합니다. ");
+				System.out.println();
+				return;
+			default :
+				System.out.println("메뉴를 다시 선택해주세요.");
+				
+			}
 		}
+	}
+	// 게시글 추가메서드
+	public BoardDTO writeBoard() {
+		BoardDTO dto = new BoardDTO();
 		
+		int bnum = dto.getBoardNo();
 		
-		}
+		System.out.println("글 제목:");
+		String title = scan.nextLine();
+		dto.setBoardTitle(title);
+		
+		System.out.println("작성자");
+		String author = scan.nextLine();
+		dto.setBoardId(author);
+		
+		System.out.println("내용 : ");
+		String content = scan.nextLine();
+		dto.setBoardContent(content);
+		
+		int res = bnum++;
+		
+		dto.setBoardNo(res);
+		
+		return dto;
 	}
 	
 	// 3. 찜 메뉴

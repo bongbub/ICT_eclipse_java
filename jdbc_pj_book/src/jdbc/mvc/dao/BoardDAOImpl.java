@@ -4,7 +4,9 @@ public class BoardDAOImpl implements BoardDAO{
 
 	@Override
 	public void boardInsertDAO() {
-		// TODO Auto-generated method stub
+		
+		//성공했는지 확인하는 int
+		
 		
 	}
 

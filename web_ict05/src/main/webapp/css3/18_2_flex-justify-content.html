@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>justify-content</title>
+<style>
+
+
+	.wrapper {
+		width:500px;
+		height:100px;
+		margin: 0 auto 2px;
+		display: flex;			
+		border:2px solid black;
+	}
+	
+	/* justify-content는 main축을 기준(왼->오) */
+	/* flex-start : items를 시작점으로 정렬 */
+	#container1 {
+		justify-content : flex-start;
+	}
+	
+	/* flex-end : items를 끝점부터 정렬 */
+	#container2 {
+		justify-content : flex-end;
+	}
+	/* center : items를 가운데 정렬 */
+	#container3 {
+		justify-content : center;
+	}
+	/* space-between : 첫 item은 시작점에, 끝 item은 끝점에 정렬되고, 나머지 여백으로 고르게 정렬 */
+	#container4 {
+		justify-content : space-between;
+	}
+	/* space-around : 각 items 좌우 여백을 고르게 정렬 */
+	#container5 {
+		justify-content : space-around;
+	}
+	/* space-evenly : 모든 여백을 고르게 정렬 */
+	#container6 {
+		justify-content : space-evenly;
+	}
+	h1 {
+		text-align:center;
+		
+	}
+	p{
+		font-size:30px;
+		font-weight:bold;
+		text-align:center;
+	}
+
+	
+</style>
+
+</head>
+<body>
+	<h2>justify-content : flex-start(기본값)</h2>
+	<div id="container1" class="wrapper">
+		<div><p>1</p></div>
+		<div><p>2</p></div>
+		<div><p>3</p></div>
+		<div><p>4</p></div>
+		<div><p>5</p></div>
+	</div>
+	
+	<h2>justify-content : flex-end</h2>
+	<div id="container2" class="wrapper">
+		<div><p>1</p></div>
+		<div><p>2</p></div>
+		<div><p>3</p></div>
+		<div><p>4</p></div>
+		<div><p>5</p></div>
+	</div>
+	
+	<h2>justify-content : flex-center</h2>
+	<div id="container3" class="wrapper">
+		<div><p>1</p></div>
+		<div><p>2</p></div>
+		<div><p>3</p></div>
+		<div><p>4</p></div>
+		<div><p>5</p></div>
+	</div>
+	
+	<h2>justify-content : space-between</h2>
+	<div id="container4" class="wrapper">
+		<div><p>1</p></div>
+		<div><p>2</p></div>
+		<div><p>3</p></div>
+		<div><p>4</p></div>
+		<div><p>5</p></div>
+	</div>
+	
+	
+	<h2>justify-content : space-around</h2>
+	<div id="container5" class="wrapper">
+		<div><p>1</p></div>
+		<div><p>2</p></div>
+		<div><p>3</p></div>
+		<div><p>4</p></div>
+		<div><p>5</p></div>
+	</div>
+	
+	<h2>justify-content : space-evenly</h2>
+	<div id="container6" class="wrapper">
+		<div><p>1</p></div>
+		<div><p>2</p></div>
+		<div><p>3</p></div>
+		<div><p>4</p></div>
+		<div><p>5</p></div>
+	</div>
+	
+	
+</body>
+</html>

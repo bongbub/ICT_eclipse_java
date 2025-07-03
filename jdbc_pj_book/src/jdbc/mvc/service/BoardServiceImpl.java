@@ -1,10 +1,16 @@
 package jdbc.mvc.service;
 
+import jdbc.mvc.dao.BoardDAOImpl;
+
 public class BoardServiceImpl implements BoardService {
 
+	
+	// BoardDAOImpl
+	BoardDAOImpl dao = new BoardDAOImpl();
+	
 	@Override
 	public int boardInsert() {
-		// TODO Auto-generated method stub
+		//int anum = dao.boardInsertDAO();
 		return 0;
 	}
 

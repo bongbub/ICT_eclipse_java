@@ -1,12 +1,21 @@
 package jdbc.mvc.controller;
 
+import jdbc.mvc.dto.BoardDTO;
+import jdbc.mvc.service.BoardServiceImpl;
+
 public class BoardController {
 	
 	// 컨트롤러 클래스
 	
+	
+	// BoardServiceImpl
+	BoardServiceImpl service = new BoardServiceImpl();
+	
 	// 1. 게시글 추가
-	public void boardAdd() {
+	public int boardAdd(BoardDTO dto) {
+		int anum = service.boardInsert();
 		
+		return anum;
 	}
 	
 	

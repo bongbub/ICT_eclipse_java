@@ -13,7 +13,6 @@ public class BoardDTO {
 	// 디폴트 생성자
 	public BoardDTO() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getBoardNo() {

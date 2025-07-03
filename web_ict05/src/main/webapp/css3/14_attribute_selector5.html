@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>속성선택자</title>
+
+<style>
+
+	/* 속성선택자
+	6. [속성 $= 값] 선택자 - 특정 값으로 끝나는 속성을 가진 요소를 찾아 스타일 적용 */
+	a[href $= "hwp"] {
+		background:url(../images/css3/12장/hwp_icon.gif) no-repeat right center;
+		padding: 5px 25px;
+	}
+	a[href $= "xls"] {
+		background:url(../images/css3/12장/excel_icon.gif) no-repeat right center;
+		padding: 5px 25px;
+	}
+</style>
+
+</head>
+<body>
+	
+	<h3> 6. [속성 $= 값] 선택자 - 특정 값으로 끝나는 속성을 가진 요소를 찾아 스타일 적용</h3>
+	<ul>
+		<li><a href="intro.hwp">hwp 파일</a></li>  	<!-- 스타일적용 -->
+		<li><a href="intro.xls" >excel 파일</a></li>	<!-- 스타일적용 -->
+	</ul>
+
+</body>
+</html>
