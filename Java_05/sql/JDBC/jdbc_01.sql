@@ -31,10 +31,10 @@ COMMIT;
 
 --2) 게시판 테이블 (scott_05 계정에서 생성)
 
-DROP TABLE mbv_board_tbl CASCADE CONSTRAINTS;
+DROP TABLE mvc_board_tbl CASCADE CONSTRAINTS;
 CREATE TABLE mvc_board_tbl(
 	boardNo			number(7) 		PRIMARY KEY,   	-- 글번호
-	boardTitl 		varchar2(50)	NOT NULL,      	-- 글 제목
+	boardTitle 		varchar2(50)	NOT NULL,      	-- 글 제목
 	boardContent	CLOB			NOT NULL,		-- 글내용
 	boardId			varchar2(50) 	NOT NULL,		-- 작성자
 	boardRegDate	DATE DEFAULT sysdate				-- 작성일
