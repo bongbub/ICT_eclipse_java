@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Array예제</title>
+<script type="text/javascript">
+
+	document.write("방법1. let 배열명 = new Array(); <br>");
+	let arr = new Array();
+	arr[0] = "봄";
+	arr[1] = "여름";
+	arr[2] = "가을";
+	arr[3] = "겨울";
+	arr[4] = 1;
+	arr[5] = true;
+	arr[6] = Number("999");
+	
+	for(let i = 0; i<arr.length; i++){
+		document.write(arr[i]+"<br>");
+	}
+	
+	document.write("방법2. for in 반복문 출력 <br>");
+	for(let i in arr){
+		document.write(arr[i]+"<br>");
+	}
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

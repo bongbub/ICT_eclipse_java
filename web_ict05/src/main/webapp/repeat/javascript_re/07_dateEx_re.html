@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>date예제</title>
+<script type="text/javascript">
+
+
+	let today = new Date();
+	let nowYear = today.getFullYear();
+	let nowMon = today.getMonth();
+	let nowDate = today.getDate();
+	let nowDay = today.getDay();
+	
+	document.write("<h3> 오늘 날짜 정보 </h3> ");
+	document.write("현재시간 : " + today.toUTCString() + "<br>");
+	document.write("현재년도 : " + nowYear + "<br>");
+	document.write("현재월 : " + nowMon + "<br>");
+	document.write("현재일 : " + nowDate + "<br>");
+	if(nowDay == 0){
+		document.write("현재일 : 일요일 <br>");
+	}
+	if(nowDay == 1){
+		document.write("현재일 : 월요일 <br>");
+	}
+	if(nowDay == 2){
+		document.write("현재일 : 화요일 <br>");
+	}
+	if(nowDay == 3){
+		document.write("현재일 : 수요일 <br>");
+	}
+	if(nowDay == 4){
+		document.write("현재일 : 목요일 <br>");
+	}
+	if(nowDay == 5){
+		document.write("현재일 : 금요일 <br>");
+	}
+	if(nowDay == 6){
+		document.write("현재일 : 토요일 <br>");
+	}
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
