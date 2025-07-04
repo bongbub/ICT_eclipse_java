@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+	
+	/* 
+		[ 변수 선언 ]
+		const 변수명;		=> 1번 선언 후 대입 불가 (상수)
+		let 변수명;		=> 재선언 불가, 업데이트 가능
+		var 변수명;		=> 재선언되고, 업데이트 가능, 값은 undefined(정의되지 않음) 초기화된다.
+	
+	*/
+	/*
+    1. 변수명 첫글자는 $, _, 영문자만 올수 있다.
+    2. 변수명 첫글자 다음은 영문자, 숫자, $, _만 포함할 수 있다.
+    3. 변수명으로 예약어를 사용할 수 없다.(예, document, location, window, ...)
+    4. 변수명으로 대소문자를 구분한다.
+    5. 변수명은 되도록 의미를 부여하는 것이 좋다.
+ 	*/
+ 	
+ 	// 1. 문자형 변수 선언
+ 	// const 변수명 = "값";
+ 	// let 변수명 = "값";
+	const str = prompt("여러분의 행복지수는? ");
+	document.write("행복지수 :"+ str + "<br>");
+	console.log("행복지수 :"+ str);
+
+	const num1 = "100";
+	const num2 = "900";
+	const num3 = "80";
+	document.write(num1+"<br>" + num2 + "<br>"+num3+"<br>");
+	
+	
+	// 2. 숫자형 변수 선언
+ 	// const 변수명 = "숫자"; 또는 const 변수명 = Number("숫자");
+ 	// let 변수명 = "숫자"; 또는 let 변수명 = Number("숫자");
+	const kor = 100;
+	const eng=90;
+	const math=80;
+	
+	// 합계 구하기 (과정까지)
+	document.write(kor +"+"+ eng+"+" + math+"="+ (kor+eng+math));
+	
+	const num4 = Number("100");
+	document.write("<br> num4 :" + num4 + "<br>");
+	
+	
+	// 3. 논리형 변수 선언
+	// const(let) 변수명 = true | false | Boolean(데이터) => 데이터가 존재하면 true, 존재하지 않으면 false
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>
