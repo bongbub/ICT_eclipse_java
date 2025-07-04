@@ -28,17 +28,15 @@ public class BoardDAOImpl implements BoardDAO{
 		
 		//성공했는지 확인하는 int
 		int insertCnt = 0;
-		String query = "INSERT INTO mvc_board_tbl(boardNo, boardTitle, boardContent, boardId, boardRegDate)"
-				+" VALUES(?,?,?,?,?)";
+		String query = "INSERT INTO mvc_board_tbl(boardNo, boardTitle, boardContent, boardId)"
+				+" VALUES((SELECT NVL(MAX(boardNo) + 1, 1) FROM mvc_board_tbl ),?,?,?)";
 		try {
 			conn=DriverManager.getConnection(dbUrl, dbID, dbPassword);
 			pstmt=conn.prepareStatement(query);
 			
-			pstmt.setInt(1, dto.getBoardNo());
-			pstmt.setString(2, dto.getBoardTitle());
-			pstmt.setString(3, dto.getBoardContent());
-			pstmt.setString(4,dto.getBoardId());
-			pstmt.setDate(5, dto.getBoardRegDate());
+			pstmt.setString(1, dto.getBoardTitle());
+			pstmt.setString(2, dto.getBoardContent());
+			pstmt.setString(3,dto.getBoardId());
 			
 			insertCnt = pstmt.executeUpdate();
 			
@@ -58,18 +56,20 @@ public class BoardDAOImpl implements BoardDAO{
 	@Override
 	public int boardUpdateDAO(int boardNo, BoardDTO dto) {
 		int updateCnt = 0;
-		String query="UPDATE mvc_board_tbl SET boardTitle=?, boardContent=?, boardId=?"
+		String query="UPDATE mvc_board_tbl SET boardTitle=?, boardContent=?, boardId=?, boardNo = ?"
 				+ "WHERE boardNo = ?";
 		try {
 			conn=DriverManager.getConnection(dbUrl, dbID, dbPassword);
 			pstmt=conn.prepareStatement(query);
 			
-			updateCnt=pstmt.executeUpdate();
-			
 			pstmt.setString(1, dto.getBoardTitle());
 			pstmt.setString(2, dto.getBoardContent());
 			pstmt.setString(3, dto.getBoardId());
 			pstmt.setInt(4, boardNo);
+			pstmt.setInt(5, boardNo);
+			updateCnt=pstmt.executeUpdate();
+			
+			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -87,9 +87,14 @@ public class BoardDAOImpl implements BoardDAO{
 	public int boardDeleteDAO(int boardNo) {
 		int deleteCnt=0;
 		String query="DELETE FROM mvc_board_tbl WHERE boardNo=?";
+		
+		
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbID, dbPassword);
 			pstmt=conn.prepareStatement(query);
+			
+			pstmt.setInt(1, boardNo);
+			
 			deleteCnt = pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -120,6 +125,7 @@ public class BoardDAOImpl implements BoardDAO{
 				dto.setBoardContent(rs.getString("boardContent"));
 				dto.setBoardId(rs.getString("boardId"));
 				dto.setBoardRegDate(rs.getDate("boardRegDate"));
+				dto.setBoardRegDate(rs.getDate("boardRegDate"));
 			}
 		}catch(SQLException e) {
 			e.printStackTrace();
@@ -142,7 +148,7 @@ public class BoardDAOImpl implements BoardDAO{
 		List<BoardDTO> list = new ArrayList<BoardDTO>();
 		
 		try {
-			conn = DriverManager.getConnection(query, query, query);
+			conn = DriverManager.getConnection(dbUrl, dbID, dbPassword);
 			pstmt = conn.prepareStatement(query);
 			pstmt.setString(1, "%"+boardTitle+"%");
 			rs = pstmt.executeQuery();
@@ -153,7 +159,7 @@ public class BoardDAOImpl implements BoardDAO{
 				dto.setBoardContent(rs.getString("boardContent"));
 				dto.setBoardId(rs.getString("boardId"));
 				dto.setBoardTitle(rs.getString("boardRegDate"));
-				
+				dto.setBoardRegDate(rs.getDate("boardRegDate"));
 				list.add(dto);
 			}
 		}catch(SQLException e) {
@@ -171,11 +177,11 @@ public class BoardDAOImpl implements BoardDAO{
 
 	@Override
 	public List<BoardDTO> boardSelectAllDAO() {
-		String query = "SELECT * FROM mvc_board_tbl ORDER BY boardNo asc";
+		String query = "SELECT * FROM mvc_board_tbl ORDER BY boardNo ASC";
 		BoardDTO dto = null;
 		List<BoardDTO> list = new ArrayList<BoardDTO>();
 		try {
-			conn = DriverManager.getConnection(query, query, query);
+			conn = DriverManager.getConnection(dbUrl, dbID, dbPassword);
 			pstmt = conn.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -185,6 +191,7 @@ public class BoardDAOImpl implements BoardDAO{
 				dto.setBoardContent(rs.getString("boardContent"));
 				dto.setBoardId(rs.getString("boardId"));
 				dto.setBoardTitle(rs.getString("boardRegDate"));
+				dto.setBoardRegDate(rs.getDate("boardRegDate"));
 				
 				list.add(dto);
 			}

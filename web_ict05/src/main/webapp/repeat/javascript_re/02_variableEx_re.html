@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>변수</title>
+<script type="text/javascript">
+
+
+	// 문자형 변수선언
+	const str = prompt("여러분의 행복지수는?");
+	document.write("행복지수 : "+str+"<br>");
+	console.log("행복지수:"+str);
+	
+	const num1 = "100";
+	const num2 = "90";
+	const num3 = "700";
+	document.write(num1+"<br>" + num2 + "<br>"+num3+"<br>");
+	
+	document.write("--------------------");
+	
+	
+	//숫자형 변수선언
+	const kor = 100;
+	const eng=90;
+	const math=89;
+	
+	const result = kor + eng + math;
+	document.write(kor+"+"+eng+"+"+math+"="+result);
+	
+	
+	const num4 = Number("100");
+	document.write("<br> num4 :" + num4 + "<br>");
+	
+	
+	document.write("--------------------");
+	
+	
+	//논리형 변수선언
+	const bool1 = true;
+	document.write("bool1 : "+bool1 + "<br>");
+	
+	const bool2 = false;
+	document.write("bool2 : "+bool2 + "<br>");
+	
+	const bool3 = boolean("hi");
+	document.write("bool3 : "+bool3 + "<br>");
+	
+	const bool4 = boolean("0");
+	document.write("bool4 : "+bool4 + "<br>");
+	
+	const bool5 = boolean(null);
+	document.write("bool5 : "+bool5 + "<br>");
+	
+	const bool6 = boolean(0);
+	document.write("bool6 : "+bool6 + "<br>");
+	
+	const bool7 = boolean(1);
+	document.write("bool7 : "+bool7 + "<br>");
+	
+	
+	document.write("--------------------");
+	
+	const k=10, m="10";
+	
+	const result1 = k != 10;
+	document.wriet("result1:"+result1+"<br>");
+	
+	const result2 = m == 10;
+	document.wriet("result2:"+result2+"<br>");
+	
+	const result3 = m === 10;
+	document.wriet("result3:"+result3+"<br>");
+	
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

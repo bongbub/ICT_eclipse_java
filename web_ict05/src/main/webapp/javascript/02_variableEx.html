@@ -33,6 +33,9 @@
 	document.write(num1+"<br>" + num2 + "<br>"+num3+"<br>");
 	
 	
+	document.write("------------------------------------------"+"<br>");
+	
+	
 	// 2. 숫자형 변수 선언
  	// const 변수명 = "숫자"; 또는 const 변수명 = Number("숫자");
  	// let 변수명 = "숫자"; 또는 let 변수명 = Number("숫자");
@@ -47,19 +50,59 @@
 	document.write("<br> num4 :" + num4 + "<br>");
 	
 	
+	
+	document.write("------------------------------------------"+"<br>");
+	
 	// 3. 논리형 변수 선언
 	// const(let) 변수명 = true | false | Boolean(데이터) => 데이터가 존재하면 true, 존재하지 않으면 false
+	const bool1 = true;
+	document.write("bool1 : " + bool1 +"<br>");			//bool1 : true
+	
+	const bool2 = false;
+	document.write("bool2 : " + bool2 +"<br>");			//bool2 : false
+	
+	// boolean(데이터) => 데이터가 존재하면 true, 존재하지 않으면 false
+	const bool3 = Boolean("hello");
+	document.write("bool3 : " + bool3 +"<br>");			//bool3 : true
 	
 	
+	const bool4 = Boolean(null);
+	document.write("bool4 : " + bool4 +"<br>");			//bool4 : false
 	
 	
+	const bool5 = Boolean("0");    						// 문자 0 임  => 참
+	document.write("bool5 : " + bool5 +"<br>");			//bool5 : true
+	
+	// 숫자1 : 참    | 숫자 0 : 거짓
+	const bool6 = Boolean(0);
+	document.write("bool6 : " + bool6 +"<br>");			//bool6 :false
 	
 	
+	const bool7 = Boolean(1);
+	document.write("bool7 : " + bool7 +"<br>");			//bool7 :true
 	
 	
+	document.write("------------------------------------------"+"<br>");
 	
 	
+	// 4.비교연산자
+	/*
+	A == B : A와 B는 같다(자료형과 무관)
+	A != B : A와 B는 같지않다(자료형과 무관)
+	A === B : A와 B는 같지않다(자료형도 일치!)
+	A !== B : A와 B는 같지않다(자료형도 일치!)
+	*/
 	
+	const k=10, m="10";
+	
+	const result1 = k != 10;
+	document.write("result1 : " + result1 +"<br>");		//result1 : false
+	
+	const result2 = m == 10;
+	document.write("result2 : " + result2 +"<br>");		//result2 : true
+	
+	const result3 = m === 10;
+	document.write("result3 : " + result3 +"<br>");		//result3 : false
 	
 	
 </script>

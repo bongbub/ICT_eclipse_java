@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript">
+
+	/*
+	자바 : 클래스명 참조변수 = new 클래스명();
+	자바스크립트 : let 참조변수 = new 클래스명();
+	
+	let 참조변수 = new Date();
+	let 참조변수 = new Date("년/월/일");
+	
+	참조변수.getFullYear();   // 현재년도 가져오기
+	참조변수.getMonth();      // 현재월 가져오기, (현재월 -1)값으로 가져옴
+	참조변수.getDate();       // 현재일 가져오기
+	참조변수.getDay();        // 현재요일 가져오기(일요일:0 ~ 토요일:6)
+	참조변수.getHours();  참조변수.getMinutes(); 참조변수.getSeconds();  // 시분초 가져오기
+	참조변수.toLocaleString();   // 로컬표현의 문자열로 시간 가져오기
+	*/
+	
+	let today = new Date();
+	let nowYear = today.getFullYear();	// 현재년도 가져오기
+	let nowMon = today.getMonth();		// 현재월 가져오기(현재월 -1값)
+	let nowDate = today.getDate();		// 현재 일 가져오기
+	let nowday = today.getDay();		// 현재요일 가져오기 0이면 일요일, 1이면월용
+	let nowHour = today.getHours();		// 현재 시간 가져오기
+	let nowMinit = today.getMinutes();	// 현재 분 가져오기
+	let nowSec = today.getSeconds();	// 현재초 가져오기
+	let nowString = today.toLocaleString(); // 로컬표현 문자열로 시간 가져오기
+	
+	
+	document.write("<h3> 오늘 날짜 정보 </h3>" );
+	document.write("현재 시간 : " + today.toUTCString() + "<br>");
+	document.write("현재 년도 : " + nowYear + "<br>");
+	document.write("현재 월 : " + (nowMon+1) + "<br>");
+	document.write("현재 일 : " + nowDate + "<br>");
+	if(nowday == 0){
+		document.write("현재 요일: 일요일");
+	}else if(nowday == 1){
+		document.write("현재 요일: 월요일");
+	}
+	else if(nowday ==2){
+		document.write("현재 요일: 화요일");
+	}
+	else if(nowday ==3){
+		document.write("현재 요일: 수요일");
+	}
+	else if(nowday ==4){
+		document.write("현재 요일: 목요일");
+	}
+	else if(nowday ==5){
+		document.write("현재 요일: 금요일");
+	}
+	else{
+		document.write("현재 요일: 토요일");
+	}
+	
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

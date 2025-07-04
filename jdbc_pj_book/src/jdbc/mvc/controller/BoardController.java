@@ -62,6 +62,12 @@ public class BoardController {
 	public void boardSelectTitle(String boardTitle) {
 		List<BoardDTO> list = service.boardSelectByTitle(boardTitle);
 		
+		if(!list.isEmpty()) {
+			view.boardListAll(list);
+		}
+		else {
+			view.boardErrorMsg("select");
+		}
 	}
 	
 	

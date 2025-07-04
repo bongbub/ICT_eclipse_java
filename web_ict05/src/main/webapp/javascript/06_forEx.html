@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>구구단</title>
+<script type="text/javascript">
+	/*
+	프롬프트로 입력을 받으면, 문자로 인지
+	
+	1. 시작단 입력  -- 테스트 10단
+	2. 종료단 입력  -- 테스트 5단
+	   시작단이 종료단보다 크면 "시작단이 종료단보다 큽니다." 출력    
+	3. 그렇지 않으면 구구단 출력
+	// let 변수명 = 숫자 또는 Number("숫자");
+	// let 변수명 = 숫자 또는 eval("숫자");
+	=== x단 ===
+	*/
+	
+	let x = eval(prompt("시작단을 입력하세요 : ",""));
+	let y = eval(prompt("종료단을 입력하세요 : ", ""));
+	
+	if(eval(x)>eval(y)){
+		alert("시작단이 종료단보다 큽니다");
+	}
+	else {
+		for(let j = x; j<=y; j++){
+			document.write("==="+x+"단 ===<br>");
+			for(let i = 1; i<10; i++){
+				
+				document.write(x+" x "+i + " = "+ (x*i)+"<br>");
+				console.log(x+"x"+i + "="+ (x*i));
+			}
+			x++;
+			document.write("<br>")
+		}
+	}
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

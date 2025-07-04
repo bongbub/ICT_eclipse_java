@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ArrayEx</title>
+<script type="text/javascript">
+
+/*
+배열 - Array 객체이다.
+        - 여러 타입의 데이터가 섞여 저장될 수 있다.
+        
+방법1. let 배열명 = new Array();
+       배열명[0] = 값1;
+       배열명[1] = 값2;
+       배열명[2] = 값3;
+       배열명[n-1] = 값n;
+
+ 방법2. let 배열명 = new Array(값1, 값2, 값3, .. 값n);
+ 방법3. let 배열명 = [값1, 값2, 값3, .. 값n];
+*/
+
+ 	document.write("== 방법 1. let 배열명 = new Array(); ==<br>");
+	let arr1 = new Array();
+		arr1[0] = "봄";
+		arr1[1] = "여름";
+		arr1[2] = "가을";
+		arr1[3] = "겨울";
+		arr1[4] = 1;
+		arr1[5] = true;
+		arr1[6] = Number("999");
+		
+	for(let i = 0; i<arr1.length; i++){
+		document.write(arr1[i]+"<br>");
+	}
+		
+		 
+		
+	/*
+    for in 반복문 출력 =>
+    for(let 인덱스 in 배열명) {
+       document.write(배열명[인덱스]+ "<br>");
+    }
+    
+    cf) 자바의 향상된 for문
+    for(자료형 변수명 : 배열명) {
+       System.out.println(변수명);
+    }
+    */
+	
+    document.write("== 방법 2. for in 반복문 출력 ==<br>");
+    for(let i in arr1){
+    	document.write(arr1[i] + "<br>");
+    }
+		
+		
+		
+		
+
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

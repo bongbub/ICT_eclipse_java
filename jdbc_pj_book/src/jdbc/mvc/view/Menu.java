@@ -228,7 +228,7 @@ public class Menu {
 		String title = scan.nextLine();
 		dto.setBoardTitle(title);
 		
-		System.out.println("작성자");
+		System.out.println("작성자 :");
 		String author = scan.nextLine();
 		dto.setBoardId(author);
 		
@@ -243,9 +243,11 @@ public class Menu {
 		return dto;
 	}
 	public int boardId() {
+		System.out.println("글번호 입력 : ");
 		return Integer.parseInt(scan.nextLine());
 	}
 	public String boardTitle() {
+		System.out.println("글제목 입력 : ");
 		return scan.nextLine();
 	}
 	
