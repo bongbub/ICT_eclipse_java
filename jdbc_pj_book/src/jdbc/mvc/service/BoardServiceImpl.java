@@ -1,6 +1,9 @@
 package jdbc.mvc.service;
 
+import java.util.List;
+
 import jdbc.mvc.dao.BoardDAOImpl;
+import jdbc.mvc.dto.BoardDTO;
 
 public class BoardServiceImpl implements BoardService {
 
@@ -9,39 +12,40 @@ public class BoardServiceImpl implements BoardService {
 	BoardDAOImpl dao = new BoardDAOImpl();
 	
 	@Override
-	public int boardInsert() {
-		//int anum = dao.boardInsertDAO();
-		return 0;
+	public int boardInsert(BoardDTO dto) {
+		int anum = dao.boardInsertDAO(dto);
+		return anum;
 	}
 
 	@Override
-	public int boardUpdate() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int boardUpdate(int boardNo, BoardDTO dto) {
+		int anum = dao.boardUpdateDAO(boardNo, dto);
+		
+		return anum;
 	}
 
 	@Override
-	public int boardDelete() {
-		// TODO Auto-generated method stub
-		return 0;
+	public int boardDelete(int boardNo) {
+		int anum = dao.boardDeleteDAO(boardNo);
+		return anum;
 	}
 
 	@Override
-	public int boardSelectById() {
-		// TODO Auto-generated method stub
-		return 0;
+	public BoardDTO boardSelectById(int boardNo) {
+		BoardDTO dto = dao.boardSelectByIdDAO(boardNo);
+		return dto;
 	}
 
 	@Override
-	public int boardSelectByTitle() {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<BoardDTO> boardSelectByTitle(String boardTitle) {
+		List<BoardDTO> list = dao.boardSelectByTitleDAO(boardTitle);
+		return list;
 	}
 
 	@Override
-	public int boardSelectAll() {
-		// TODO Auto-generated method stub
-		return 0;
+	public List<BoardDTO> boardSelectAll() {
+		List<BoardDTO> list = dao.boardSelectAllDAO();
+		return list;
 	}
 
 }

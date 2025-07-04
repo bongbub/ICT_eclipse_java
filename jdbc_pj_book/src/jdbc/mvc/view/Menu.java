@@ -113,7 +113,7 @@ public class Menu {
 			}
 		}
 
-		}
+	}
 		
 	// 1-1. book 추가
 	public BookDTO bookInput() {
@@ -188,20 +188,20 @@ public class Menu {
 				break;
 				
 			case 2:
-				bcon.boardEdit();
+				bcon.boardEdit(boardId(),writeBoard());
 				break;
 				
 			case 3:
-				bcon.boardDelete();
+				bcon.boardDelete(boardId());
 				break;
 				
 			case 4:
-				bcon.boardSelectId();
+				bcon.boardSelectId(boardId());
 				
 				break;
 				
 			case 5:
-				bcon.boardSelectTitle();
+				bcon.boardSelectTitle(boardTitle());
 				break;
 				
 			case 6:
@@ -242,6 +242,12 @@ public class Menu {
 		
 		return dto;
 	}
+	public int boardId() {
+		return Integer.parseInt(scan.nextLine());
+	}
+	public String boardTitle() {
+		return scan.nextLine();
+	}
 	
 	// 3. 찜 메뉴
 	public void like_menu() {
@@ -260,5 +266,3 @@ public class Menu {
 	
 	
 }
-
-

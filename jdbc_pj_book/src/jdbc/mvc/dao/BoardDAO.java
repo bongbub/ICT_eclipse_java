@@ -1,17 +1,21 @@
 package jdbc.mvc.dao;
 
+import java.util.List;
+
+import jdbc.mvc.dto.BoardDTO;
+
 public interface BoardDAO {
 	
-	public void boardInsertDAO();
+	public int boardInsertDAO(BoardDTO dto);
 	
-	public void boardUpdateDAO();
+	public int boardUpdateDAO(int boardNo, BoardDTO dto);
 	
-	public void boardDeleteDAO();
+	public int boardDeleteDAO(int boardNo);
 	
-	public void boardSelectByIdDAO();
+	public BoardDTO boardSelectByIdDAO(int boardNo);
 	
-	public void boardSelectByTitleDAO();
+	public List<BoardDTO> boardSelectByTitleDAO(String boardTitle);
 	
-	public void boardSelectAllDAO();
+	public List<BoardDTO> boardSelectAllDAO();
 
 }

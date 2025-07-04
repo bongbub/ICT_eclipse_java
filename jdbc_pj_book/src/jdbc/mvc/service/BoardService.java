@@ -1,18 +1,22 @@
 package jdbc.mvc.service;
 
+import java.util.List;
+
+import jdbc.mvc.dto.BoardDTO;
+
 public interface BoardService {
 	
-	public int boardInsert();
+	public int boardInsert(BoardDTO dto);
 	
 	
-	public int boardUpdate();
+	public int boardUpdate(int boardNo, BoardDTO dto);
 	
-	public int boardDelete();
+	public int boardDelete(int boardNo);
 	
-	public int boardSelectById();
+	public BoardDTO boardSelectById(int boardNo);
 	
-	public int boardSelectByTitle();
+	public List<BoardDTO> boardSelectByTitle(String boardTitle);
 	
-	public int boardSelectAll();
+	public List<BoardDTO> boardSelectAll();
 
 }
