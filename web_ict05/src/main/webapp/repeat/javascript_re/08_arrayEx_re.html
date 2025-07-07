@@ -24,6 +24,24 @@
 		document.write(arr[i]+"<br>");
 	}
 	
+	document.write("------------------------------------------<br><br>")
+
+	let arr2 = new Array("강","그","기","개",1,Number("99"));
+	for(let i=0; i<arr2.length; i++){
+		document.write("arr2["+i+"]"+arr2[i]+"<br>");
+	}
+	for(let i in arr2){
+		document.write("arr2["+i+"]"+arr2[i]+"<br>");
+	}
+	document.write("------------------------------------------<br><br>")
+
+	let arr3 = ["인스타", "페이스북","카카오스토리","트위터", 4, false, Number("777")];
+	for(let i=0; i<arr3.length; i++){
+		document.write("arr3["+i+"]"+arr3[i]+"<br>");
+	}
+	for(let i in arr3){
+		document.write("arr3["+i+"]"+arr3[i]+"<br>");
+	}
 	
 </script>
 </head>

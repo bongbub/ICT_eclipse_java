@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배열 객체의 메서드 및 속성</title>
+
+<script type="text/javascript">
+	
+	let greenline = ["사당", "교대", "방배", "강남"];
+	let yellowline = ["미금", "정자", "모란", "수서"];
+	
+	greenline.splice(2,1,"서초","역삼");
+	document.write(greenline+ "<br>");
+	
+	document.write(greenline.slice(0,3) + "<br>");
+	
+	twoline = greenline.concat(yellowline);
+	document.write(twoline+ "<br>");
+	
+	let data = yellowline.pop();
+	document.write(data+ "<br>");
+	document.write(yellowline+ "<br>");
+	
+	let data1 = yellowline.shift();
+	document.write(data1+ "<br>");
+	document.write(yellowline+ "<br>");
+	
+	yellowline.push(data1);
+	document.write(yellowline+ "<br>");
+	
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -17,9 +17,13 @@
 
  방법2. let 배열명 = new Array(값1, 값2, 값3, .. 값n);
  방법3. let 배열명 = [값1, 값2, 값3, .. 값n];
-*/1
-*
+*/
 
+	/* 방법1. let 배열명 = new Array();
+	배열명[0] = 값1;
+	배열명[1] = 값2;
+	배열명[2] = 값3;
+	배열명[n-1] = 값n; */
  	document.write("== 방법 1. let 배열명 = new Array(); ==<br>");
 	let arr1 = new Array();
 		arr1[0] = "봄";
@@ -30,32 +34,63 @@
 		arr1[5] = true;
 		arr1[6] = Number("999");
 		
-	for(let i = 0; i<arr1.length; i++){
-		document.write(arr1[i]+"<br>");
-	}
-		
-		 
-		
 	/*
     for in 반복문 출력 =>
     for(let 인덱스 in 배열명) {
        document.write(배열명[인덱스]+ "<br>");
     }
-    
+    */    
+    /*
     cf) 자바의 향상된 for문
     for(자료형 변수명 : 배열명) {
        System.out.println(변수명);
     }
     */
-	
+    for(let i = 0; i<arr1.length; i++){
+		document.write(arr1[i]+"<br>");
+	}
+
     document.write("== 방법 2. for in 반복문 출력 ==<br>");
     for(let i in arr1){
     	document.write(arr1[i] + "<br>");
     }
 		
+    
+    
+    /* 방법2. let 배열명 = new Array(값1, 값2, 값3, .. 값n); */
+	document.write("------------------------------------------<br><br>")
+	document.write("방법2. let 배열명 = new Array(값1, 값2, 값3, .. 값n);");
+	let arr2 = new Array("강아지", "고양이","늑대","여우", 1, false, Number("123"));
 		
+	// 방법1. for문 출력
+	document.write("출력방법1. for문 출력<br>");
+	for(let j = 0; j<arr2.length; j++){
+		document.write("arr2["+j+"] =" + arr2[j]+"<br>");
+	}
+	document.write("<br>");
+	document.write("출력방법2. for in출력<br>");
+	for(let j in arr2){
+		document.write("arr2["+j+"] =" + arr2[j]+"<br>");
+	}
+	
+	
+	
+	
+    /* 방법3. let 배열명 = [값1, 값2, 값3, .. 값n]; */ 
+	document.write("------------------------------------------<br><br>")
+	document.write(" 방법3. let 배열명 = [값1, 값2, 값3, .. 값n];");
+	let arr3 = ["인스타", "페이스북","카카오스토리","트위터", 4, false, Number("777")];
 		
-		
+	// 방법1. for문 출력
+	document.write("출력방법1. for문 출력<br>");
+	for(let i = 0; i<arr3.length; i++){
+		document.write("arr3["+i+"] =" + arr3[i]+"<br>");
+	}
+	document.write("<br>");
+	document.write("출력방법2. for in출력<br>");
+	for(let j in arr3){
+		document.write("arr3["+j+"] = " + arr3[j]+"<br>");
+	}
 
 
 </script>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>함수 => 중요!</title>
+<script type="text/javascript">
+
+
+	/*
+		직접 접근
+		document.getElementById("id명"); => id명을 이용해서 직접 접근
+	*/
+	let num = 1;			// 사진 이름 번호
+	function gallery(direct){
+			let imgtag = document.getElementById("photo");
+			// direct가 1:참  -> 다음  , 0:거짓  --> 이전
+			if(direct == true){
+				num++;
+				if(num<=10){
+					imgtag.setAttribute("src","../images/css3/js_img/pic_" + num + ".jpg" );		// 속성추가 : setAttribute("속성명","속성값")
+				}
+				else{
+					alert("이후 사진이 없습니다.");
+				}
+			}
+			else if(direct === 0){
+				num--;
+				if(num>0){
+					imgtag.setAttribute("src","../images/css3/js_img/pic_" + num + ".jpg" );		// 속성추가 : setAttribute("속성명","속성값")
+				}else{
+					alert("이전 사진이 없습니다.");
+				}
+			}
+			else{
+				alert("오류");
+			}
+		}
+	
+
+</script>
+</head>
+<body>
+
+	<div id="galleryZone">
+		<p>
+			<img src="../images/css3/js_img/pic_1.jpg" width ="200px" height="300px" id="photo">
+		</p>
+		
+		<p>
+			<button onclick="gallery(0)">이전</button>
+			<button onclick="gallery(1)">다음</button>
+		</p>
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>함수 => 중요!</title>
+<script type="text/javascript">
+
+
+	/*
+		1)  기본형 함수
+		function 함수명() {
+			자바스크립트 코드;			
+		}
+		
+		호출 : 함수명();
+	*/
+
+	let count = 0;
+	function myFun(){
+		count++;
+		document.write("기본함수 : " + count + "<br>");
+	}
+	
+	myFun();
+	myFun();
+	
+
+	
+	
+	/*  보통 한 번 만들고.. 1회용성?
+		2)   익명함수 정의 : 함수명이 없는 경우 --! 중요!!!
+		
+		let 함수명 = function(){
+			자바스크립트 코드
+		}
+	
+		호출 : 함수명();
+	*/
+	count = 0;
+	let theFunc = function(){
+		count++;
+		document.write("익명함수 : " + count + "<br>");
+	}
+	theFunc();
+	theFunc();
+	
+	
+	
+	
+	
+	
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

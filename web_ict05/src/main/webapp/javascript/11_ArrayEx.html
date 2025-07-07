@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배열 객체의 메서드 및 속성</title>
+<script type="text/javascript">
+
+
+	let str = "Hello Thank you good luck to you";
+	
+	
+	// 1. charAt(index) : 문자열에서 인덱스 번호에 해당하는 문자를 반환
+	document.write("<br>" +" === 1. charAt(index) === " + "<br>");
+	document.write("str.charAt(10) : " + str.charAt(10) + "<br>");
+	
+	
+	// 2. indexOf("찾을문자") : 문자열 왼쪽부터 찾을 문자와 일치하는 문자를 검색해, 
+	//						가장 먼저 일치하는 문자의 인덱스 번호를 반환.
+	//						만약, 찾을 문자가 없을 시 -1을 반환
+	document.write("<br>" +"=== 2. indexOf(\"찾을문자\") ===" + "<br>");
+	// "Thank"와 일치하는 문자의 인덱스값
+	document.write("\"Thank\"와 일치하는 문자의 인덱스값 : " + str.indexOf("Thank") + "<br>");
+	// "you"와 일치하는 문자의 인덱스값
+	document.write("\"you\"와 일치하는 문자의 인덱스값 : " + str.indexOf("you")+ "<br>");
+	// 문자열 인덱스 16번째 위치부터 제일먼저 발견한  "you"와 일치하는 문자의 인덱스값
+	document.write("\"you\"와 일치하는 문자의 인덱스값 : " + str.indexOf("you", 16)+ "<br>");
+	
+	
+	
+	// 3. lastIndexOf("찾을 문자") : 문자열 오른쪽부터 찾을 문자와 일치하는 문자를 찾아,
+	//							제일 먼저 일치하는 문자의 인덱스 번호를 반환.
+	//							만일 찾을 문자가 없을 시 -1을 반환
+	document.write("<br>" +"=== 3. lastIndexOf(\"찾을문자\") ===" + "<br>");
+	
+	// "Thank"와 일치하는 문자의 인덱스값
+	document.write("\"Thank\"와 일치하는 문자의 인덱스값 : " + str.lastIndexOf("Thank") + "<br>");
+	// 3. lastIndexOf("찾을 문자"
+	document.write("\"you\"와 일치하는 문자의 인덱스값 : " + str.lastIndexOf("you") + "<br>");
+	// 문자열 인덱스 27위치부터 제일 먼저 발견한 "you"인덱스 값
+	document.write("\"you\"와 일치하는 문자의 인덱스값 : " + str.lastIndexOf("you", 27) + "<br>");
+	
+	
+	
+	
+	
+	// 중요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	// 4. match("찾을 문자") : 문자열 왼쪽부터 찾을 문자와 일치하는 문자를 찾아,
+	//						제일 먼저 일치하는 문자를 반환
+	//						만일 찾을 문자가 없으면 null을 반환
+	document.write("<br>" +"=== 4. match(\"찾을문자\") ===" + "<br>");
+	// 문자열 왼쪽부터 luck와 일치하는 문자
+	document.write("\"luck\"와 일치하는 문자의 인덱스값 : " + str.match("luck") + "<br>");  // luck
+	// 문자열 왼쪽부터 love와 일치하는 문자
+	document.write("\"love\"와 일치하는 문자의 인덱스값 : " + str.match("love") + "<br>");	// null
+	
+	
+	
+	
+	// 5. search("찾을 문자") : 문자열 왼쪽부터 찾을 문자와 일치하는 문자를 찾아,
+	//						제일 먼저 일치하는 문자의 인덱스 번호를 반환
+	//						만일 찾을 문자가 없으면 -1을 반환
+	document.write("<br>" +"=== 5. search(\"찾을문자\") ===" + "<br>");
+	// 문자열 왼쪽부터 thank와 일치하는 문자
+	document.write("\"thank\"와 일치하는 문자의 인덱스값 : " + str.search("thank") + "<br>");
+	// 문자열 왼쪽부터 Thank와 일치하는 문자
+	document.write("\"Thank\"와 일치하는 문자의 인덱스값 : " + str.search("Thank") + "<br>");
+	
+	
+	
+	
+	// 6. substring(a,b) : a인덱스부터 b인덱스 이전 구간의 문자를 반환
+	document.write("<br>" +"=== 6. substring(a,b) ===" + "<br>");
+	// Thank 출력
+	document.write("\"Thank\"출력 : " + str.substring(6, 11) + "<br>");
+	
+	
+	
+	// 중요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	// 7. substr(a, 문자갯수) : a인덱스부터 지정한 문자 갯수만큼 문자를 반환 
+	document.write("<br>" +"=== 7. substr(a, 문자갯수) ===" + "<br>");
+	// Thank you 출력
+	document.write("\"Thank you\"출력 : " + str.substr(6, 9) + "<br>");
+	
+	
+	
+	// 8. replace("바꿀문자", "새문자") : 문자열 왼쪽부터 바꿀 문자와 일치하는 문자를 찾아
+	// 									제일 먼저 찾을 문자를 새 문자로 치환
+	document.write("<br>" +"=== 8. replace(\"바꿀문자\", \"새문자\") ===" + "<br>");
+	// you를 me로 변환
+	document.write("you를 me로 변환 후 출력 : " + str.replace("you", "me") + "<br>"); //you를 me로 변환 후 출력 : Hello Thank me good luck to you
+	
+	
+	
+	
+	// 9. toLowerCase() : 문자열에서 영문 대문자를 모두 소문자로 바꾼다.
+	document.write("<br>" +"=== 9. toLowerCase() ===" + "<br>");
+	document.write("모두 소문자로 변환 : " + str.toLowerCase() + "<br>");
+	
+	
+	
+	// 10. toUpperCase() : 문자열에서 영문 소문자를 모두 대문자로 바꾼다.
+	document.write("<br>" +"=== 10. toUpperCase() ===" + "<br>");
+	document.write("모두 대문자로 변환 : " + str.toUpperCase() + "<br>");
+	
+	
+	
+	
+	// 정말대박진짜 면접에서도 중요!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	// 11. split("구분자") : 지정한 구분자(공백)을 기준으로 문자 데이터를 쪼개어 배열에 저장하여 반환
+	document.write("<br>" +"=== 11. split(\"구분자\") ===" + "<br>");
+	// let str = "Hello Thank you good luck to you";
+	let blank = str.split(" ");
+	// 공백으로 쪼개라
+	for(let i in blank){
+		document.write("blank["+i+"] : "+blank[i] + "<br>");
+	}
+	
+	
+	
+	
+	// 12. length : 문자열에서 문자의 갯수를 반환한다.
+	document.write("<br>" +"=== 12. length ===" + "<br>");
+	document.write("문자열 갯수 반환 : " + str.length + "<br>");
+	
+	
+	
+	
+	// 13. charCodeAt(index) : 문자열 index에 해당하는 문자의 아스키코드 값을 반환
+	document.write("<br>" +"=== 13. charCodeAt(index) ===" + "<br>");
+	let str2 = "B";
+	let ascii_code = str2.charCodeAt(0);
+	document.write(ascii_code + "<br>");  //66
+	
+	
+	
+	// 14. fromCharCode(아스키코드값) : 문자열 아스키코드값에 해당하는 문자를 반환한다
+	document.write("<br>" +"=== 14. fromCharCode(아스키코드값) ===" + "<br>");
+	document.write("String.fromCharCode(66) : " + String.fromCharCode(66) + "<br>");
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

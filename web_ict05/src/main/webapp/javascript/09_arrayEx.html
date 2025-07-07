@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배열 객체의 메서드 및 속성</title>
+<script type="text/javascript">
+
+	let subway= ["사당", "방배","서초","교대","강남"];
+ 	document.write(subway +"<br>"); 
+
+	
+	// type of 객체명 : 배열 객체명(타입) 출력
+	document.write("타입 :" + typeof subway + "<br>");
+	
+	// 콘솔에서 확인-> 개발자도구(F12) 탭에서 확인
+	console.log(subway);
+	// Array(5) 0:"사당"	1:"방배" 	2:"서초" 	3:"교대" 	4:"강남" 	length:	5
+
+	
+	
+	// 배열명.join(연결문자) : 연결문자("-")를 기준으로 배열값들이 하나의 문자형 데이터로 결합된다
+	document.write("===join(연결문자) ===" + "<br>");
+	document.write(subway.join("="));  // 사당=방배=서초=교대=강남
+	
+	
+	// 배열명.reverse() : 배열 개체값 순서가 뒤바뀌어 출력됨(마지막인덱스부터 처음 인덱스 순서로 출력)
+	document.write("<br>===reverse() ===" + "<br>");
+	document.write(subway.reverse()) + "<br>";
+ 
+	
+	// 배여렴ㅇ.sort() : 배열 객체값을 오름차순(가~하) 순으로 정렬 후 출력
+	document.write("<br>===sort() ===" + "<br>");
+	document.write(subway.sort()) + "<br>";
+	
+	
+	
+	
+</script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>함수 => 중요!</title>
+<script type="text/javascript">
+
+	let color = ["pink", "yellow", "orange", "aqua", "skyblue", "black"];
+	let i = 0;
+	function changeColor(){
+		alert("배경색 바꾸기*(੭*ˊᵕˋ)੭*ଘ");
+		let bt = document.getElementById("bodytag");
+		i++;
+		if(i >= color.length) i=0;
+		// body의 배경색에 i번째 컬러를 할당
+		bt.style.background = color[i];
+	}
+		
+
+</script>
+</head>
+<body id = "bodytag">
+
+	<button onclick = "changeColor()">배경색바꾸기</button>
+
+</body>
+</html>

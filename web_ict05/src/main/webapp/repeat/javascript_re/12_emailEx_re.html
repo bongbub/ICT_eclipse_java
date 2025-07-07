@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배열 객체의 메서드 및 속성</title>
+<script type="text/javascript">
+
+	let str = "Hello Thank you good luck to you";
+	
+	
+	// 1. charAt(index) : 문자열에서 인덱스 번호에 해당하는 문자를 반환
+	document.write(str.charAt(10)+ "<br>");
+	
+	// 2. indexOf("찾을문자") 
+	// "Thank"와 일치하는 문자의 인덱스값
+	document.write(str.indexOf("Thank") + "<br>");
+	// "you"와 일치하는 문자의 인덱스값
+	document.write(str.indexOf("you") + "<br>");
+	// 문자열 인덱스 16번째 위치부터 제일먼저 발견한  "you"와 일치하는 문자의 인덱스값
+	document.write(str.indexOf("you",16) + "<br>");
+	
+	
+	// 3. lastIndexOf("찾을 문자")
+	// "Thank"와 일치하는 문자의 인덱스값
+	document.write(str.lastIndexOf("Thank") + "<br>");
+	// 3. lastIndexOf("찾을 문자"
+	document.write(str.lastIndexOf("you") + "<br>");
+	// 문자열 인덱스 27위치부터 제일 먼저 발견한 "you"인덱스 값
+	document.write(str.lastIndexOf("you", 27) + "<br>");
+			
+			
+	// 4. match("찾을 문자") 		
+	// 문자열 왼쪽부터 luck와 일치하는 문자
+	document.write(str.match("luck") + "<br>");
+	// 문자열 왼쪽부터 love와 일치하는 문자
+	document.write(str.match("love") + "<br>");
+	
+	
+	// 5. search("찾을 문자")
+	// 문자열 왼쪽부터 thank와 일치하는 문자
+	document.write(str.search("thank") + "<br>");
+	// 문자열 왼쪽부터 Thank와 일치하는 문자
+	document.write(str.search("Thank") + "<br>");
+	
+	
+	// 6. substring(a,b) : 
+	// Thank 출력
+	document.write(str.substring(6, 11) + "<br>");
+	
+	// 7. substr(a, 문자갯수)
+	// Thank you 출력
+	document.write(str.substr(6, 9)+ "<br>" );
+	
+	
+	// 8. replace("바꿀문자", "새문자") 
+	// you를 me로 변환
+	document.write(str.replace("you","me")+ "<br>" );
+	
+	// 9. toLowerCase() 
+	document.write(str.toLowerCase()+ "<br>" );
+	
+	// 10. toUpperCase()
+	document.write(str.toUpperCase()+ "<br>" );
+	
+	// 11. split("구분자")
+	// 공백으로 쪼개라
+	let bla = str.split(" ");
+	document.write(bla+ "<br>" );
+	
+	
+	// 12. length 
+	document.write(str.length + "<br>" );
+	
+	
+	// 13. charCodeAt(index)
+	let str2 = "B";
+	let asc = str2.charCodeAt(0);
+	document.write(asc + "<br>" );
+	
+	
+	// 14. fromCharCode(아스키코드값) 
+	document.write(String.fromCharCode(66) + "<br>" );
+	
+	
+	
+	
+	
+
+</script>
+</head>
+<body>
+
+</body>
+</html>
