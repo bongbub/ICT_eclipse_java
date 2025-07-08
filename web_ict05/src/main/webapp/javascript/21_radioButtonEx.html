@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>radio 버튼 클릭 이벤트</title>
+<script type="text/javascript">
+	
+	function applyChk(){
+		//alert("지원 분야를 확인하세요");
+		alert(document.radioForm.apply.value);
+	}
+
+</script>
+</head>
+<body>
+
+	<form name="radioForm" action ="#" method = "post">
+	
+		<fieldset>
+			<legend> 지원 분야를 확인하세요 </legend>
+			<table>
+				<tr> <!--  name은 동일해야 한다 -> DB에 그래야 같이 묶임 -->
+					<td><input type="radio" name="apply" id="ra_sales" value="영업부" checked></td>
+					<td><label for="ra_sales">영업부</label></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="apply" id="ra_hr" value="인사부" ></td>
+					<td><label for="ra_hr">인사부</label></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="apply" id="ra_marketing" value="마케팅부" ></td>
+					<td><label for="ra_marketing">마케팅부</label></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="apply" id="ra_account" value="회계부" ></td>
+					<td><label for="ra_account">회계부</label></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+					<br>
+						<div align="center">
+							<input type="button" value="확인" onclick="applyChk()">
+							<input type="reset" value="취소">
+						</div>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	
+	</form>
+</body>
+</html>

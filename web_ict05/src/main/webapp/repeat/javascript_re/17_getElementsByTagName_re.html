@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>getElementsByTagName</title>
+<script type="text/javascript">
+
+	function change(){
+		let spanArr = document.getElementsByTagName("span");
+		for(let i=0; i<spanArr.length; i++){
+			spanArr[i].style.color = "orchid";
+			spanArr[i].style.fontSize = "20px";
+		}
+	}
+
+</script>
+</head>
+<body>
+	
+	<h3> 내가 좋아하는 과일 </h3>
+	<hr>
+	저는 빨간 <span>사과</span>를 좋아해서 아침마다 한 개씩 먹고 있어요.<br>
+	운동을 할 때는 중간중간에 <span>바나나</span>를 먹지요<br>
+	탄수화물 흡수가 빨라 힘이 납니다.<br>
+	또한 달콤한 향기를 품은 <span>체리</span>와 여름 냄새를 물씬 풍기는 <span>자두</span>를 좋아합니다<br>
+	요즘 <span>신비복숭아</span>가 유행이던데 먹어보고시퍼용<br>
+	
+	<button value = "클릭" onclick="change()">누르세요!</button>
+
+</body>
+</html>

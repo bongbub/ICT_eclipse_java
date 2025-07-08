@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>텍스트 입력상자와 리스트박스</title>
+<script type="text/javascript">
+
+	function select(){
+		// alert창에 좋아하는 과일을 출력하시오.
+		// (단, "과일을 선택하세요" 라는 항목이 아닐 때)
+		if(document.myForm.fruit.value != ""){
+			alert("좋아하는 과일 : "+ document.myForm.fruit.value);
+		}
+	}
+	
+</script>
+	
+
+<style>
+
+</style>
+</head>
+<body>
+	<form name="myForm" action="#" method="post">
+	
+		<fieldset>
+			<legend>Select 객체 예제</legend>
+			<select name="fruit" onChange = "select()">
+			
+				<option value="" >과일을 선택하세요.</option>
+				<option value="망고">망고</option>
+				<option value="천혜향">천혜향</option>
+				<option value="패션후르츠">패션후르츠</option>
+				<option value="리치">리치</option>
+				<option value="한라봉">한라봉</option>
+				<option value="사과">사과</option>
+				<option value="체리">체리</option>
+				<option value="수박">수박</option>
+				<option value="포도">포도</option>
+			</select>
+		</fieldset>
+	
+	</form>
+</body>
+</html>

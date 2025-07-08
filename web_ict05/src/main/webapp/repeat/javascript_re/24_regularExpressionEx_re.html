@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>아주아중 중요한 정규식 예제</title>
+<script type="text/javascript">
+
+	function submitChk(){
+		let reg_name = /^[가-힣]{2,5}$/;
+		let reg_password = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
+		let reg_mobile = /^(010|070|080)\d{3,4}\d{4}$/;
+		let reg_email = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;    
+		
+		if(!document.signIn.userName.value){
+			alert("이름은 필수입력해야합니다");
+			document.signIn.userName.focus();
+			return false;
+		}
+		else if(!reg_name.test(document.signIn.userName.value)){
+			alert("이름은 한글 2~5자 내로 입력해주세요");
+			document.signIn.userName.focus();
+			document.signIn.userName.value = "";
+			return false;
+		}
+		if(!document.signIn.userPassword.value){
+			alert("비밀번호는 필수입력해야합니다");
+			document.signIn.userPassword.focus();
+			return false;
+		}
+		else if(!reg_password.test(document.signIn.userPassword.value)){
+			alert("비밀번호는 영문자+숫자+특수문자 모두 합해 8자 이상 15자 이하로 입력해주세요");
+			document.signIn.userPassword.focus();
+			document.signIn.userPassword.value = "";
+			return false;
+		}
+		if(!document.signIn.userMobile.value){
+			alert("전화번호는 필수입력해야합니다");
+			document.signIn.userMobile.focus();
+			return false;
+		}
+		else if(!reg_mobile.test(document.signIn.userMobile.value)){
+			alert("전화번호는 -를 제외하고 입력해주세요");
+			document.signIn.userMobile.focus();
+			document.signIn.userMobile.value = "";
+			return false;
+		}
+		
+		
+		if(!document.signIn.userEmail1.value){
+			alert("이메일을 입력해주세요");
+			document.signIn.userEmail1.focus();
+			return false;
+		}
+		else if(!document.signIn.userEmail2.value){
+			alert("올바른 형식의 이메일 주소를 입력해주세요");
+			document.signIn.userEmail2.focus();
+			return false;
+		}
+		else if(!reg_email.test(document.signIn.userEmail1.value + "@" + document.signIn.userEmail2.value)){
+			alert("이메일은 id@xxxx.xxx 형식으로 입력해주세요");
+			document.signIn.userEmail1.value = "";
+			document.signIn.userEmail1.focus();
+			return false;
+		}
+		document.signIn.submit();
+	}
+	function selectEmailChk(){
+		if(document.signIn.userEmail3.value==0){
+			document.signIn.userEmail2.value = "";
+			document.signIn.userEmail2.focus();
+			return false();
+		}
+		else{
+			document.signIn.userEmail2.value = (document.signIn.userEmail3.value);
+			return false;
+		}
+	}
+
+
+
+
+
+</script>
+</head>
+<body>
+	<form name="signIn" action="24_form_next_re.html">
+	
+	
+		<fieldset>
+			<legend>회원가입</legend>
+			<table>
+				<tr>
+					<td align="right"><label for="nameChk">이름</label></td>
+					<td><input type="text" id="nameChk" name="userName" size="30"></td>
+				</tr>
+				<tr>
+					<td align="right"><label for="pwdChk">비밀번호</label></td>
+					<td><input type="password" id="pwdChk" name="userPassword" size="30"></td>
+				</tr>
+				<tr>
+					<td align="right"><label for="mobileChk">모바일</label></td>
+					<td><input type="text" id="mobileChk" name="userMobile" size="30"></td>
+				</tr>
+				<tr>
+					<td align="right"><label for="emailChk">이메일</label></td>
+					<td><input type="text" id="emailChk" name="userEmail1" size="30" style="width:100px">
+					@
+					<input type="text" id="emailChk" name="userEmail2" size="30"  style="width:100px">
+					<select name="userEmail3" style="width:100px" onchange="selectEmailChk()">
+						<option value="0">직접입력</option>
+						<option value="naver.com">네이버</option>
+						<option value="google.com">구글</option>
+						<option value="daum.net">다음</option>
+						<option value="hanmail.net">한메일</option>
+					
+					</select>
+				</tr>
+				<tr>
+					<td colspan="2">
+					<br>
+					<div align="center">
+						<input type="button" value="회원가입" onclick="submitChk()">
+						<input type="reset" value="취소">
+					</div>
+					</td>
+				</tr>
+			
+			
+			</table>
+		</fieldset>
+	
+	</form>
+
+</body>
+</html>

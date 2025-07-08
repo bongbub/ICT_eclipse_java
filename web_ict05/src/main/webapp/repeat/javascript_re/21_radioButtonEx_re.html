@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>radio 버튼 클릭 이벤트</title>
+<script type="text/javascript">
+
+	function applyChk(){
+		alert(document.radioForm.apply.value);
+	}
+</script>
+</head>
+<body>
+	
+	<form name="radioForm" action="#" method="post">
+	
+		<fieldset>
+			<legend> 지원 분야를 확인하세용 </legend>
+			<table>
+			
+				<tr>
+					<td><input type="radio" name="apply" id="ra_sale" value="영업부" checked></td>
+					<td><label for="ra_sale">영업부</label></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="apply" id="ra_hr" value="인사부" ></td>
+					<td><label for="ra_hr">인사부</label></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="apply" id="ra_mar" value="마케팅부" ></td>
+					<td><label for="ra_mar">마케팅부</label></td>
+				</tr>
+				<tr>
+					<td><input type="radio" name="apply" id="ra_acc" value="회계부" ></td>
+					<td><label for="ra_acc">회계부</label></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<div align="center">
+							<input type="button" value="확인" onclick="applyChk()">
+							<input type="reset" value="취소">
+						</div>
+					</td>
+				</tr>
+			
+			</table>
+		</fieldset>
+	</form>
+
+</body>
+</html>

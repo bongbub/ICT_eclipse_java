@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>정규식 - 중요!!</title>
+<style>
+	fieldset {
+		max-width:450px;
+	}
+</style>
+<script type="text/javascript">
+		
+	function submitChk(){
+		//alert('정규식');
+		// 이름 : 입력시작부터 입력끝까지 [한글 2~5글자]까지 일치하는 패턴으로 정규 표현 객체를 생성
+		
+		// 정규식 표현은 항상 '/^'로 시작해서 '$/'로 끝난다
+		// 한글 : 가~부터 끝(힣)까지 2자에서 5글자까지
+		// 주의! 정규식정의에 공백이 있으면 에러남
+		let reg_name = /^[가-힣]{2,5}$/;
+		
+		// 비밀번호 : [문자, 특수문자, 숫자 포함 형태의 8~15자리] 이내의 암호 정규식
+		let reg_password = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,15}$/;
+		
+		// 모바일 : 첫번호는 010, 070, 080 중 하나로 시작하고
+		// 		다음 번호는 3~4개까지 오고
+		// 		마지막 번호는 숫자 4개가 일치하는 패턴으로 정규 표현 객체 생성
+		// 		테스트 : - 없이 입력해야한다.
+		let reg_mobile = /^(010|070|080)\d{3,4}\d{4}$/;		// d:digit 즉, 숫자자릿수
+		
+		/*
+      	^: 문자열의 시작을 의미.
+       	[a-zA-Z0-9._%+-]+: 이메일 주소의 로컬 파트(아이디 부분)를 의미. 
+       						영문자, 숫자, '.', '_', '%', '+', '-' 문자가 하나 이상 반복되는 부분을 나타냅니다. 
+       	@: @ 기호를 의미.
+       	[a-zA-Z0-9.-]+: 이메일 주소의 도메인 파트(호스트 이름)를 의미.
+       						영문자, 숫자, '.', '-' 문자가 하나 이상 반복되는 부분을 나타냄. 
+       	
+       	\.: . 기호를 의미. (정규식에서 .은 특수문자이므로 이스케이프(\\)를 사용.)
+       	[a-zA-Z]{2,}: 영문자 2자 이상으로 구성된 부분을 나타낸다. 이메일 주소의 최상위 도메인 (예: .com, .net, .org)을 의미.
+       	$: 문자열의 끝을 의미. 
+       	*/
+       	let reg_email = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;       
+		
+		
+		
+		// 이름
+		if(!document.signIn.userName.value){
+			alert("이름은 필수사항입니다.");
+			document.signIn.userName.focus();
+			return false;
+		}
+		else if(!reg_name.test(document.signIn.userName.value)){  // 이름에 입력한 값을 가지고 정규식(reg_name)으로 테스트하겠다
+			alert("이름은 한글 2-5글자 이내로 입력해주세요.");
+			document.signIn.userName.value = "";
+			document.signIn.userName.focus();
+			return false;
+		}
+		
+		// 비밀번호
+		if(!document.signIn.userPassword.value){
+			alert("비밀번호는 필수사항입니다.");
+			document.signIn.userPassword.focus();
+			return false;
+		}
+		else if(!reg_password.test(document.signIn.userPassword.value)){  // 이름에 입력한 값을 가지고 정규식(reg_name)으로 테스트하겠다
+			alert("비밀번호는 숫자+문자+특수문자가 필수로 들어간 8자 이상 15자 이내로 입력해주세요. ");
+			document.signIn.userPassword.value = "";
+			document.signIn.userPassword.focus();
+			return false;
+		}
+		
+		// 모바일
+		if(!document.signIn.userMobile.value){
+			alert("전화번호는 필수사항입니다.");
+			document.signIn.userMobile.focus();
+			return false;
+		}
+		else if(!reg_mobile.test(document.signIn.userMobile.value)){  // 이름에 입력한 값을 가지고 정규식(reg_name)으로 테스트하겠다
+			alert("전화번호는 - 없이 입력해주세요.");
+			document.signIn.userMobile.value = "";
+			document.signIn.userMobile.focus();
+			return false;
+		}
+		
+		
+		// 이메일 => select 박스는 필수가 아님(입력해도 되니까), but userEmail1, userEmail2는 필수!
+		// .com, .net.. 등의 도메인 값이 없어도 안됨!
+		if(!document.signIn.userEmail1.value){	// userEmail1이 없을 때
+			alert("이메일을 입력해주세요.");
+			document.signIn.userEmail1.focus();
+			return false;
+		}
+		else if(!document.signIn.userEmail2.value){	// userEmail2가 없을 때
+			alert("올바른 형식의 이메일을 입력해주세요.");
+			document.signIn.userEmail2.focus();
+			return false;
+		}
+		else if(!reg_email.test(document.signIn.userEmail1.value + "@" + document.signIn.userEmail2.value)){
+			alert("이메일은 id@xxxx.xxx 형식으로 입력해주세요.");
+			document.signIn.userEmail1.value = "";
+			document.signIn.userEmail1.focus();
+			return false;
+		}
+		
+		document.signIn.submit();  // 전송처리(tab키로 이동하는 (Enter x))	
+		
+	}
+	
+	
+	
+	function selectEmailChk(){
+		//alert("이메일체크");
+		// 이메일 주소를 select 박스로 선택하면 그 값이 userEmail2로 들어가도록 한다.
+		if(document.signIn.userEmail3.value == 0){
+			document.signIn.userEmail2.value = "";
+			document.signIn.userEmail2.focus();
+			return false;
+		}else{
+			document.signIn.userEmail2.value = (document.signIn.userEmail3.value);
+			return false;
+		}
+	}
+	
+</script>
+</head>
+<body>
+
+	<form name = "signIn" action="24_form_next.html">
+	
+		<fieldset>
+			<legend>회원가입</legend>
+			<table>
+				<tr>
+					<!--  input의name이 DTO의 멤버변수와 동일하고 , 테이블의 컬럼명과 같다 -->
+					<td align="right"><label for="nameChk"> 이름 : </label></td>
+					<td><input type="text" id="nameChk" name="userName" size="30"></td>
+				</tr>
+				<tr>
+					<td align="right"><label for="pwdChk"> 비밀번호 : </label></td>
+					<td><input type="password" id="pwdChk" name="userPassword" size="30"></td>
+				</tr>
+				<tr>
+					<td align="right"><label for="mobileChk"> 모바일 : </label></td>
+					<td><input type="text" id="mobileChk" name="userMobile" size="30"></td>
+				</tr>
+				<tr>
+					<td align="right"><label for="emailChk"> 이메일 : </label></td>
+					<td><input type="text" id="emailChk" name="userEmail1" size="20"
+						style = "width:100px">
+						@
+						<input type="text" id="emailChk" name="userEmail2" size="30"
+						style = "width:100px">
+						<select name= "userEmail3" style="width:100px" onchange="selectEmailChk()">
+						
+							<option value="0">직접입력</option>
+							<option value="naver.com">네이버</option>
+							<option value="google.com">구글</option>
+							<option value="daum.net">다음</option>
+							<option value="nate.com">네이트</option>
+						
+						</select>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<br>
+						<div align="center">
+							<input type="button" value="회원가입" onclick="submitChk()">
+							<input type="reset" value="가입취소">
+						</div>
+					</td>
+				</tr>
+				
+			</table>
+		</fieldset>
+	</form>
+</body>
+</html>

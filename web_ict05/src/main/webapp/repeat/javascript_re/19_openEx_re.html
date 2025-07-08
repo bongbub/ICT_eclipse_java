@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트 핸들러 활용 예제 메인</title>
+<script type="text/javascript">
+
+	function big_images(){
+		window.open("19_bigImages_re.html", "bigImage", width="700px", height="300px"
+							, top="30px", left="30px");
+	}
+
+</script>
+</head>
+<body>
+
+	<h2> 마우스를 사진 위에 올려놓으면 커져라~~~~~</h2>
+	<br>
+	<br>
+	<form name="myForm" action="#" method="post">
+		<img src="../../images/css3/5장/sydney.png" alt="시드니"
+				onmouseover="big_images()">
+				
+	</form>
+
+</body>
+</html>

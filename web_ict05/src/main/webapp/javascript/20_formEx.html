@@ -33,6 +33,13 @@
       /* 셀테두리와 내용사이의 여백 */
       padding: 10px;
    }
+   input[type="text"],
+   input[type="password"],
+   input[type="email"] {
+   		border : none;
+   		border-bottom:1px solid black;
+   		outline:none;
+   }
 </style>
 
 <script type="text/javascript">
@@ -76,6 +83,11 @@
 </head>
 <body onload="document.signIn.user_id.focus()">
 	
+	<!-- onsubmit : 전송(submit)할 때 이벤트 발생 
+		inputChk() => action에서 서버로 입력값들을 전송시에 inputChk()로 호출한
+		함수 내에서 false 값이 리턴되면서 에러가 발생한 것이므로 동작을 중지한다.
+		정상이면 폼에서 입력한 값들을 서버로 전송하고, action에서 지정한 페이지로 결과들을 출력한다.
+	-->
 	<form name="signIn" action="20_form_next.html" method="post"
 		onsubmit="return inputChk()">	<!-- button type="submit" , 버튼을 누르면 onsubmit 타고, inputChk실행 --> 
 		<fieldset>
@@ -98,7 +110,7 @@
 				</tr>
 				
 				<tr>
-					<td align="center"><label for="userEmail"> 이메일  : </label></td>
+					<td align="right"><label for="userEmail"> 이메일  : </label></td>
 					<td><input type="email" id="userEmail" name="user_email" size="50"></td>
 				</tr>
 				
@@ -109,8 +121,8 @@
 						<!-- type="submit"(전송) : 폼에서 입력한 값들을 서버로 전송, DB(CRUD), action에서 지정한 페이지로 결과들을 출력 -->
 						<!-- button타입일 땐 onclick 사용하면 함수 실행. 타입 자체가 submit일땐 onsubmit으로 가서 함수호출해줘야함 -->
 						<!-- <input type="button" value="회원가입" onclick="inputChk()" > -->
-						<input type="submit" value="회원가입" >
-						<input type="reset" value="취소">
+						<input type="submit" value="회원가입" width="100px" height="100px">
+						<input type="reset" value="취소" width="100px" height="100px">
 					
 					</div>
 				</tr>				
