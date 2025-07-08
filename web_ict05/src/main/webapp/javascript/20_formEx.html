@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>회원가입 폼 - validation check(중요!)</title>
+<style> 
+   fieldset {
+      /* { 속성명: 속성값; } */
+      /* margin: 바깥여백,   padding: 안쪽여백 */
+      
+      max-width: 600px;   /* 최대폭 */   
+      margin: 15px 10px;   /* 상하여백 : 15px  좌우여백 :  10px*/   
+   }
+   
+   legend {
+      font-size: 18px;   /* 글자크기 */
+      font-weight: bold;   /* 글자굵기 */
+      color: blue;      /* 글자색 */
+   }
+   
+   label {
+      font-size: 18px;   /* 글자크기 */
+      font-weight: bold;   /* 글자굵기 */
+      width: 120px;      /* 너비 */
+   }
+   
+   table, th, td {
+      border: 1px solid black;   /* 1px 실선 테두리색 */
+      border-collapse: collapse;  /* 중복되는 테두리를 한줄로 표시 */
+   }
+   
+   th, td {
+      /* 셀테두리와 내용사이의 여백 */
+      padding: 10px;
+   }
+</style>
+
+<script type="text/javascript">
+
+	function inputChk(){
+		// alert("회원가입");
+		// 필수체크
+		if(!document.signIn.user_id.value){	// form내의, input에 value값, 입력한 값이 존재하지 않을 때
+			alert("아이디를 입력하세요.");
+			document.signIn.user_id.focus();		// 아이디 입력란에 포커스
+			return false;		// 함수 동작 중지(제출중단)
+		}
+		if(!document.signIn.user_password.value){
+			alert("비밀번호를 입력하세요.");
+			document.signIn.user_password.focus();
+			return false;
+		}
+		if(!document.signIn.re_user_password.value){
+			alert("비밀번호 확인란을 입력하세요.");
+			document.signIn.re_user_password.focus();
+			return false;
+		}
+		// 비밀번호 == 비밀번호확인 체크
+		if(document.signIn.user_password.value !== document.signIn.re_user_password.value){
+			alert("비밀번호 불일치");
+			document.signIn.re_user_password.focus();
+			document.signIn.re_user_password.value = "";
+			return false;
+		}
+		
+		if(!document.signIn.user_email.value){
+			alert("이메일을 입력해주세요.");
+			document.signIn.user_email.focus();
+			return false;
+		}
+		
+		//document.signIn.submit(); 	// Enter로 이동은 못하나 탭키로 이동할 수 있다.
+		//인풋 타입이 button 일때 사용. (지금은 onsubmit 사용했으니까...)
+	}
+</script>
+</head>
+<body onload="document.signIn.user_id.focus()">
+	
+	<form name="signIn" action="20_form_next.html" method="post"
+		onsubmit="return inputChk()">	<!-- button type="submit" , 버튼을 누르면 onsubmit 타고, inputChk실행 --> 
+		<fieldset>
+			<legend>회원가입</legend>
+			<table>
+				<tr>
+					<!-- input의 name == DTO의 멤버변수 == 테이블의 컬럼명 -->
+					<td align="right"><label for="userID"> 아이디 : </label></td>
+					<td><input type="text" id="userID" name="user_id" size="30"></td>
+				</tr>
+				
+				<tr>
+					<td align="right"><label for="userPassword"> 비밀번호 : </label></td>
+					<td><input type="password" id="userPassword" name="user_password" size="30"></td>
+				</tr>
+				
+				<tr>
+					<td align="right"><label for="re_userPassword"> 비밀번호 확인 : </label></td>
+					<td><input type="password" id="re_userPassword" name="re_user_password" size="30"></td>
+				</tr>
+				
+				<tr>
+					<td align="center"><label for="userEmail"> 이메일  : </label></td>
+					<td><input type="email" id="userEmail" name="user_email" size="50"></td>
+				</tr>
+				
+				<tr>
+					<td colspan="2">
+					<br>
+					<div align="center">    <!--  div라는 판에 올려서, 버튼 두 개를 동시게 조작하겠다 -->
+						<!-- type="submit"(전송) : 폼에서 입력한 값들을 서버로 전송, DB(CRUD), action에서 지정한 페이지로 결과들을 출력 -->
+						<!-- button타입일 땐 onclick 사용하면 함수 실행. 타입 자체가 submit일땐 onsubmit으로 가서 함수호출해줘야함 -->
+						<!-- <input type="button" value="회원가입" onclick="inputChk()" > -->
+						<input type="submit" value="회원가입" >
+						<input type="reset" value="취소">
+					
+					</div>
+				</tr>				
+			</table>
+			
+		</fieldset>
+	
+	</form>
+	
+</body>
+</html>

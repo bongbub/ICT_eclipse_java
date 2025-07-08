@@ -2,20 +2,20 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>getElementById()</title>
+<title>getElementsById()</title>
 <script type="text/javascript">
 
 
 	/*
 		직접 접근
-		document.getElementById("id명"); => id명을 이용해서 직접 접근
-		document.getElementByTagName(태그); => 태그를 이용해서 직접 접근
-		document.getElementByName(태그의 name); => 태그의 name을 이용해서 직접 접근
-		document.getElementByClassName("Class명); => 클래스 속성을 이용해서 직접 접근
+		document.getElementsById("id명"); => id명을 이용해서 직접 접근
+		document.getElementsByTagName(태그); => 태그를 이용해서 직접 접근
+		document.getElementsByName(태그의 name); => 태그의 name을 이용해서 직접 접근
+		document.getElementsByClassName("Class명); => 클래스 속성을 이용해서 직접 접근
 	*/
 	function callChange(){
 			// alert("클릭!");
-			let firstP = document.getElementById("firstP");
+			let firstP = document.getElementsById("firstP");
 			firstP.innerHTML = "나의 인형<br> <img src='../images/css3/8장/pic3.jpg'>";  // 바깥이 쌍따옴표니까 안쪽은 따옴표	
 		} 
 	

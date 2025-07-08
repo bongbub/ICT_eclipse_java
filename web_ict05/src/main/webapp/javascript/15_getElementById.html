@@ -2,22 +2,22 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>getElementById()</title>
+<title>getElementsById()</title>
 <script type="text/javascript">
 
 
 	/*
 		직접 접근
-		document.getElementById("id명"); => id명을 이용해서 직접 접근
-		document.getElementByTagName(태그); => 태그를 이용해서 직접 접근
-		document.getElementByName(태그의 name); => 태그의 name을 이용해서 직접 접근
-		document.getElementByClassName("Class명); => 클래스 속성을 이용해서 직접 접근
+		document.getElementsById("id명"); => id명을 이용해서 직접 접근
+		document.getElementsByTagName(태그); => 태그를 이용해서 직접 접근
+		document.getElementsByName(태그의 name); => 태그의 name을 이용해서 직접 접근
+		document.getElementsByClassName("Class명); => 클래스 속성을 이용해서 직접 접근
 	*/
 	function styleChange(){
 			alert("스타일 변경");
 			
 			// id명(spanTest)을 이용해서 직접 접근  // css의 #spanTest{}와 동일 
-			let myspan = document.getElementById("spanTest");     // spanTest라는 id를 이용해서 요소에 접근한다
+			let myspan = document.getElementsById("spanTest");     // spanTest라는 id를 이용해서 요소에 접근한다
 			myspan.style.fontSize="25px";			// css에선 font-size였지만, 자바스크립트에선 첫 글자를 대문자로 바꿔서 붙여씀
 			myspan.style.display="block";			// block으로 변경(세로)
 			myspan.style.width = "150px";

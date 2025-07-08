@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이벤트 핸들러 활용</title>
+<script type="text/javascript">
+
+	function big_images(){
+		//alert("세계 3대 미항");
+		// 먼저 [팝업차단] 해제 해야함
+		window.open("19_bigImages.html", "bigImage", 
+				width="700px", height="300px", 
+				top="30px", left="30px");
+	}
+
+</script>
+</head>
+<body>
+	<form name="myForm" action="#" method="post">
+		<img src="../images/css3/5장/sydney.png" alt="시드니"
+			onmouseover="big_images()">
+		
+		<h3 class="test">세계 3대 미항</h3>
+		<p> 안녕하세요 <span class="test">홍길동</span>입니당 </p>	
+		<ul>
+			<li>시드니(Sydney), 호주</li>
+			<li>리우데자네이루(Roi de janeiro), 브라질</li>
+			<li>나폴리(Napoles), 이탈리아</li>
+		</ul>
+	</form>
+</body>
+</html>

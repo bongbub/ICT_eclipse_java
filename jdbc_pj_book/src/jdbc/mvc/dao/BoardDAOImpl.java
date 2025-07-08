@@ -12,6 +12,17 @@ import jdbc.mvc.dto.BoardDTO;
 
 public class BoardDAOImpl implements BoardDAO{
 	
+	// 싱글톤
+	private static BoardDAOImpl instance = new BoardDAOImpl();
+	private BoardDAOImpl() {
+		
+	}
+	public static BoardDAOImpl getInstance() {
+		if(instance == null) {
+			instance = new BoardDAOImpl();
+		}
+		return instance;
+	}
 	
 	// DB 연결
 	String dbUrl = "jdbc:oracle:thin:@localhost:1521/xe";
@@ -158,7 +169,6 @@ public class BoardDAOImpl implements BoardDAO{
 				dto.setBoardTitle(rs.getString("boardTitle"));
 				dto.setBoardContent(rs.getString("boardContent"));
 				dto.setBoardId(rs.getString("boardId"));
-				dto.setBoardTitle(rs.getString("boardRegDate"));
 				dto.setBoardRegDate(rs.getDate("boardRegDate"));
 				list.add(dto);
 			}
@@ -190,7 +200,6 @@ public class BoardDAOImpl implements BoardDAO{
 				dto.setBoardTitle(rs.getString("boardTitle"));
 				dto.setBoardContent(rs.getString("boardContent"));
 				dto.setBoardId(rs.getString("boardId"));
-				dto.setBoardTitle(rs.getString("boardRegDate"));
 				dto.setBoardRegDate(rs.getDate("boardRegDate"));
 				
 				list.add(dto);

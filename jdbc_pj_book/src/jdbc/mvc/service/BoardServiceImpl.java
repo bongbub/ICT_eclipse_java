@@ -9,7 +9,7 @@ public class BoardServiceImpl implements BoardService {
 
 	
 	// BoardDAOImpl
-	BoardDAOImpl dao = new BoardDAOImpl();
+	BoardDAOImpl dao = BoardDAOImpl.getInstance();
 	
 	@Override
 	public int boardInsert(BoardDTO dto) {

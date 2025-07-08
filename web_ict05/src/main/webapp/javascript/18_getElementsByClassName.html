@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>getElementsByClassName</title>
+<script type="text/javascript">
+
+
+	/*
+		직접 접근
+		document.getElementsById("id명"); => id명을 이용해서 직접 접근
+		document.getElementsByTagName(태그); => 태그를 이용해서 직접 접근
+		document.getElementsByName(태그의 name); => 태그의 name을 이용해서 직접 접근
+		document.getElementsByClassName("Class명"); => 클래스 속성을 이용해서 직접 접근
+	*/
+	
+	function load(){
+			//alert("로그인");
+			// Class 속성을 이용해서 직접 접근 - input 태그의 value값들을 alert창으로 출력 => 배열명.value
+			let al = document.getElementsByClassName("inputClass");
+			for(let i=0; i<al.length; i++){
+				alert(al[i].value);
+			}
+		}
+	
+
+</script>
+</head>
+<body onload = "load()">	<!-- 화면이 실행되는 시점에 load() 호출 -->
+	
+	<h3> 로그인 </h3>
+	아이디 : <input type = "text" id = "userID" class="inputClass" value = "hong"><br>
+	비밀번호 : <input type = "text" id="userPWD" class ="inputClass" value = "1234"><br>
+	
+	<input type = "button" class = "inputClass" value = "로그인">
+
+</body>
+</html>
