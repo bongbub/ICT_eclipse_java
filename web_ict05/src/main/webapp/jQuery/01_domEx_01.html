@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>직접선택자 - 아이디선택자</title>
+
+<!-- 1. 다운로드 방식으로 jQuery 연결 -->
+<script type="text/javascript" src="./js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+
+	// jquery 사용선언 : $();
+	// jqeury 에서는 일회성 함수 사용이 잦기 때문에, 익명 함수를 사용한다 : function(){...}
+	// $(function(){
+	//		...
+	//	}); 
+	
+	
+	
+	// 직접선택자 - 아이디선택자 ==> 아이디와 일치한 곳에 속성을 지정한다.
+	// $("css 선택자").css("스타일 속성명", "값");
+	$(function(){
+		$("#title1").css("color","orange");		// id가 title1인 곳에, 폰트색 orange 인 css 속성을 주겠다
+		$("#title2").css("color","red");
+		$("#title3").css("color", "violet");
+		$("#title4").css("color","green");
+	});
+	
+</script>
+</head>
+<body>
+	<h3 id="title1"> 제목 1</h3>	<!-- orange -->
+	<h3 id="title2"> 제목 2</h3>	<!-- red -->
+	<h3 id="title3"> 제목 3</h3>	<!-- violet -->
+	<h3 id="title4"> 제목 4</h3>	<!-- green -->
+
+</body>
+</html>

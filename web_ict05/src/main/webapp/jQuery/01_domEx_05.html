@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>인접선택자 - 형(이전) / 동생(다음)</title>
+<!-- 1. 다운로드 방식으로 jQuery 연결 -->
+<script type="text/javascript" src="./js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+
+	
+	// 인접선택자 - 형(이전) / 동생(다음) 선택자
+	// 형(이전) 선택자 => 선택한 요소를 기준으로 바로 이전 형제 요소만 선택한다. $("요소선택").prev();
+	// 동생(다음) 선택자 => 선택한 요소를 기준으로 바로 다음 형제 요소만 선택한다. $("요소선택").next();
+	// 1개 => $("css 선택자").css("스타일속성명", "값");
+	// 여러개 => let 변수명 = {"스타일속성명1" : "값1", "스타일속성명2": "값2", "스타일속성명n": "값n"};
+
+	
+	$(function(){
+		let style_1 = {"border":"2px solid green", "color":"orange"};
+		let style_2 = {"font-weight" : "bold", "background":"linen"}
+		
+		
+		// <text>를 기준으로 이전 요소만 선택한다. css는 style_1 => $("요소선택").prev()
+		$(".text").prev().css(style_1);
+		// <text>를 기준으로 이후 요소만 선택한다. css는 style_2 => $("요소선택").next()
+		$(".text").next().css(style_2);		
+		$(".text").next().next().css(style_2);		
+	})
+	
+	
+	
+</script>
+</head>
+<body>
+	<div id="wrap">
+		<h3>인접선택자</h3>
+		<p>내용1</p>					<!-- style_1 적용 --> <!-- 형 -->
+		<p class = "text">내용2</p>
+		<p>내용3</p>					<!-- style_2 적용 --> <!-- 동생 -->
+		<p>내용4</p>					<!-- style_2 적용 --> <!-- 동생 -->
+	</div>
+
+</body>
+</html>

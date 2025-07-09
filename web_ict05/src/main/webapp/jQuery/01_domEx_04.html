@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>직접선택자 - 그룹선택자</title>
+
+<!-- 다운로드 방식으로 연동하기 -->
+<script type="text/javascript" src="./js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+
+
+	//체이닝 기법 - 선택한 요소에 메서드를 연속해서 사용(마치 체인이 엮인 모양)
+	// $("css 선택자").css("스타일 속성명1", "값").css("스타일 속성명2", "값"). ... .css("스타일 속성명n", "값");
+	
+	
+	// h2와 title class에 border(3px, solid, brown), background(linen), color(pink) 속성 주기
+	$(function(){
+		$("h2, .title").css("border", "3px solid brown").css("background", "linen").css("color","pink")
+			.css("max-width","500px");
+		
+	});
+	
+</script>
+
+</head>
+<body>
+
+	<h2> 제이쿼리</h2>
+	<h3 class="title"> 선택자 </h3>
+	<h4> 선택자</h4>
+	<h4> 직접선택자</h4>
+	
+	
+</body>
+</html>

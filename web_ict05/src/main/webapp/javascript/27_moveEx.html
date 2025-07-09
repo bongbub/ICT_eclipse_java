@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>List 박스에서 항목 이동 예제</title>
+<style>
+	fieldset{
+		max-width:300px;
+	}
+</style>
+<script type="text/javascript">
+
+	function moveR(frm){
+		// gus.option[gus.length] = new Option("text", value);
+		frm.myMenu.options[frm.myMenu.length] 	// 이동시 이동 메뉴는 맨 아래에 추가하기 위해
+				= new Option(frm.menu[frm.menu.selectedIndex].text
+						, frm.menu[frm.menu.selectedIndex].value);
+		//											(frm.menu.selectedIndex).text 메뉴셀렉박스에서 선택된 거의 텍스트값 가져와
+		
+		// 이동 후에 기존 선택된 값을 초기화
+		frm.menu.options[frm.menu.selectedIndex] = null;
+		
+	}
+	
+ 	function moveL(frm){
+		frm.menu.options[frm.menu.length] = 
+				new Option(frm.myMenu[frm.myMenu.selectedIndex].text
+						, frm.myMenu[frm.myMenu.selectedIndex].value);
+		
+		frm.myMenu.options[frm.myMenu.selectedIndex] = null;
+	} 
+ 	
+
+
+</script>
+</head>
+<body>
+	<form name= "myForm" action="#" method="post">
+		<fieldset>
+			<legend>List 박스에서 항목 이동 예제</legend>
+			<!--  왼쪽 셀렉 박스에 있는 요소들을 오른쪽 빈 셀렉박스에 넣는 예제(양방향이동) -->
+			<p>
+				<table>
+					<tr>
+						<td>메뉴</td>
+						<td>            </td>
+						<td>나만의 메뉴</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<select name="menu" size="25">
+								<option value="파일">파일</option>
+								<option value="편집">편집</option>
+								<option value="저장">저장</option>
+								<option value="복사">복사</option>
+								<option value="붙여넣기">붙여넣기</option>
+								<option value="선택">선택</option>
+								<option value="찾기">찾기</option>
+								<option value="옵션">옵션</option>
+								<option value="도움말">도움말</option>
+								<option value="삭제">삭제</option>
+								<option value="수정">수정</option>
+								<option value="잘라내기">잘라내기</option>
+								<option value="속성">속성</option>
+								<option value="새로고침">새로고침</option>
+								<option value="출력">출력</option>
+							</select>
+						</td>
+						<td align="center" valign="middle">
+							<!--  this.form : 나중에 myForm이라는 걸 사용할것임 -->
+							<input type="button" value="         ADD    >> " onclick="moveR(this.form)"><br>
+							<input type="button" value="<<  REMOVE    " onclick="moveL(this.form)"><br>
+						</td>
+						
+						
+						<td>
+							<select name="myMenu" size="25">
+								
+							</select>
+						</td>
+					</tr>
+				</table>
+			</p>
+		</fieldset>
+	</form>
+</body>
+</html>
