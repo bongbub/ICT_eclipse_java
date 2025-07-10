@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>event - focus() blur() 중요 </title>
+<script type="text/javascript" src="../../jQuery/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+		$("#divInput > input[type='text']").focus(function(){
+			$("#result").html("아이디 포커스 생성");
+		});
+		$("#divInput > input[type='text']").blur(function(){
+			$("#result").html("아이디 포커스 아웃");
+		});
+		$("#divInput > input[type='password']").focus(function(){
+			$("#result").html("비밀번호 포커스 생성");
+		});
+		$("#divInput > input[type='password']").blur(function(){
+			$("#result").html("비밀번호 포커스 아웃");
+		});
+
+	});
+
+</script>
+</head>
+<body>
+	<h3> event-focus() blur()</h3>
+	<hr>
+	<div id="divInput">
+		아이디 : <input type="text" size="20" placeholder="아이디 입력"><br>
+		비밀번호 : <input type="password" size="20" placeholder="비밀번호 입력"><br>
+	</div>
+	<div id="result"> 결과 출력 위치
+	</div>
+</body>
+</html>

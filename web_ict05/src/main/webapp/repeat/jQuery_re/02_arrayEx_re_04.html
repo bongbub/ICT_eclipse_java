@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>제이쿼리 배열 관련 메서드 - $.inArray() $.isArray() $.merge()</title>
+<script type="text/javascript" src="../../jQuery/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+		let arr1 = ["서울","대전","부산","전주"];
+		let arr2 = ["유럽","캐나다","프랑스","홍콩"];
+		let obj = {"area":"서울", "name":"아이유"};	
+		
+		let idxn = $.inArray("전주", arr1);
+		console.log(idxn);
+		
+		let ok1 = $.isArray(arr1);
+		let ok2 = $.isArray(arr2);
+		let ok3 = $.isArray(obj);
+		console.log(ok1);
+		console.log(ok2);
+		console.log(ok3);
+		
+		$.merge(arr2, arr1);
+		console.log(arr2);
+		
+	});
+	
+</script>
+</head>
+<body>
+	<h3>제이쿼리 배열 관련 메서드 - $.inArray() $.isArray() $.merge()</h3>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> event - 체크박스 전체 선택 가능 중요!</title>
+<script type="text/javascript" src="../../jQuery/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+		$("#all_check").change(function(){
+			let is_checked = $("#all_check").is(":checked");
+			console.log("is_checked :", is_checked);
+			
+			$(".season_chk").prop("checked", is_checked);
+		});
+	});
+
+</script>
+</head>
+<body>
+	<h3> event - 체크박스 전체 선택 가능 중요 </h3>
+	<fieldset>
+		<legend>계절</legend>
+		<form action="#" method="post">
+			<p>
+				<label for ="all_check">전체선택</label>
+				<input type="checkbox" id="all_check">
+			</p>
+			<hr>
+			<p>
+				<label for ="spring">봄</label>
+				<input type="checkbox" name="" id="spring" class="season_chk" value="봄">
+			</p>
+			<p>
+				<label for ="summer">여름</label>
+				<input type="checkbox" name="" id="summer" class="season_chk" value="여름">
+			</p>
+			<p>
+				<label for ="fall">가을</label>
+				<input type="checkbox" name="" id="fall" class="season_chk" value="가을">
+			</p>
+			<p>
+				<label for ="winter">겨울</label>
+				<input type="checkbox" name="" id="winter" class="season_chk" value="겨울">
+			</p>
+		</form>
+	</fieldset>
+</body>
+</html>

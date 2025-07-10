@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title> 인접선택자 - 형(이전) 동생(다음 )</title>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		let style_1 = {"border":"2px solid green", "color":"orange"};
+		let style_2 = {"font-weight":"bold", "background":"linen"};
+		
+		$(".text3").prevUntil(".title").css(style_1);
+		$(".text3").nextUntil(".text6").css(style_2);
+		
+		
+	});
+</script>
+</head>
+<body>
+	<div id="wrap">
+		<h3 class="title">인접선택자</h3>
+		<p>내용1</p>					<!-- style_1 적용 --> 
+		<p>내용2</p>					<!-- style_1 적용 --> 
+		<p class="text3">내용3</p>
+		<p>내용4</p>					<!-- style_2 적용 -->
+		<p>내용5</p>					<!-- style_2 적용 -->
+		<p class="text6">내용6</p>					
+	</div>
+</body>
+</html>

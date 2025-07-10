@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>제이쿼리 배열 관련 메서드 - $.map() / $.grep() </title>
+<script type="text/javascript" src="../../jQuery/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+		let arr1 = [{"area":"뉴욕", "name":"김태희"}
+					, {"area":"이탈리아", "name":"아이유"}
+					,{"area":"뉴욕", "name":"유느님"}
+					,{"area":"독일", "name":"박명수"}];
+		
+		let result1 = $.map(arr1, function(item){
+			if(item.area == "독일"){
+				return item;
+			}
+		});
+		console.log("result1 =>", result1);
+		
+		let result2 = $.map(arr1, function(item){
+			if(item.area == "이탈리아"){
+				return item;
+			}
+		});
+		console.log("result2 =>", result2);
+		
+		let result3 = $.map(arr1, function(item){
+			if(item.name =="김태희"){
+				return item;
+			}
+		});
+		console.log("result3 =>", result3);
+		
+		let result4 = $.grep(arr1, function(item){
+			if(item.area=="뉴옥"){
+				return true;
+			}else{
+				return false;
+			}
+		});
+		console.log("result4 =>", result4);
+	})
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

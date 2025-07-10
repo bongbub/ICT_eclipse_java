@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>제이쿼리 배열 관련 메서드 $.map() / $.grep()</title>
+<script type="text/javascript" src="../../jQuery/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+		let sample = [
+			{"id": 1 , "name":"김태희", "salary" : 1000}
+			, {"id": 2 , "name":"장나라", "salary" : 2000}
+			, {"id": 3 , "name":"소지섭", "salary" : 3000}
+			, {"id": 4 , "name":"유느님", "salary" : 4000}
+		];
+		
+		console.log("----------------(1) id가 1번일 때 출력하기--------------------");
+		let result1 = $.map(sample, function(item){
+			if(item.id ==1){
+				return item;
+			}
+		});
+		console.log("result1 =>", result1);
+		
+		console.log("----------------(2) 전체 정보 출력하기--------------------");
+		let result2 = $.map(sample, function(item){
+			return item;
+		});
+		console.log("result2 =>", result2);
+		
+		console.log("---------------------(3) salary가 2000이상인 항목의 id, name, salary 출력 --------------------");
+		let result3 = $.map(sample, function(item){
+			if(item.salary >= 2000){
+				return item;
+			}
+		});
+		console.log("result3 =>", result3);
+		
+		console.log("-------------------(4) 각 항목의 id, 이름만 출력 -----------------------");
+		let result4 = $.map(sample, function(item){
+			return {id:item.id, name:item.name};
+		});
+		console.log("result4 =>", result4);
+		
+		console.log("---------(5) salary에서 100원을 공제한 후 항목의 id, name, salary 출력 --------------");
+		let result5 = $.map(sample, function(item){
+			return {id:item.id, name:item.name, salary:item.salary-100};
+		});
+		console.log("result5 =>", result5);
+		
+	});
+	
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

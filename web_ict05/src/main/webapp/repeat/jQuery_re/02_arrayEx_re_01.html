@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>제이쿼리 배열 관련 메서드 - each() / $.each() 메서드</title>
+<script type="text/javascript" src="../../jQuery/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+
+	$(function(){
+		let obj = [{"area":"서울"},{"area":"인천"},{"area":"부산"}];
+		$(obj).each(function(i,o){
+			console.log(i + "->", o);
+		});
+		console.log("--------------------------");
+		$.each("#menu1 li"), function(i,o){
+			console.log(i+'=>', o);
+		}
+		console.log("--------------------------");
+		$.each($("#menu2 li"), function(i,o){
+			console.log(i+'=>',o);
+		});
+		console.log("--------------------------");
+		$("#menu1 li").each(function(i,o){
+			console.log(i+"->",o);
+		});
+		console.log("--------------------------");
+		$.each($("#menu1"), function(i,o){
+			console.log(i+"->",o);
+		})
+	});
+	
+</script>
+</head>
+<body>
+	<h3>배열 관련 메서드 - each() / $.each()</h3>
+	<ul id="menu1">
+		<li>내용1-1</li>
+		<li>내용1-2</li>
+		<li>내용1-3</li>
+		<li>내용1-4</li>
+	</ul>
+	<ul id="menu2">
+		<li>내용2-1</li>
+		<li>내용2-2</li>
+		<li>내용2-3</li>
+		<li>내용2-4</li>
+	</ul>
+
+</body>
+</html>
