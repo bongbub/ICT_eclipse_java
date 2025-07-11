@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>회원가입 이벤트 예제</title>
+<style>
+	#myForm{
+		position:absolute;
+	}
+	input::-webkit-inner-spin-button {
+  	-webkit-appearance: none;
+	}
+	input::-webkit-outer-spin-button {
+  	-webkit-appearance: none;
+  	margin: 0;
+	}
+	
+	fieldset {
+		max-width:500px;
+	}
+	
+</style>
+<script type="text/javascript" src="../../jQuery/js/jquery-3.7.1.min.js"></script>
+<script type="text/javascript">
+	
+	$(document).ready(function(){
+		$(".nums").keyup(function(){
+			if(this.value.length == this.maxLength){ 
+				$(this).next('.nums').focus();
+			}
+		});
+	});
+	
+	function numMaxLan(numb){
+		if(numb.value.length > numb.maxLength){
+			numb.value=numb.value.slice(0, numb.maxLength);
+		}
+	}
+	function numMaxLan2(numb){
+		if(numb.value.length > numb.maxLength){
+			numb.value=numb.value.slice(0, numb.maxLength);
+		}
+	}
+
+</script>
+</head>
+<body>
+	
+	
+	<form name="myForm" id="join">
+		
+		<fieldset>
+			<legend> 회원가입 </legend>
+			<table>
+				<tr>
+					<th align="right"> 아이디</th>
+					<td><input type="text" name="userId" id="user_id" size="30"></td>
+				</tr>
+				<tr>
+					<th align="right"> 비밀번호</th>
+					<td><input type="text" name="userId" id="user_id" size="30"></td>
+				</tr>
+				<tr>
+					<th align="right"> 주민번호</th>
+					<td><input type="number" name="usernum1" id="user_num1" size="20"
+						maxlength=6 class="nums" oninput="numMaxLan(this);">
+						<input type="number" name="userNum2" id="user_num2" size="5"
+						 class="nums" maxlength=1 oninput="numMaxLan2(this);"></td>
+				</tr>
+				<tr>
+					<td align="right">성별</td>
+					<td>
+						<input type="radio" name="userGender" id="user_gender_f" value = "여성" checked>여성
+						<input type="radio" name="userGender" id="user_gender_m" value = "남성" >남성 
+					</td>
+				</tr>
+				<tr>
+					<td align="right">이메일</td>
+					<td><input type="email" name="userEmail" id="user_email" size="30"></td>
+				</tr>
+				<tr>
+					<td>블로그</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>취미</td>
+				</tr>
+				<tr>
+					<td>직업</td>
+				</tr>
+				
+				
+				
+			</table>
+		</fieldset>
+	</form>
+	
+</body>
+</html>

@@ -61,5 +61,36 @@
 	 급여 : <%= salary %> <br>
 	 이메일 : <%=email %> <br>
 	 
+	 
+	 <br><br>
+	 <hr>
+	 <br><br>
+	 <b> 3. 선언부(Declaration) </b>
+	 - 변수, 자바메서드를 선언한다. <br>
+	 
+	 <%-- <%!
+	 	public 반환형 메서드명(매개변수) {
+		 자바코드1;
+		 자바코드2;
+	 } 
+	 %>--%>
+	 
+	 
+	 <%!
+	 	public int divide(int a, int b){
+		 return a / b;
+	 }
+	 %>
+	 
+	 == 실행결과 == <br>
+	 8 / 4 = <%= divide(8,4) %>
+	
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 </body>
 </html>
