@@ -4,8 +4,10 @@ import java.util.Scanner;
 
 import jdbc.mvc.controller.BoardController;
 import jdbc.mvc.controller.BookController;
+import jdbc.mvc.controller.LOLController;
 import jdbc.mvc.dto.BoardDTO;
 import jdbc.mvc.dto.BookDTO;
+import jdbc.mvc.dto.LOLDTO;
 
 public class Menu {
 	
@@ -16,13 +18,15 @@ public class Menu {
 	BookController bc = new BookController();
 	// 게시판 컨트롤러
 	BoardController bcon = new BoardController();
+	// 리그오브레전드 컨트롤러
+	LOLController lol = new LOLController();
 		
 		
 	public void displayMenu() {
 		// 메뉴가 계속 선택될 수 있게 while(true) -> break으로 탈출
 		while(true) {
 			System.out.println("*-------------------------------------------------*");
-			System.out.println("    1. 도서관리    2. 게시판    3. 찜한도서    4. 종료    ");
+			System.out.println("    1. 도서관리    2. 게시판    3. 리그오브레전드    4. 종료    ");
 			System.out.println("*-------------------------------------------------*");
 			
 			System.out.print("▶ 메뉴선택 : ");
@@ -38,7 +42,7 @@ public class Menu {
 				board_menu();
 				break;
 			case 3:
-				like_menu();
+				lol_menu();
 				break;
 			case 4:
 				System.out.println(" 프로그램을 종료합니다. ");
@@ -48,9 +52,7 @@ public class Menu {
 				System.out.println("시스템을 다시 선택해주세요.");
 				
 			}
-			
 		}
-		
 	}
 	
 	// ----------------------------------------------------------
@@ -66,7 +68,6 @@ public class Menu {
 		
 		int menuNo = scan.nextInt();
 		scan.nextLine();		// 인풋이 꼬이지 않도록
-		
 		
 			switch(menuNo) {
 			case 1: // 도서추가
@@ -154,17 +155,6 @@ public class Menu {
 	}
 	
 	
-//	public BookDTO bookUpdate() {
-//		// 콘솔에서 입력받은 값을 통해 어떤 책을 수정할건지 판단
-//		BookDTO dto = new BookDTO();
-//		System.out.print("▷정보를 수정할 도서 번호를 입력하세요. :");
-//		int num = scan.nextInt();
-//		scan.nextLine();  //스킵되는거 막기
-//		dto = bookInput();
-//		dto.setBookId(num);
-//		return dto;
-//	}
-	
 	// ------------------------------------------
 	// 2. 게시판 메뉴
 	public void board_menu() {
@@ -250,21 +240,138 @@ public class Menu {
 		System.out.println("글제목 입력 : ");
 		return scan.nextLine();
 	}
-	
+	//------------------------------------------------------------------------------------
 	// 3. 찜 메뉴
-	public void like_menu() {
+	public void lol_menu() {
+		System.out.println("");
 		System.out.println("찜 메뉴 (like_menu)");
-	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		System.out.println("*-------------------------------------------------*");
+		System.out.println("    1. 챔피언 검색     2.라인별 검색     3. 전체 챔피언 조회 " );
+		System.out.println("*-------------------------------------------------*");
+		System.out.println("*-------------------------------------------------*");
+		System.out.println("    4. 챔피언 추가     5.챔피언 수정     6. 챔피언 삭제  "    );
+		System.out.println("*-------------------------------------------------*");
+		System.out.println("*-------------------------------------------------*");
+		System.out.println("    7. 메타챔피언추천    8. 챔피언 비교    9. 종료"    );
+		System.out.println("*-------------------------------------------------*");
+		System.out.print("▶ 메뉴선택 : ");
+		int menuNo = scan.nextInt();
+		scan.nextLine();
+		
+		switch(menuNo) {
+		case 1:
+			lol.selectChamp(champNm());
+			break;
+		case 2:
+			lol.selectLine(champline());
+			break;
+		case 3:
+			lol.allChamp();
+			break;
+		case 4:
+			lol.addChamp(insertChamp());
+			break;
+		case 5:
+			System.out.print("검색할 챔피언의 번호를 입력하세요 :");
+			lol.updateChamp(champnum(), insertChamp());
+			break;
+		case 6:
+			System.out.print("삭제할 챔피언의 번호를 입력하세요 :");
+			lol.deleteChamp(champnum());
+			break;
+		case 7:
+			lol.metaChampRcmm();
+			break;
+		case 8:
+			lol.compareChamp(champNm(), champNm2());
+			break;
+			
+		case 9:
+			System.out.println("이전 메뉴");
+			System.out.println("");
+			return;
+		}
+		
+		}
+		public String champNm() {
+			System.out.print("챔피언 명을 입력하세요 : ");
+			return scan.nextLine();
+		}
+		public String champNm2() {
+			System.out.print("챔피언 명을 입력하세요 : ");
+			return scan.nextLine();
+		}
+		public int champline() {
+			System.out.println("*-------------------------------------------------*");
+			System.out.println("    1. 탑     2. 정글    3. 미드     4. 원딜    5. 서폿 " );
+			System.out.println("*-------------------------------------------------*");
+			System.out.print("라인을 입력하세요 : ");
+			return Integer.parseInt(scan.nextLine());
+		}
+		public LOLDTO insertChamp() {
+			LOLDTO dto = new LOLDTO();
+			System.out.print("챔피언이름 : ");
+			dto.setChampName(scan.nextLine());
+			System.out.print("Q스킬 : ");
+			dto.setqSkill(scan.nextLine());
+			System.out.print("W스킬 : ");
+			dto.setwSkill(scan.nextLine());
+			System.out.print("E스킬 : ");
+			dto.seteSkill(scan.nextLine());
+			System.out.print("R스킬 : ");
+			dto.setrSkill(scan.nextLine());
+			System.out.println("주라인 : 1. 탑    2. 정글    3. 미드    4. 원딜    5.서폿");
+			System.out.print("번호로 입력하세요.");
+			int mline = scan.nextInt();
+			String mLine = null;
+			switch(mline) {
+			case 1:
+				mLine = "탑";
+				break;
+			case 2:
+				mLine = "정글";
+				break;
+			case 3:
+				mLine = "미드";
+				break;
+			case 4:
+				mLine = "원딜";
+				break;
+			case 5:
+				mLine = "서폿";
+				break;
+			}
+			dto.setMainLine(mLine);
+			System.out.println("서브라인 : 1. 탑    2. 정글    3. 미드    4. 원딜    5.서폿");
+			System.out.print("번호로 입력하세요.");
+			int sline = scan.nextInt();
+			String sLine = null;
+			switch(sline) {
+			case 1:
+				sLine = "탑";
+				break;
+			case 2:
+				sLine = "정글";
+				break;
+			case 3:
+				sLine = "미드";
+				break;
+			case 4:
+				sLine = "원딜";
+				break;
+			case 5:
+				sLine = "서폿";
+				break;
+			}
+			dto.setSubLine(sLine);
+			System.out.print("승률을 숫자만 입력하세요 :");
+			dto.setWinPc(scan.nextDouble());
+			scan.nextLine();
+			return dto;
+		}
+		public int champnum() {
+			return Integer.parseInt(scan.nextLine());
+		}
 	
 	
 }

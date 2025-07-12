@@ -6,6 +6,7 @@ import java.util.List;
 
 import jdbc.mvc.dto.BoardDTO;
 import jdbc.mvc.dto.BookDTO;
+import jdbc.mvc.dto.LOLDTO;
 
 /*
  * 뷰 - 결과화면
@@ -52,6 +53,25 @@ public class View {
 			System.out.println("ERROR - boardErrorMsg() ");
 		}
 	}
+	public void lolErrorMsg(String msg) {
+		switch(msg) {
+		case "insert" :
+			System.out.println(" -- 챔피언 추가 실패 -- ");
+			break;
+		case "update" : 
+			System.out.println(" -- 챔피언 정보 수정 실패 -- ");
+			break;
+		case "delete" : 
+			System.out.println(" -- 챔피언 삭제 실패 -- ");
+			break;
+		case "select" : 
+			System.out.println(" -- error : 팸피언 데이터가 존재하지 않습니다. -- ");
+			break;
+		default : 
+			System.out.println("ERROR -  lolErrorMsg() ");
+		}
+	}
+	
 	
 	// 전체 도서목록
 	public void bookListAll(List<BookDTO> list) {
@@ -123,7 +143,29 @@ public class View {
 		}
 	}
 	
-	
-	// 
-	
+	//-------------------------------------------------
+	public void lolListAll(List<LOLDTO> list) {
+		for(LOLDTO dto : list) {
+			System.out.println("⊳ " + dto.getChampId());
+			System.out.println("⊳ " + dto.getChampName());
+			System.out.println("⊳ Q :"+ dto.getqSkill());
+			System.out.println("⊳ W :"+ dto.getwSkill());
+			System.out.println("⊳ E :"+ dto.geteSkill());
+			System.out.println("⊳ R :"+ dto.getrSkill());
+			System.out.println("⊳ 주라인 : " + dto.getMainLine());
+			System.out.println("⊳ 서브라인 : " + dto.getSubLine());
+			System.out.println("⊳ 승률 : " + dto.getWinPc() +"%");
+		}
+	}
+	public void comparechamp(List<LOLDTO> list) {
+		System.out.println("챔피언비교");
+		for(LOLDTO dto : list) {
+			System.out.println("⊳ " + dto.getChampName());
+			System.out.println("⊳ Q :"+ dto.getqSkill());
+			System.out.println("⊳ W :"+ dto.getwSkill());
+			System.out.println("⊳ E :"+ dto.geteSkill());
+			System.out.println("⊳ R :"+ dto.getrSkill());
+			System.out.println("⊳ 승률 : " + dto.getWinPc() +"%");
+		}
+	}
 }
