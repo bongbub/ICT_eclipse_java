@@ -47,7 +47,7 @@ SELECT * FROM mvc_board_tbl;
 DROP TABLE mvc_lol_tbl CASCADE CONSTRAINTS;
 CREATE TABLE mvc_lol_tbl(
 	champId		NUMBER(7)			PRIMARY KEY,
-	champName	varchar2(10)		NOT NULL,	--챔피언명
+	champName	varchar2(50)		NOT NULL,	--챔피언명
 	qSkill		varchar2(50)		NOT NULL,
 	wSkill		varchar2(50)		NOT NULL,
 	eSkill		varchar2(50)		NOT NULL,
