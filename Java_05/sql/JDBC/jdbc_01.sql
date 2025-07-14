@@ -59,10 +59,29 @@ CREATE TABLE mvc_lol_tbl(
 
 SELECT * FROM mvc_lol_tbl;
 
+INSERT INTO mvc_lol_tbl (CHAMPID, CHAMPNAME, QSKILL, WSKILL, ESKILL, RSKILL, MAINLINE, SUBLINE, WINPC)
+ VALUES ((SELECT nvl(max(champId)+1,1) FROM MVC_LOL_TBL), '룰루', '반짝반짝 창', '변덕쟁이', '도와줘, 픽스!', '급성장', '서폿', '탑', 50.53);
 
-
-
-
+INSERT INTO mvc_lol_tbl (CHAMPID, CHAMPNAME, QSKILL, WSKILL, ESKILL, RSKILL, MAINLINE, SUBLINE, WINPC)
+ VALUES ((SELECT nvl(max(champId)+1,1) FROM MVC_LOL_TBL), '시비르', '부메랑 검', '튕기는 부메랑', '주문 방어막', '사냥 개시', '원딜', '미드', 52.24);
+INSERT INTO mvc_lol_tbl (CHAMPID, CHAMPNAME, QSKILL, WSKILL, ESKILL, RSKILL, MAINLINE, SUBLINE, WINPC)
+ VALUES ((SELECT nvl(max(champId)+1,1) FROM MVC_LOL_TBL), '브라움', '동상', '내가 지킨다', '불굴', '빙하 균열', '서폿', '서폿', 52.29);
+INSERT INTO mvc_lol_tbl (CHAMPID, CHAMPNAME, QSKILL, WSKILL, ESKILL, RSKILL, MAINLINE, SUBLINE, WINPC)
+ VALUES ((SELECT nvl(max(champId)+1,1) FROM MVC_LOL_TBL), '리신', '음파 / 공명의 일격', '방호 / 강철의 의지', '폭풍 / 무력화', '용의 분노', '정글', '탑', 51.34);
+INSERT INTO MVC_LOL_TBL (CHAMPID, CHAMPNAME, QSKILL, WSKILL, ESKILL, RSKILL, MAINLINE, SUBLINE, WINPC)
+ VALUES ((SELECT nvl(max(champId)+1,1) FROM MVC_LOL_TBL), '루시안', '꿰뚫는 빛', '타는 불길', '끈질긴 추격', '빛의 심판', '원딜', '미드', 51.36);
+INSERT INTO MVC_LOL_TBL (CHAMPID, CHAMPNAME, QSKILL, WSKILL, ESKILL, RSKILL, MAINLINE, SUBLINE, WINPC)
+ VALUES ((SELECT nvl(max(champId)+1,1) FROM MVC_LOL_TBL), '판테온', '혜성의 창', '방호의 도약', '방패 돌격', '거대 유성', '정글', '서폿', 50.58);
+INSERT INTO MVC_LOL_TBL (CHAMPID, CHAMPNAME, QSKILL, WSKILL, ESKILL, RSKILL, MAINLINE, SUBLINE, WINPC)
+ VALUES ((SELECT nvl(max(champId)+1,1) FROM MVC_LOL_TBL), '조이', '통통별', '주문도둑', '헤롱헤롱쿨쿨방울', '차원넘기', '미드', '서폿', 52.00);
+INSERT INTO MVC_LOL_TBL (CHAMPID, CHAMPNAME, QSKILL, WSKILL, ESKILL, RSKILL, MAINLINE, SUBLINE, WINPC)
+ VALUES ((SELECT nvl(max(champId)+1,1) FROM MVC_LOL_TBL), '트위스티드 페이트', '와일드 카드', '카드 뽑기', '속임수 덱', '운명', '미드', '탑', 51.76);
+INSERT INTO MVC_LOL_TBL (CHAMPID, CHAMPNAME, QSKILL, WSKILL, ESKILL, RSKILL, MAINLINE, SUBLINE, WINPC)
+ VALUES ((SELECT nvl(max(champId)+1,1) FROM MVC_LOL_TBL), '갱플랭크', '혀어어어업상', '괴혈병치료', '화약통', '포탄 셰레', '탑', '미드', 50.75);
+INSERT INTO MVC_LOL_TBL (CHAMPID, CHAMPNAME, QSKILL, WSKILL, ESKILL, RSKILL, MAINLINE, SUBLINE, WINPC)
+ VALUES ((SELECT nvl(max(champId)+1,1) FROM MVC_LOL_TBL), '이렐리아', '칼날 쇄도', '저항의 춤', '쌍검협무', '선봉진격검', '탑', '미드', 51.16);
+INSERT INTO MVC_LOL_TBL (CHAMPID, CHAMPNAME, QSKILL, WSKILL, ESKILL, RSKILL, MAINLINE, SUBLINE, WINPC)
+ VALUES ((SELECT nvl(max(champId)+1,1) FROM MVC_LOL_TBL), '르블랑', '악의의 인장', '왜곡', '환영사슬', '모방', '미드', '서폿', 50.99);
 
 
 

@@ -13,7 +13,7 @@
 	<hr>
 	
 	
-	<form method="post" action="1_calc_next.jsp">
+	<form method="post" action="2_calc_next.jsp">
 		<input type="text" name="num1" size="10">
 		
 		<select name="opr">

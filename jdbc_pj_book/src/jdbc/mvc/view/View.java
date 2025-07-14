@@ -160,12 +160,33 @@ public class View {
 	public void comparechamp(List<LOLDTO> list) {
 		System.out.println("챔피언비교");
 		for(LOLDTO dto : list) {
+			System.out.println("⊳ ------------------------------");
 			System.out.println("⊳ " + dto.getChampName());
 			System.out.println("⊳ Q :"+ dto.getqSkill());
 			System.out.println("⊳ W :"+ dto.getwSkill());
 			System.out.println("⊳ E :"+ dto.geteSkill());
 			System.out.println("⊳ R :"+ dto.getrSkill());
 			System.out.println("⊳ 승률 : " + dto.getWinPc() +"%");
+		}
+		if(list.size() == 2) {
+			LOLDTO ch1 = list.get(0);
+			LOLDTO ch2 = list.get(1);
+			
+			double win1 = ch1.getWinPc();
+			double win2 = ch2.getWinPc();
+			System.out.println("------승률 비교 ------");
+			if(win1>win2) {
+				System.out.println(" ==================================      ");
+				System.out.println("현재 승률이 더 높은 챔피언은 ▶▶["+ ch1.getChampName()+"]◀◀ 입니다!");
+				System.out.println(" ==================================      ");
+			}
+			else if(win1<win2) {
+				System.out.println(" ==================================      ");
+				System.out.println("현재 승률이 더 높은 챔피언은 ▶▶["+ ch2.getChampName()+"]◀◀ 입니다!");
+				System.out.println(" ==================================      ");
+			}
+		}else {
+			System.out.println("-- error : 챔피언 수 오류 --");
 		}
 	}
 }

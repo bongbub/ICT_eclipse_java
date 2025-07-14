@@ -290,6 +290,8 @@ public class Menu {
 			System.out.println("이전 메뉴");
 			System.out.println("");
 			return;
+		default :
+			System.out.println("메뉴를 다시 선택해주세요.");
 		}
 		
 		}
@@ -362,6 +364,8 @@ public class Menu {
 			case 5:
 				sLine = "서폿";
 				break;
+			default :
+				System.out.println("정확한 번호를 입력해주세요. ");			
 			}
 			dto.setSubLine(sLine);
 			System.out.print("승률을 숫자만 입력하세요 :");

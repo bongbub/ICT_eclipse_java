@@ -12,6 +12,17 @@ import jdbc.mvc.dto.LOLDTO;
 
 public class LOLDAOImpl implements LOLDAO{
 	
+	// 싱글톤
+	private static LOLDAOImpl instance = new LOLDAOImpl();
+	private LOLDAOImpl() {};
+	public static LOLDAOImpl getInstance() {
+		if(instance == null) {
+			instance = new LOLDAOImpl();
+		}
+		return instance;
+	}
+	
+	
 	// DB처리
 	String dbUrl = "jdbc:oracle:thin:@localhost:1521/xe";
 	String dbID = "scott_05";
@@ -252,7 +263,7 @@ public class LOLDAOImpl implements LOLDAO{
 
 	@Override
 	public List<LOLDTO> daoCompareChamp(String champName, String champName2) {
-		String query = "SELECT * FROM mvc_lol_tbl WHERE champName like ? AND champName like ?";
+		String query = "SELECT * FROM mvc_lol_tbl WHERE champName like ? OR champName like ?";
 		List<LOLDTO> list = new ArrayList<LOLDTO>();
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbID, dbPassword);

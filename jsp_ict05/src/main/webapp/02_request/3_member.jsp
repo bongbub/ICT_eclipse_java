@@ -8,7 +8,7 @@
 </head>
 <body>
 	<h3> 내장객체 - request 객체 </h3>
-	<form action="2_member_next.jsp" method="post">
+	<form action="3_member_next.jsp" method="post">
 		<table border="1" cellspacing="0" cellpadding="10">
 			<tr>
 				<th align="right"> 아이디 : </th>
