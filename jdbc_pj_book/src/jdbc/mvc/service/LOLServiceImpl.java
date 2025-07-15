@@ -9,6 +9,7 @@ import jdbc.mvc.dto.LOLDTO;
 public class LOLServiceImpl implements LOLService{
 
 	/* LOLDAOImpl dao = new LOLDAOImpl(); */
+	LOLDAOImpl dao = LOLDAOImpl.getInstance();
 	
 	@Override
 	public List<LOLDTO> serSelectChamp(String champName) {

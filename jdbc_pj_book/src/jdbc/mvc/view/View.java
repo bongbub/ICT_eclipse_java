@@ -65,7 +65,7 @@ public class View {
 			System.out.println(" -- 챔피언 삭제 실패 -- ");
 			break;
 		case "select" : 
-			System.out.println(" -- error : 팸피언 데이터가 존재하지 않습니다. -- ");
+			System.out.println(" -- error : 챔피언 데이터가 존재하지 않습니다. -- ");
 			break;
 		default : 
 			System.out.println("ERROR -  lolErrorMsg() ");
@@ -155,6 +155,7 @@ public class View {
 			System.out.println("⊳ 주라인 : " + dto.getMainLine());
 			System.out.println("⊳ 서브라인 : " + dto.getSubLine());
 			System.out.println("⊳ 승률 : " + dto.getWinPc() +"%");
+			System.out.println(" - - - - - - - - - - - - - - - -");
 		}
 	}
 	public void comparechamp(List<LOLDTO> list) {
