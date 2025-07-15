@@ -29,7 +29,7 @@
 				</tr>
 				<tr>
 					<td align="right">비밀번호</td>
-					<td><input type="text" name="user_pwd" size="30" required placeholder="비밀번호를 입력하세요"></td>
+					<td><input type="password" name="user_pwd" size="30" required placeholder="비밀번호를 입력하세요"></td>
 				</tr>
 				<tr>
 					<td align="right">이름</td>
