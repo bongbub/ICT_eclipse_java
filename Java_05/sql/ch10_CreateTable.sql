@@ -16,14 +16,19 @@
 -- DCL(Data Control Language : 데이터 제어) : GRANT, REVOKE
 -- TCL(Transaction Control Language : 트랜잭션 콘트롤 제어) : COMMIT, ROLLBACK
 */
-
-
- -- 회원정보 테이블 삭제
- DROP TABLE member_tbl;
  
  
  -- 테이블 목록 조회
  -- SELECT * FROM tab;				-- => DBeaver에선 지원 안하는 명령어
+
+  -- 데이터 확인
+ -- desc member_tbl   -- 테이블 구조 확인 => DBeaver에선 지원 안하는 명령어
+ 
+ 
+ 
+ 
+ -- 회원정보 테이블 삭제
+ DROP TABLE member_tbl;
  
  -- 회원정보 테이블 생성
  CREATE TABLE member_tbl(   					-- MEMBER_TBL 이라는 테이블 생성
@@ -34,14 +39,7 @@
 	mem_address varchar(100) 
  );
  
- 
- -- 데이터 확인
- -- desc member_tbl   -- 테이블 구조 확인 => DBeaver에선 지원 안하는 명령어
- SELECT *
-   FROM member_tbl;
- 
- 
- 
+ SELECT * FROM member_tbl;
  
  
  /* 

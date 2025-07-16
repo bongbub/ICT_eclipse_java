@@ -23,7 +23,6 @@ public class LOLController {
 		}
 	}
 				
-				
 	// 2. 라인별 챔피언 검색
 	public void selectLine(int mainLine) {
 		System.out.println("controller - selectLine()");
