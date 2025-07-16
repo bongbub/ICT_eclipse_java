@@ -82,6 +82,7 @@ public class LOLController {
 	// 7. 메타 챔피언 추천
 	public void metaChampRcmm(int lineNum) {
 		System.out.println("controller - metaChampRcmm()");
+		System.out.println(" == 메타 챔피언 추천 ==");
 		List<LOLDTO> list = service.serMetaChamp(lineNum);
 		if(!list.isEmpty()) {
 			view.lolListAll(list);

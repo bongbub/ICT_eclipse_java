@@ -241,10 +241,11 @@ public class Menu {
 		return scan.nextLine();
 	}
 	//------------------------------------------------------------------------------------
-	// 3. 찜 메뉴
+	// 3. 게임 메뉴
 	public void lol_menu() {
+		while(true) {
 		System.out.println("");
-		System.out.println("찜 메뉴 (like_menu)");
+		System.out.println(" League of Legends (lol_menu)");
 		System.out.println("*-------------------------------------------------*");
 		System.out.println("    1. 챔피언 검색     2.라인별 검색     3. 전체 챔피언 조회 " );
 		System.out.println("*-------------------------------------------------*");
@@ -258,40 +259,42 @@ public class Menu {
 		int menuNo = scan.nextInt();
 		scan.nextLine();
 		
-		switch(menuNo) {
-		case 1:
-			lol.selectChamp(champNm());
-			break;
-		case 2:
-			lol.selectLine(champline());
-			break;
-		case 3:
-			lol.allChamp();
-			break;
-		case 4:
-			lol.addChamp(insertChamp());
-			break;
-		case 5:
-			System.out.print("검색할 챔피언의 번호를 입력하세요 :");
-			lol.updateChamp(champnum(), insertChamp());
-			break;
-		case 6:
-			System.out.print("삭제할 챔피언의 번호를 입력하세요 :");
-			lol.deleteChamp(champnum());
-			break;
-		case 7:
-			lol.metaChampRcmm(champline());
-			break;
-		case 8:
-			lol.compareChamp(champNm(), champNm2());
-			break;
-			
-		case 9:
-			System.out.println("이전 메뉴");
-			System.out.println("");
-			return;
-		default :
-			System.out.println("메뉴를 다시 선택해주세요.");
+		
+			switch(menuNo) {
+			case 1:
+				lol.selectChamp(champNm());
+				break;
+			case 2:
+				lol.selectLine(champline());
+				break;
+			case 3:
+				lol.allChamp();
+				break;
+			case 4:
+				lol.addChamp(insertChamp());
+				break;
+			case 5:
+				System.out.print("검색할 챔피언의 번호를 입력하세요 :");
+				lol.updateChamp(champnum(), insertChamp());
+				break;
+			case 6:
+				System.out.print("삭제할 챔피언의 번호를 입력하세요 :");
+				lol.deleteChamp(champnum());
+				break;
+			case 7:
+				lol.metaChampRcmm(champline());
+				break;
+			case 8:
+				lol.compareChamp(champNm(), champNm2());
+				break;
+				
+			case 9:
+				System.out.println("이전 메뉴");
+				System.out.println("");
+				return;
+			default :
+				System.out.println("메뉴를 다시 선택해주세요.");
+			}
 		}
 		
 		}

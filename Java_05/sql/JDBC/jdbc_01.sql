@@ -57,7 +57,7 @@ CREATE TABLE mvc_lol_tbl(
 	winPc		number(5,2)			
 );
 
-SELECT * FROM mvc_lol_tbl;
+SELECT * FROM mvc_lol_tbl ORDER BY champId;
 
 INSERT INTO mvc_lol_tbl (CHAMPID, CHAMPNAME, QSKILL, WSKILL, ESKILL, RSKILL, MAINLINE, SUBLINE, WINPC)
  VALUES ((SELECT nvl(max(champId)+1,1) FROM MVC_LOL_TBL), '룰루', '반짝반짝 창', '변덕쟁이', '도와줘, 픽스!', '급성장', '서폿', '탑', 50.53);

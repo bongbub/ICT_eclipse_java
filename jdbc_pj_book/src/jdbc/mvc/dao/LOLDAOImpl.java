@@ -73,7 +73,7 @@ public class LOLDAOImpl implements LOLDAO{
 
 	@Override
 	public List<LOLDTO> daoSelectLine(String mainLine) {
-		String query = "SELECT * FROM mvc_lol_tbl WHERE mainLine like ?";
+		String query = "SELECT * FROM mvc_lol_tbl WHERE mainLine like ? ORDER BY champId";
 		List<LOLDTO> list = new ArrayList<LOLDTO>();
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbID, dbPassword);
