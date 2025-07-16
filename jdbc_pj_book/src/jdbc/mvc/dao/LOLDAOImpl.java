@@ -226,13 +226,32 @@ public class LOLDAOImpl implements LOLDAO{
 	}
 
 	@Override
-	public List<LOLDTO> daoMetaChamp() {
-		String query = "SELECT * FROM (SELECT * FROM mvc_lol_tbl ORDER BY winPc DESC) WHERE ROWNUM <= 3";
+	public List<LOLDTO> daoMetaChamp(int lineNum) {
+		String query = "SELECT * FROM (SELECT * FROM mvc_lol_tbl ORDER BY winPc DESC) WHERE ROWNUM <= 3 AND mainLine = ?";
 		List<LOLDTO> list = new ArrayList<LOLDTO>();
 		
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbID, dbPassword);
 			pstmt = conn.prepareStatement(query);
+			String linestr = "";
+			switch(lineNum) {
+			case 1:
+				linestr = "탑";
+				break;
+			case 2:
+				linestr = "정글";
+				break;
+			case 3:
+				linestr = "미드";
+				break;
+			case 4:
+				linestr = "원딜";
+				break;
+			case 5:
+				linestr = "서폿";
+				break;
+			}
+			pstmt.setString(1, linestr);
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				LOLDTO dto = new LOLDTO();

@@ -1,8 +1,6 @@
 package jdbc.mvc.controller;
 
 import java.util.List;
-import java.util.ServiceLoader;
-
 import jdbc.mvc.dto.LOLDTO;
 import jdbc.mvc.service.LOLServiceImpl;
 import jdbc.mvc.view.View;
@@ -82,9 +80,9 @@ public class LOLController {
 	}
 	
 	// 7. 메타 챔피언 추천
-	public void metaChampRcmm() {
+	public void metaChampRcmm(int lineNum) {
 		System.out.println("controller - metaChampRcmm()");
-		List<LOLDTO> list = service.serMetaChamp();
+		List<LOLDTO> list = service.serMetaChamp(lineNum);
 		if(!list.isEmpty()) {
 			view.lolListAll(list);
 		}

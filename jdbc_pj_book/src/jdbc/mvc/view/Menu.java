@@ -280,7 +280,7 @@ public class Menu {
 			lol.deleteChamp(champnum());
 			break;
 		case 7:
-			lol.metaChampRcmm();
+			lol.metaChampRcmm(champline());
 			break;
 		case 8:
 			lol.compareChamp(champNm(), champNm2());
@@ -307,7 +307,7 @@ public class Menu {
 			System.out.println("*-------------------------------------------------*");
 			System.out.println("    1. 탑     2. 정글    3. 미드     4. 원딜    5. 서폿 " );
 			System.out.println("*-------------------------------------------------*");
-			System.out.print("라인을 입력하세요 : ");
+			System.out.print("라인 번호를 입력하세요 : ");
 			return Integer.parseInt(scan.nextLine());
 		}
 		public LOLDTO insertChamp() {

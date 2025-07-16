@@ -52,8 +52,8 @@ CREATE TABLE mvc_lol_tbl(
 	wSkill		varchar2(50)		NOT NULL,
 	eSkill		varchar2(50)		NOT NULL,
 	rSkill		varchar2(50)		NOT NULL,
-	mainLine	varchar2(10)		NOT NULL,
-	subLine		varchar2(10)		NOT NULL,
+	mainLine	varchar2(20)		NOT NULL,
+	subLine		varchar2(20)		NOT NULL,
 	winPc		number(5,2)			
 );
 
@@ -82,7 +82,6 @@ INSERT INTO MVC_LOL_TBL (CHAMPID, CHAMPNAME, QSKILL, WSKILL, ESKILL, RSKILL, MAI
  VALUES ((SELECT nvl(max(champId)+1,1) FROM MVC_LOL_TBL), '이렐리아', '칼날 쇄도', '저항의 춤', '쌍검협무', '선봉진격검', '탑', '미드', 51.16);
 INSERT INTO MVC_LOL_TBL (CHAMPID, CHAMPNAME, QSKILL, WSKILL, ESKILL, RSKILL, MAINLINE, SUBLINE, WINPC)
  VALUES ((SELECT nvl(max(champId)+1,1) FROM MVC_LOL_TBL), '르블랑', '악의의 인장', '왜곡', '환영사슬', '모방', '미드', '서폿', 50.99);
-
 
 
 

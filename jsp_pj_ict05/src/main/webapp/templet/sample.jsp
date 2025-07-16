@@ -25,7 +25,7 @@
 
 	<div class="wrap">
 		<!-- header 시작 -->
-		<%@ include file="header.jsp" %>
+		<%@ include file="../common/header.jsp" %>
 
 		<!-- header 끝 -->
 		<!-- 컨텐츠 시작 -->
@@ -37,7 +37,7 @@
 		
 		
 		<!-- footer 시작 -->
-		<%@ include file="footer.jsp" %>
+		<%@ include file="../common/footer.jsp" %>
 		<!-- footer 끝 -->
 		
 	</div>

@@ -46,7 +46,8 @@ webapp(루트)
 ==============================================================
 
 6. customer > join > join.jsp  joinAction.jsp
-join.html joinAction.html을 join.jsp joinAction.jsp에 붙여넣고, sample.jsp 참고해서 header, footer include시킨다. css 경로 수정
+sample.jsp참고해서 join.jsp joinAction.jsp 작성, 
+header, footer include시킨다. css 경로 수정
 
 ==============================================================
 

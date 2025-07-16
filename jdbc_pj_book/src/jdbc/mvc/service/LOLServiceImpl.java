@@ -69,9 +69,9 @@ public class LOLServiceImpl implements LOLService{
 	}
 
 	@Override
-	public List<LOLDTO> serMetaChamp() {
+	public List<LOLDTO> serMetaChamp(int lineNum) {
 		List<LOLDTO> list = new ArrayList<LOLDTO>();
-		list = dao.daoMetaChamp();
+		list = dao.daoMetaChamp(lineNum);
 		return list;
 	}
 

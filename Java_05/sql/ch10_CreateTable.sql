@@ -88,7 +88,6 @@
  *  WHERE 조건절
  */
  
- 
  -- 김태희가 '서울시 서초구'에서 '맨하튼'으로 이민을 갔고,
  -- 'kth@naver.com'에서 'kth@gmail.com'으로 바꿈
  UPDATE member_tbl

@@ -26,7 +26,7 @@ public interface LOLService {
 	public int serDeleteChamp(int champId);
 	
 	// 7. 메타 챔피언 추천
-	public List<LOLDTO> serMetaChamp();
+	public List<LOLDTO> serMetaChamp(int lineNum);
 	
 	// 8. 챔피언 비교
 	public List<LOLDTO> serCompareChamp(String champName, String champName2);

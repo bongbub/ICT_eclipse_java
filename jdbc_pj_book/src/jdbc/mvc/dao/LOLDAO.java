@@ -25,7 +25,7 @@ public interface LOLDAO {
 	public int daoDeleteChamp(int champId);
 	
 	// 7. 메타 챔피언 추천
-	public List<LOLDTO> daoMetaChamp();
+	public List<LOLDTO> daoMetaChamp(int lineNum);
 	
 	// 8. 챔피언 비교
 	public List<LOLDTO> daoCompareChamp(String champName, String champName2);

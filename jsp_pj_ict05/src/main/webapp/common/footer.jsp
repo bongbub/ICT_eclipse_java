@@ -27,10 +27,10 @@
 		</div>
 		
 		<div class="footer_info_company">
-         <span>법인명 : ICTcopp</span>
-         <span>대표 : 김태희</span>
-         <span>사업자번호 : 123-7890</span>
-         <span>사업자 소재지 : 서울시 마포구 신수동</span>
+         <span>법인명 : ICTcopp &nbsp;&nbsp;</span>
+         <span>대표 : 김태희&nbsp;&nbsp;</span>
+         <span>사업자번호 : 123-7890&nbsp;&nbsp;</span>
+         <span>사업자 소재지 : 서울시 마포구 신수동&nbsp;&nbsp;</span>
       </div>
 	</div>
 	
