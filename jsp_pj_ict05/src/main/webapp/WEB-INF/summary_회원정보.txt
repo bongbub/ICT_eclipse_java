@@ -47,11 +47,16 @@ webapp(루트)
 
 6. customer > join > join.jsp  joinAction.jsp
 sample.jsp참고해서 join.jsp joinAction.jsp 작성, 
-header, footer include시킨다. css 경로 수정
+
+header.jsp, footer.jsp include시키고 경로 수정한다. 
+resources > css > customer > join.css 작성
+resources > js > customer > join.js 작성
 
 ==============================================================
 
 [ BACKEND : 	]
+
+** DB 테이블 생성 후에 DTO(=VO:Value Object)를 만드는 것을 권장!!!
 
 1. Controller - 패키지 : pj.mvc.jsp.controller
                        - new Servlet >  CustomerController
@@ -59,7 +64,8 @@ header, footer include시킨다. css 경로 수정
                        			customer : *.do   |     admin :  *.ad 
 
 2. Model(DTO + DAO)
-	DTO	 - pj.mvc.jsp.dto - CustomerDTO.java
+    --> 패키지는, Java Resources 하위> src/main/java 하위에 생성한다
+	DTO	 - (패키지)pj.mvc.jsp.dto - CustomerDTO.java
 				
 	DAO	 / DAOImpl -    패키지 : pj.mvc.jsp.dao
 						- CustomerDAO.java : 인터페이스
@@ -81,8 +87,8 @@ header, footer include시킨다. css 경로 수정
 <script src="https://kit.fontawesome.com/b435fbc087.js"  crossorigin="anonymous"></script>
 <script src="/jsp_pj_ict05/resources/js/customer/main.js"  defer></script>			
 
-<%@ include file="../common/header.jsp"  %>
-<%@ include file="../common/footer.jsp"  %>
+<%@ include file="../../common/header.jsp"  %>
+<%@ include file="../../common/footer.jsp"  %>
 
 
 
@@ -130,6 +136,10 @@ CREATE TABLE mvc_customer_tbl(
 	user_email      VARCHAR2(50)    NOT NULL,          -- 이메일
 	user_regdate    TIMESTAMP       DEFAULT sysdate    -- 가입일
 ); 
+
+
+테이블 만든 후에는 DTO를 만들어라
+
 
 8. Servers > context.xml
  	<!-- 커넥션풀(DBCP: DataBase Connection Pool 방식) => Servers > Tomcat > context.xml
