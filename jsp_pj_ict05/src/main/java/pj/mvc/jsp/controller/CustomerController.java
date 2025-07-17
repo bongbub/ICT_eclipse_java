@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pj.mvc.jsp.service.CustomerServiceImpl;
+
 @WebServlet("*.do")	// 진입점
 public class CustomerController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -49,20 +51,28 @@ public class CustomerController extends HttpServlet {
 		String url = uri.substring(contextPath.length());	// uri.substring(시작위치);
 		String viewPage = "";		// 이동할 JSP 페이지
 		
+		// ServiceImpl
+		CustomerServiceImpl service = new CustomerServiceImpl();
+		
+		
 		// 첫 페이지
 		if(url.equals("/main.do") || (url.equals("/*.do"))) {	// main.do로 올때도, *.do로 올때도 여길 탄다
-			System.err.println(" <<< url => /main.do >>> ");
+			System.out.println(" <<< url => /main.do >>> ");
 			viewPage = "/common/main.jsp";
 		}
 		// [회원가입]
 		// 회원가입 페이지로 이동
 		else if(url.equals("/join.do")) {
+			
 			viewPage = "/customer/join/join.jsp";
 		}
+		// 회원가입 버튼 클릭
 		else if(url.equals("/joinAction.do")) {
 			System.out.println(" <<< url ==> /joinAction.do >>> ");
 			
-			viewPage = "/customer/joinAction.jsp";
+			viewPage = "/customer/join/joinAction.jsp";
+			
+			service.signInAction(request, response);
 		}
 		// [로그인]
 		else if(url.equals("/login.do")){

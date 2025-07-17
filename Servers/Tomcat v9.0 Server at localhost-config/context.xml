@@ -26,4 +26,27 @@
     <!--
     <Manager pathname="" />
     -->
+       
+   <!-- 커넥션풀(DBCP: DataBase Connection Pool 방식) => Servers > Tomcat > context.xml
+    => 톰캣 재설치시 추가해야 하며, 안하면 DB연결이 안된다.
+    => name이 식별자이므로 중복되면 안되고, lookup을 통해 검색을 한다.
+    Class.forName("oracle.jdbc.driver.OracleDriver");  // WEB-INF/lib 폴더에 jdbc6.jar 파일 추가하고 새로고침
+    String dbUrl = "jdbc:oracle:thin:@localhost:1521/xe";
+	String dbID = "scott_05";
+	String dbPassword="tiger";
+    -->
+    <Resource
+    	author="Container"
+    	name="jdbc/jsp_pj_ict05"
+    	type="javax.sql.DataSource"
+    	driverClassName="oracle.jdbc.driver.OracleDriver"
+    	url="jdbc:oracle:thin:@localhost:1521/xe"
+    	username="jsp_pj_ict05"
+    	password="tiger"
+    	maxActive="8"
+    	maxWait="1000"
+     />
+
+     
+    
 </Context>
