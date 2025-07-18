@@ -397,7 +397,7 @@
 													"left": 852,
 													"top": 81,
 													"width": 1,
-													"height": 719
+													"height": 721
 												}
 											],
 											"font": "Arial;13;0",
@@ -405,7 +405,7 @@
 											"left": 816,
 											"top": 40,
 											"width": 72.736328125,
-											"height": 760,
+											"height": 762,
 											"nameCompartment": {
 												"$ref": "AAAAAAGYFnEu/JmFURo="
 											},
@@ -2612,7 +2612,7 @@
 													"left": 538,
 													"top": 656,
 													"width": 14,
-													"height": 144
+													"height": 72
 												}
 											],
 											"font": "Arial;13;0",
@@ -2774,7 +2774,7 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": false,
-													"left": 366,
+													"left": 362,
 													"top": 743,
 													"width": 111.97900390625,
 													"height": 13,
@@ -2798,7 +2798,7 @@
 													"visible": false,
 													"font": "Arial;13;0",
 													"parentStyle": false,
-													"left": 422,
+													"left": 418,
 													"top": 729,
 													"height": 13,
 													"alpha": 1.5707963267948966,
@@ -2820,7 +2820,7 @@
 													"visible": false,
 													"font": "Arial;13;0",
 													"parentStyle": false,
-													"left": 422,
+													"left": 418,
 													"top": 764,
 													"height": 13,
 													"alpha": -1.5707963267948966,
@@ -2841,7 +2841,7 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": false,
-													"left": 545,
+													"left": 538,
 													"top": 760,
 													"width": 14,
 													"height": 28
@@ -2855,7 +2855,7 @@
 											"tail": {
 												"$ref": "AAAAAAGYFnDTzplJFZI="
 											},
-											"points": "299:760;545:760",
+											"points": "299:760;538:760",
 											"nameLabel": {
 												"$ref": "AAAAAAGYFuo/cZvHG1o="
 											},
@@ -3093,6 +3093,122 @@
 											"text": "loginAction.jsp\n회원수정 요청\n(인증페이지)",
 											"horzAlign": 2,
 											"vertAlign": 5
+										},
+										{
+											"_type": "UMLSeqMessageView",
+											"_id": "AAAAAAGYHJDo4DdYxCY=",
+											"_parent": {
+												"$ref": "AAAAAAGYFl0JUZkxYSM="
+											},
+											"model": {
+												"$ref": "AAAAAAGYHJDo4DdXl38="
+											},
+											"subViews": [
+												{
+													"_type": "EdgeLabelView",
+													"_id": "AAAAAAGYHJDo4DdZIB8=",
+													"_parent": {
+														"$ref": "AAAAAAGYHJDo4DdYxCY="
+													},
+													"model": {
+														"$ref": "AAAAAAGYHJDo4DdXl38="
+													},
+													"font": "Arial;13;0",
+													"parentStyle": false,
+													"left": 605,
+													"top": 744,
+													"width": 186.41162109375,
+													"height": 13,
+													"alpha": 1.5707963267948966,
+													"distance": 10,
+													"hostEdge": {
+														"$ref": "AAAAAAGYHJDo4DdYxCY="
+													},
+													"edgePosition": 1,
+													"text": "21 : service.loginAction(req, res)"
+												},
+												{
+													"_type": "EdgeLabelView",
+													"_id": "AAAAAAGYHJDo4Ddas+0=",
+													"_parent": {
+														"$ref": "AAAAAAGYHJDo4DdYxCY="
+													},
+													"model": {
+														"$ref": "AAAAAAGYHJDo4DdXl38="
+													},
+													"visible": false,
+													"font": "Arial;13;0",
+													"parentStyle": false,
+													"left": 698,
+													"top": 729,
+													"height": 13,
+													"alpha": 1.5707963267948966,
+													"distance": 25,
+													"hostEdge": {
+														"$ref": "AAAAAAGYHJDo4DdYxCY="
+													},
+													"edgePosition": 1
+												},
+												{
+													"_type": "EdgeLabelView",
+													"_id": "AAAAAAGYHJDo4DdbzhM=",
+													"_parent": {
+														"$ref": "AAAAAAGYHJDo4DdYxCY="
+													},
+													"model": {
+														"$ref": "AAAAAAGYHJDo4DdXl38="
+													},
+													"visible": false,
+													"font": "Arial;13;0",
+													"parentStyle": false,
+													"left": 698,
+													"top": 764,
+													"height": 13,
+													"alpha": -1.5707963267948966,
+													"distance": 10,
+													"hostEdge": {
+														"$ref": "AAAAAAGYHJDo4DdYxCY="
+													},
+													"edgePosition": 1
+												},
+												{
+													"_type": "UMLActivationView",
+													"_id": "AAAAAAGYHJDo4Ddc9AA=",
+													"_parent": {
+														"$ref": "AAAAAAGYHJDo4DdYxCY="
+													},
+													"model": {
+														"$ref": "AAAAAAGYHJDo4DdXl38="
+													},
+													"font": "Arial;13;0",
+													"parentStyle": false,
+													"left": 845,
+													"top": 760,
+													"width": 14,
+													"height": 28
+												}
+											],
+											"font": "Arial;13;0",
+											"parentStyle": false,
+											"head": {
+												"$ref": "AAAAAAGYFnEu/JmKUi0="
+											},
+											"tail": {
+												"$ref": "AAAAAAGYFnEW15lqVSM="
+											},
+											"points": "552:760;845:760",
+											"nameLabel": {
+												"$ref": "AAAAAAGYHJDo4DdZIB8="
+											},
+											"stereotypeLabel": {
+												"$ref": "AAAAAAGYHJDo4Ddas+0="
+											},
+											"propertyLabel": {
+												"$ref": "AAAAAAGYHJDo4DdbzhM="
+											},
+											"activation": {
+												"$ref": "AAAAAAGYHJDo4Ddc9AA="
+											}
 										},
 										{
 											"_type": "UMLTextBoxView",
@@ -3401,6 +3517,21 @@
 									"target": {
 										"$ref": "AAAAAAGYFnEW1plj/SU="
 									}
+								},
+								{
+									"_type": "UMLMessage",
+									"_id": "AAAAAAGYHJDo4DdXl38=",
+									"_parent": {
+										"$ref": "AAAAAAGYFl0JUZkwY4g="
+									},
+									"name": "service.loginAction",
+									"source": {
+										"$ref": "AAAAAAGYFnEW1plj/SU="
+									},
+									"target": {
+										"$ref": "AAAAAAGYFnEu/JmDVlY="
+									},
+									"arguments": "req, res"
 								},
 								{
 									"_type": "UMLMessage",
