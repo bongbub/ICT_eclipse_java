@@ -42,6 +42,9 @@
 							<form name="inputform" action="joinAction.do" method="post"
 								onsubmit="return signInCheck()">
 								
+								<!-- 2-1. 중복확인 버튼 안 눌렀을 때 0으로 설정 누르면 1로 변경 -->
+								<input type="hidden" name="hiddenUserId" value="0">
+								
 								<table>
 									<tr>
 										<th> * 아이디 </th>

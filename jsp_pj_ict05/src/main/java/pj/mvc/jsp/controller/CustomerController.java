@@ -55,32 +55,66 @@ public class CustomerController extends HttpServlet {
 		CustomerServiceImpl service = new CustomerServiceImpl();
 		
 		
-		// 첫 페이지
-		if(url.equals("/main.do") || (url.equals("/*.do"))) {	// main.do로 올때도, *.do로 올때도 여길 탄다
+		// 첫 페이지 ------------------------------------------
+		if(url.equals("/main.do")|| url.equals("/*.do")) {	// main.do로 올때도, *.do로 올때도 여길 탄다
 			System.out.println(" <<< url => /main.do >>> ");
 			viewPage = "/common/main.jsp";
 		}
-		// [회원가입]
+		
+		// [회원가입] ------------------------------------------
 		// 회원가입 페이지로 이동
 		else if(url.equals("/join.do")) {
 			
 			viewPage = "/customer/join/join.jsp";
 		}
+		
+		// id 중복확인 버튼 클릭 시
+		else if(url.equals("/idConfirmAction.do")) {
+			System.out.println("  >>> url => .idConfirmAction.do <<< ");
+			// 서비스 호출
+			service.idConfirmAction(request, response);
+			viewPage = "/customer/join/idConfirmAction.jsp";
+		}
+		
+		
 		// 회원가입 버튼 클릭
 		else if(url.equals("/joinAction.do")) {
 			System.out.println(" <<< url ==> /joinAction.do >>> ");
 			
-			viewPage = "/customer/join/joinAction.jsp";
-			
+			// 서비스 호출
 			service.signInAction(request, response);
+			viewPage = "/customer/join/joinAction.jsp";
 		}
-		// [로그인]
+		
+		
+		// [로그인] ----------------------------------------------
+		// 로그인 페이지로 이동
 		else if(url.equals("/login.do")){
-			viewPage = "";
+			System.out.println(" <<< url ==> /login.do >>> ");
+			viewPage = "/customer/login/login.jsp";
+		}
+		
+		// 로그인 처리 페이지
+		else if(url.equals("/loginAction.do")) {
+			System.out.println(" <<< url ==> /loginAction.do >>> ");
+			service.loginAction(request, response);
+			viewPage = "/customer/login/loginAction.jsp";
 		}
 		
 		
-		// RequestDispatcher :서블릿 또는 JSP 요청을 받은 후, 다른 컴포넌트로 요청을 위임하는 클래스
+		// 로그아웃 처리
+		else if(url.equals("/logout.do")) {
+			System.out.println(" <<< url ==> /logout.do >>> ");
+			
+			// 세션삭제 후 viewPage는 main으로
+			request.getSession().invalidate();	// 세션삭제 명령어
+			
+			viewPage = "/common/main.jsp";
+		}
+		
+		
+		
+		// RequestDispatcher :서블릿 또는 JSP 요청을 받은 후, 다른 컴포넌트로 요청을 위임하는 인터페이스
 		// 	클라이언트는 이동을 모름(URL이 바뀌지 않음)
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);  // 페이지 이동을 도움
 		dispatcher.forward(request, response);		// 클라의 요청을 지정한 viewPage로 포워딩(전달)

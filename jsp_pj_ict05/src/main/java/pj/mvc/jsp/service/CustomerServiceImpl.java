@@ -7,6 +7,7 @@ import java.sql.Timestamp;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import pj.mvc.jsp.dao.CustomerDAO;
 import pj.mvc.jsp.dao.CustomerDAOImpl;
@@ -19,6 +20,21 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public void idConfirmAction(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("CustomerServiceImpl - idConfirmAction() ");
+		
+		// 3단계. 화면에서 입력받은 값 가져오기
+		String strId = request.getParameter("user_id");
+		
+		// 4단계. 싱글톤 방식으로 DAO 객체 생성, 다형성 적용
+		CustomerDAO dao = CustomerDAOImpl.getInstance();
+		
+		// 5단계. ID 중복 확인 처리
+		int selectCnt = dao.useridCheck(strId);
+		
+		
+		// 6단계. jsp로 처리 결과 전달
+		request.setAttribute("selectCnt", selectCnt);	// 결과 전달
+		request.setAttribute("strId", strId);
 		
 	}
 	
@@ -78,6 +94,24 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public void loginAction(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("CustomerServiceImpl - loginAction()");
+		
+		// 3단계 : 화면에서 입력받은 값을 가져온다
+		String strId = request.getParameter("user_id");
+		String strPwd = request.getParameter("user_password");
+		// 4단계 : 싱글톤 DAO 호출, 다형성 적용
+		CustomerDAO dao = CustomerDAOImpl.getInstance();
+		
+		// 5단계 : 로그인 처리
+		int loginCnt = dao.idPasswordChk(strId, strPwd);
+		
+		
+		// 6단계 : 로그인 성공시, 세션ID를 설정 ~~~~~~~~ 중요~~~~~~~~~!!
+		if(loginCnt == 1) {	// 로그인 성공
+			// request.getSession().setAttribute("sessionID", strId); 아래 두 줄과 같은건데 짧게 쓰는 법
+			HttpSession session = request.getSession();
+			session.setAttribute("sessionID", strId);
+		}
 		
 	}
 
@@ -85,14 +119,15 @@ public class CustomerServiceImpl implements CustomerService{
 	@Override
 	public void deleteCustomerAction(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		System.out.println("CustomerServiceImpl - deleteCustomerAction()");
+
 	}
 	
 	// 회원정보 인증처리 및 상세페이지 처리
 	@Override
 	public void modifyDetailAction(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		System.out.println("CustomerServiceImpl - modifyDetailAction()");
 	}
 	
 	// 회원정보 수정처리

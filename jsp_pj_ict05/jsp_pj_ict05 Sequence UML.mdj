@@ -100,7 +100,7 @@
 															"font": "Arial;13;0",
 															"parentStyle": true,
 															"left": 256,
-															"width": 106.20263671875,
+															"width": 110.24609375,
 															"height": 13,
 															"text": "(from Interaction1)"
 														},
@@ -151,7 +151,7 @@
 													"left": 292,
 													"top": 81,
 													"width": 1,
-													"height": 778
+													"height": 1191
 												}
 											],
 											"font": "Arial;13;0",
@@ -159,7 +159,7 @@
 											"left": 256,
 											"top": 40,
 											"width": 72.736328125,
-											"height": 819,
+											"height": 1232,
 											"nameCompartment": {
 												"$ref": "AAAAAAGYFnDTzplElrw="
 											},
@@ -223,7 +223,7 @@
 															"font": "Arial;13;0",
 															"parentStyle": true,
 															"left": 512,
-															"width": 106.20263671875,
+															"width": 110.24609375,
 															"height": 13,
 															"text": "(from Interaction1)"
 														},
@@ -274,7 +274,7 @@
 													"left": 545,
 													"top": 81,
 													"width": 1,
-													"height": 778
+													"height": 1231
 												}
 											],
 											"font": "Arial;13;0",
@@ -282,7 +282,7 @@
 											"left": 504,
 											"top": 40,
 											"width": 82.11181640625,
-											"height": 819,
+											"height": 1272,
 											"nameCompartment": {
 												"$ref": "AAAAAAGYFnEW15llahk="
 											},
@@ -346,7 +346,7 @@
 															"font": "Arial;13;0",
 															"parentStyle": true,
 															"left": 864,
-															"width": 106.20263671875,
+															"width": 110.24609375,
 															"height": 13,
 															"text": "(from Interaction1)"
 														},
@@ -469,7 +469,7 @@
 															"font": "Arial;13;0",
 															"parentStyle": true,
 															"left": 1088,
-															"width": 106.20263671875,
+															"width": 110.24609375,
 															"height": 13,
 															"text": "(from Interaction1)"
 														},
@@ -918,9 +918,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": false,
-													"left": 333,
+													"left": 331,
 													"top": 280,
-													"width": 171.25341796875,
+													"width": 175.2080078125,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
@@ -1091,7 +1091,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": false,
 											"left": 72,
-											"top": 520,
+											"top": 568,
 											"width": 184,
 											"height": 88,
 											"text": "JoinAction.jsp\n\n회원가입 처리",
@@ -1108,7 +1108,7 @@
 											"font": "Arial;13;0",
 											"parentStyle": false,
 											"left": 72,
-											"top": 616,
+											"top": 688,
 											"width": 184,
 											"height": 88,
 											"text": "login.jsp\n로그인 요청",
@@ -1136,9 +1136,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": false,
-													"left": 565,
+													"left": 564,
 													"top": 288,
-													"width": 267.33154296875,
+													"width": 269.775390625,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
@@ -1368,9 +1368,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": false,
-													"left": 924,
+													"left": 922,
 													"top": 356,
-													"width": 109.8271484375,
+													"width": 112.78515625,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
@@ -1498,9 +1498,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": false,
-													"left": 569,
+													"left": 568,
 													"top": 364,
-													"width": 264.28466796875,
+													"width": 267.01416015625,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
@@ -1614,9 +1614,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": false,
-													"left": 353,
+													"left": 351,
 													"top": 413,
-													"width": 137.28076171875,
+													"width": 141.375,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
@@ -1730,9 +1730,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": false,
-													"left": 320,
+													"left": 315,
 													"top": 427,
-													"width": 171.69140625,
+													"width": 180.12744140625,
 													"height": 13,
 													"alpha": 1.5839524605366504,
 													"distance": 76.00657866263946,
@@ -1846,9 +1846,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": false,
-													"left": 369,
+													"left": 366,
 													"top": 465,
-													"width": 99.734375,
+													"width": 104.15234375,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
@@ -1964,7 +1964,7 @@
 													"parentStyle": false,
 													"left": 602,
 													"top": 489,
-													"width": 193.63525390625,
+													"width": 193.9462890625,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
@@ -2078,9 +2078,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": false,
-													"left": 894,
+													"left": 892,
 													"top": 504,
-													"width": 165.46435546875,
+													"width": 168.771484375,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
@@ -2194,9 +2194,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": false,
-													"left": 921,
+													"left": 919,
 													"top": 556,
-													"width": 114.88623046875,
+													"width": 119.361328125,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
@@ -2310,9 +2310,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": false,
-													"left": 573,
+													"left": 570,
 													"top": 564,
-													"width": 263.56103515625,
+													"width": 268.5693359375,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
@@ -2426,9 +2426,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": false,
-													"left": 371,
+													"left": 369,
 													"top": 580,
-													"width": 101.892578125,
+													"width": 105.17431640625,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
@@ -2612,7 +2612,7 @@
 													"left": 538,
 													"top": 656,
 													"width": 14,
-													"height": 189
+													"height": 144
 												}
 											],
 											"font": "Arial;13;0",
@@ -2774,9 +2774,9 @@
 													},
 													"font": "Arial;13;0",
 													"parentStyle": false,
-													"left": 368,
+													"left": 366,
 													"top": 743,
-													"width": 106.96435546875,
+													"width": 111.97900390625,
 													"height": 13,
 													"alpha": -4.612721317992635,
 													"distance": 10.04987562112089,
@@ -2999,6 +2999,117 @@
 											"width": 216,
 											"height": 77,
 											"text": "* dto생성 후 setter로 값 전달"
+										},
+										{
+											"_type": "UMLNoteView",
+											"_id": "AAAAAAGYHHa26jcSQ1Y=",
+											"_parent": {
+												"$ref": "AAAAAAGYFl0JUZkxYSM="
+											},
+											"font": "Arial;13;0",
+											"parentStyle": false,
+											"left": 1112,
+											"top": 320,
+											"width": 248,
+											"height": 40,
+											"text": "SELECT * FROM mvc_customer_tbl WHERE user_id =?"
+										},
+										{
+											"_type": "UMLNoteView",
+											"_id": "AAAAAAGYHHchcDcYMMg=",
+											"_parent": {
+												"$ref": "AAAAAAGYFl0JUZkxYSM="
+											},
+											"font": "Arial;13;0",
+											"parentStyle": false,
+											"left": 1112,
+											"top": 480,
+											"width": 288,
+											"height": 113,
+											"text": "String sql = \"INSERT INTO mvc_customer_tbl(user_id, user_password, user_name, user_birthday, user_address, user_hp, user_email, user_regDate) \n\n VALUES (?, ?, ?, ?, ?, ?, ?, ?)\n\n\n"
+										},
+										{
+											"_type": "UMLTextBoxView",
+											"_id": "AAAAAAGYHHnnkDcsFj0=",
+											"_parent": {
+												"$ref": "AAAAAAGYFl0JUZkxYSM="
+											},
+											"fillColor": "#F7F1CC",
+											"font": "Arial;13;0",
+											"parentStyle": false,
+											"left": 72,
+											"top": 808,
+											"width": 184,
+											"height": 88,
+											"text": "loginAction.jsp\n로그인처리",
+											"horzAlign": 2,
+											"vertAlign": 5
+										},
+										{
+											"_type": "UMLTextBoxView",
+											"_id": "AAAAAAGYHHpozDc5L2M=",
+											"_parent": {
+												"$ref": "AAAAAAGYFl0JUZkxYSM="
+											},
+											"fillColor": "#F7F1CC",
+											"font": "Arial;13;0",
+											"parentStyle": false,
+											"left": 72,
+											"top": 920,
+											"width": 184,
+											"height": 88,
+											"text": "loginAction.jsp\n로그아웃 요청",
+											"horzAlign": 2,
+											"vertAlign": 5
+										},
+										{
+											"_type": "UMLTextView",
+											"_id": "AAAAAAGYHHtLOTdBynY=",
+											"_parent": {
+												"$ref": "AAAAAAGYFl0JUZkxYSM="
+											},
+											"fontColor": "#FF0000",
+											"font": "Arial;13;0",
+											"parentStyle": false,
+											"left": 72,
+											"top": 1016,
+											"width": 192,
+											"height": 25,
+											"text": "-- 로그인 상태에서 (25->28) --"
+										},
+										{
+											"_type": "UMLTextBoxView",
+											"_id": "AAAAAAGYHHu/sTdLKbs=",
+											"_parent": {
+												"$ref": "AAAAAAGYFl0JUZkxYSM="
+											},
+											"fillColor": "#F7F1CC",
+											"font": "Arial;13;0",
+											"parentStyle": false,
+											"left": 72,
+											"top": 1080,
+											"width": 184,
+											"height": 88,
+											"text": "loginAction.jsp\n회원수정 요청\n(인증페이지)",
+											"horzAlign": 2,
+											"vertAlign": 5
+										},
+										{
+											"_type": "UMLTextBoxView",
+											"_id": "AAAAAAGYHHvuwzdRNaE=",
+											"_parent": {
+												"$ref": "AAAAAAGYFl0JUZkxYSM="
+											},
+											"fillColor": "#F7F1CC",
+											"font": "Arial;13;0",
+											"parentStyle": false,
+											"left": 72,
+											"top": 1200,
+											"width": 184,
+											"height": 88,
+											"text": "modifyCustomer.jsp\n회원상세페이지 요청",
+											"horzAlign": 2,
+											"vertAlign": 5
 										}
 									]
 								}
@@ -3365,7 +3476,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGYFl0JUJkvKv4="
 							},
-							"name": "Role1"
+							"name": "Role1",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -3373,7 +3485,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGYFl0JUJkvKv4="
 							},
-							"name": "Role2"
+							"name": "Role2",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -3381,7 +3494,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGYFl0JUJkvKv4="
 							},
-							"name": "Role3"
+							"name": "Role3",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -3389,7 +3503,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGYFl0JUJkvKv4="
 							},
-							"name": "Role4"
+							"name": "Role4",
+							"type": ""
 						}
 					]
 				}

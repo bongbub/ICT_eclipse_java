@@ -2,6 +2,7 @@ package pj.mvc.jsp.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javax.naming.InitialContext;		// 주의!
@@ -26,12 +27,12 @@ public class CustomerDAOImpl implements CustomerDAO{
 		return instance;
 	}
 	
-	// 커넥션풀(DBCP : DataBase Connection Pool 방식) - context.xml에 설정
+	// 커넥션풀(DBCP : DataBase Connection Pool 방식) - 톰캣파일(Servers)내에있음 context.xml에 설정
 	private CustomerDAOImpl(){
 		// 디폴트 생성자 내에서 처리
 		try {
 			InitialContext context = new InitialContext();
-			dataSource = (DataSource)context.lookup("java:comp/env/jdbc/jsp_pj_ict05");
+			dataSource = (DataSource)context.lookup("java:comp/env/jdbc/jsp_pj_ict05");	// context.xml의 <Resource.. name명과 같아야함)
 		}catch(NamingException e) {
 			e.printStackTrace();
 		}
@@ -42,7 +43,36 @@ public class CustomerDAOImpl implements CustomerDAO{
 	// ID 중복 확인 처리
 	@Override
 	public int useridCheck(String strId) {
-		return 0;
+		int selectCnt = 0;
+		String query = "SELECT user_id FROM mvc_customer_tbl WHERE user_id =?";
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = dataSource.getConnection();
+			pstmt= conn.prepareStatement(query);
+			
+			pstmt.setString(1, strId.trim());
+			rs = pstmt.executeQuery();
+			
+			// 데이터가 존재하면
+			if(rs.next()) {
+				selectCnt = 1;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return selectCnt;
 	}
 
 	// 회원가입 처리
@@ -92,7 +122,38 @@ public class CustomerDAOImpl implements CustomerDAO{
 	// 로그인 처리 / 회원정보 인증(수정, 탈퇴)
 	@Override
 	public int idPasswordChk(String strId, String password) {
-		return 0;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		int loginCnt = 0;
+		
+		try {
+			String query = "SELECT user_id, user_password FROM mvc_customer_tbl WHERE user_id=? and user_password=?";
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, strId);
+			pstmt.setString(2, password);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				loginCnt = 1;
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		
+		return loginCnt;
 	}
 
 	// 회원정보 인증처리 및 탈퇴처리 

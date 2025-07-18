@@ -48,3 +48,5 @@ CREATE TABLE mvc_customer_tbl(
 -- 테이블 생성했다면, 꼭 해당 스키마를 새로고침을 해야 하위의 테이블 목록에 생성된 것이 보임
 
 SELECT * FROM MVC_CUSTOMER_TBL;
+
+DELETE FROM MVC_CUSTOMER_TBL ;
