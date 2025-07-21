@@ -113,14 +113,59 @@ public class CustomerController extends HttpServlet {
 		}
 		
 		
+		// [회원탈퇴] --------------------------------
+		// 회원탈퇴 - 인증화면
+		else if(url.equals("/deleteCustomer.do")) {
+			System.out.println(" <<< url ==> /deleteCustomer.do >>> ");
+			
+			viewPage = "/customer/mypage/customerinfo/deleteCustomer.jsp";
+		}
+		
+		// 회원탈퇴 처리
+		else if(url.equals("/deleteCustomerAction.do")) {
+			System.out.println(" <<< url ==> /deleteCustomerAction.do >>> ");
+			
+			service.deleteCustomerAction(request, response);
+			viewPage = "/customer/mypage/customerinfo/deleteCustomerAction.jsp";
+		}
+		
+		
+		
+		
+		
+		
+		// [회원 수정] -----------------------------------------------------
+		// 회원수정 - 인증화면
+		else if(url.equals("/modifyCustomer.do")) {
+			System.out.println(" <<< url ==> /modifyCustomer.do >>> ");
+			
+			viewPage = "/customer/mypage/customerinfo/modifyCustomer.jsp";
+		}
+		// 회원수정 - 상세페이지
+		else if(url.equals("/modifyDetailAction.do")) {
+			System.out.println(" <<< url ==> /modifyDetailAction.do >>> ");
+			service.modifyDetailAction(request, response);
+			viewPage = "/customer/mypage/customerinfo/modifyDetailAction.jsp";
+			
+		}
+		
+		// 회원수정 - 수정처리
+		else if(url.equals("/modifyCustomerAction.do")) {
+			System.out.println(" <<< url ==> /modifyCustomerAction.do >>> ");
+			
+			service.modifyCustomerAction(request, response);
+			viewPage="/customer/mypage/customerinfo/modifyCustomerAction.jsp";
+		}
+		
 		
 		// RequestDispatcher :서블릿 또는 JSP 요청을 받은 후, 다른 컴포넌트로 요청을 위임하는 인터페이스
 		// 	클라이언트는 이동을 모름(URL이 바뀌지 않음)
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);  // 페이지 이동을 도움
-		dispatcher.forward(request, response);		// 클라의 요청을 지정한 viewPage로 포워딩(전달)
+		dispatcher.forward(request, response);		// 클라의 요청을 지정한 viewPage로 포워딩(전달), 응답을 그 리소스에서 처리하게 함
 													// 클라는 직접요청한 것이 아니기 때문에 URL 변경 없음
 													// 현재 서블릿의 request, response 객체 그대로 전달. 
-		
+													// <-> sendRedirect()와 기능이 비슷하지만, url이 변경된다는 점, 
+													// 클라이언트가 직접 요청한다는 점, req, res가 새로운 객체로 생성된다는 점이 다르다.													
 	}
 
 }

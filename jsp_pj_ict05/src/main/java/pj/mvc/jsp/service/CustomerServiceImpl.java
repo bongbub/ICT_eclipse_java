@@ -112,7 +112,9 @@ public class CustomerServiceImpl implements CustomerService{
 			HttpSession session = request.getSession();
 			session.setAttribute("sessionID", strId);
 		}
-		
+		else {
+			request.getSession().setAttribute("sessionID", null);
+		}
 	}
 
 	// 회원정보 인증처리 및 탈퇴처리 
@@ -120,21 +122,78 @@ public class CustomerServiceImpl implements CustomerService{
 	public void deleteCustomerAction(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("CustomerServiceImpl - deleteCustomerAction()");
-
+		
+		String strID = (String)request.getSession().getAttribute("sessionID");
+		String strPwd = request.getParameter("user_password");
+		CustomerDAO dao = CustomerDAOImpl.getInstance();
+		int selectCnt = dao.idPasswordChk(strID, strPwd);
+		int deleteCnt = 0;
+		if(selectCnt == 1) {
+			deleteCnt = dao.deleteCustomer(strID);	
+			System.out.println(deleteCnt);
+			if(deleteCnt == 1) {	// 회원이 삭제 되었을 때
+				// 세션삭제
+				request.getSession().invalidate();
+			}
+		}
+		request.setAttribute("selectCnt", selectCnt);
+		request.setAttribute("deleteCnt", deleteCnt);
+		
 	}
 	
-	// 회원정보 인증처리 및 상세페이지 처리
+	// 회원정보 인증처리 및 상세페이지 조회
 	@Override
 	public void modifyDetailAction(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("CustomerServiceImpl - modifyDetailAction()");
+		
+		String strID = (String)request.getSession().getAttribute("sessionID");
+		String strPwd = request.getParameter("user_password");
+		
+		CustomerDAO dao = CustomerDAOImpl.getInstance();
+		CustomerDTO dto =  null;
+		int selectCnt = dao.idPasswordChk(strID, strPwd);
+		if(selectCnt == 1) {
+			dto = dao.getCustomerDetail(strID);
+		}
+		System.out.println(selectCnt);
+		request.setAttribute("selectCnt", selectCnt);
+		request.setAttribute("dto", dto);
 	}
 	
 	// 회원정보 수정처리
 	@Override
 	public void modifyCustomerAction(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("CustomerServiceImpl - modifyCustomerAction()");
 		
+		CustomerDTO dto = new CustomerDTO();
+		
+		dto.setUser_id((String)request.getSession().getAttribute("sessionID"));
+		dto.setUser_password(request.getParameter("user_password"));
+		dto.setUser_name(request.getParameter("user_name"));
+		dto.setUser_birthday(Date.valueOf(request.getParameter("user_birthday")));
+		dto.setUser_address(request.getParameter("user_address"));
+		
+		String hp = "";
+		String hp1 =request.getParameter("user_hp1");
+		String hp2 = request.getParameter("user_hp2");
+		String hp3= request.getParameter("user_hp3");
+		if(!hp1.equals("") && !hp2.equals("")&& !hp3.equals("")) {
+			hp = hp1 + "-" + hp2 + "-" + hp3;
+		}
+		dto.setUser_hp(hp);
+		
+		String eamil1 = request.getParameter("user_email1");
+		String email2 = request.getParameter("user_email2");
+		String email = eamil1 + "@" + email2;
+		dto.setUser_email(email);
+		dto.setUser_regdate(new Timestamp(System.currentTimeMillis()));
+		
+		CustomerDAO dao = CustomerDAOImpl.getInstance();
+		int updateCnt = dao.updateCustomer(dto);
+		System.out.println("updateCnt :"+ updateCnt);
+		System.out.println(dto);
+		request.setAttribute("updateCnt", updateCnt);
 	}
-
 }

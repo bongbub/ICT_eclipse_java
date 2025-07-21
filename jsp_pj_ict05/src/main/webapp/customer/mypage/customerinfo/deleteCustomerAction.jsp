@@ -20,32 +20,44 @@
 <!-- (3-4). 자바스크립트 소스 연결 -->
 <!-- defer : html을 다 읽은 후에 자바 스크립트를 실행해라 -> 페이지가 모두 로딩 된 후 외부 스크립트 실행 -->
 <script src="/jsp_pj_ict05/resources/js/common/main.js" defer></script>
-<script src="/jsp_pj_ict05/resources/js/customer/join.js" defer></script>
 </head>
 <body>
 	<div class="wrap"> 
 		<!-- header 시작 -->
-		<%@ include file="../../common/header.jsp" %>	<!--  customer/webapp/common/header.jsp -->
+		<%@ include file="../../../common/header.jsp" %>	<!--  mypage/customer/webapp/common/header.jsp -->
 		<!-- header 끝 -->
 		 
 		<!-- 컨텐츠 시작 -->
 		<%
-			int insertCnt = (Integer)request.getAttribute("insertCnt");
-			if(insertCnt == 1){
+			int deleteCnt = (Integer)request.getAttribute("deleteCnt");
+			int selectCnt = (Integer)request.getAttribute("selectCnt");
+			out.print("test :"+selectCnt);
+			
+			if(deleteCnt == 1){
 		%>
 			<script type="text/javascript">
-				alert("회원가입 성공!");
-				window.location="/jsp_pj_ict05/login.do";
+				alert("회원탈퇴 성공!");
+				window.location="/jsp_pj_ict05/main.do";
 			</script>
 		<%		
 			}
 			else {
-		%>
-			<script type="text/javascript">
-				alert("회원가입 실패");
-				window.location = "/jsp_pj_ict05/join.do";
-			</script>
-		<%		
+				if(selectCnt == 0){
+				%>	
+					<script type="text/javascript">
+						alert("회원인증 실패");
+						window.location = "/jsp_pj_ict05/deleteCustomer.do";
+					</script>
+			
+				<%	
+				}else if(deleteCnt == 0){
+				%>
+					<script type="text/javascript">
+					alert("회원탈퇴 실패");
+					window.location = "/jsp_pj_ict05/deleteCustomer.do";
+					</script>
+			<%
+				}
 			}
 			
 		%>
@@ -53,7 +65,7 @@
 		
 		
 		<!-- footer 시작 -->
-		<%@ include file="../../common/footer.jsp" %>
+		<%@ include file="../../../common/footer.jsp" %>
 		<!-- footer 끝 -->
 	</div>
 </body>
