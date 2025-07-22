@@ -31,7 +31,7 @@
 		<!-- header 끝 -->
 		<!-- 컨텐츠 시작 -->
 		<div align="center">
-			<h3> main 영역 </h3>
+			<h3> 강아지 귀여워 </h3>
 			<img src="/jsp_pj_ict05/resources/images/main/puppy.jpg" width="500px">
 		</div>
 		<!-- 컨텐츠 끝 -->
