@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+<%@ include file="setting.jsp" %> 	<!-- jstl로 contextPath를 변수(path)로 만들어 둠. 그것을 사용하기 위해 import  -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +16,7 @@
 			<li><img src="" alt=""><i class="fa-solid fa-ghost"></i></li>
 		</ul>
 		<ul class="navbar_menu">
-			<li><a href="/jsp_pj_ict05/main.do">홈</a></li>
+			<li><a href="${path}/main.do">홈</a></li>
 			<li><a href="#">제품소개</a></li>
 			<li><a href="#">Q&A</a></li>
 		</ul>
@@ -22,8 +24,8 @@
 		<ul class="navbar_icons">
 			<li><a href="#"><i class="fa-brands fa-twitter"></i></a></li>
 			<li><a href="#"><i class="fa-brands fa-facebook"></i></a></li>
-			<li><a href="/jsp_pj_ict05/login.do">LOGIN</a></li>
-			<li><a href="/jsp_pj_ict05/join.do">JOIN</a></li>
+			<li><a href="${path}/login.do">LOGIN</a></li>
+			<li><a href="${path}/join.do">JOIN</a></li>
 			<li><a href="#"><i class="fa-solid fa-basket-shopping"></i></a></li>
 			<li><a href="#"><i class="fa-solid fa-user"></i></a></li>
 		</ul>
@@ -37,7 +39,6 @@
 		</a>
 	</nav>
 	<!-- header 끝 -->
-	
 	
 </body>
 </html>

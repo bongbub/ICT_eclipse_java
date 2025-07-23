@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/common/setting.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,17 +11,17 @@
 <title>main</title>
 
 <!-- css -->
-<link rel="stylesheet" href="/jsp_pj_ict05/resources/css/common/header.css">
-<link rel="stylesheet" href="/jsp_pj_ict05/resources/css/common/footer.css">
-<link rel="stylesheet" href="/jsp_pj_ict05/resources/css/customer/join.css">
+<link rel="stylesheet" href="${path}/resources/css/common/header.css">
+<link rel="stylesheet" href="${path}/resources/css/common/footer.css">
+<link rel="stylesheet" href="${path}/resources/css/customer/join.css">
 
 <!--  js -->
 <script src="https://kit.fontawesome.com/8760f92571.js" crossorigin="anonymous"></script>
 
 <!-- (3-4). 자바스크립트 소스 연결 -->
 <!-- defer : html을 다 읽은 후에 자바 스크립트를 실행해라 -> 페이지가 모두 로딩 된 후 외부 스크립트 실행 -->
-<script src="/jsp_pj_ict05/resources/js/common/main.js" defer></script>
-<script src="/jsp_pj_ict05/resources/js/customer/join.js" defer></script>
+<script src="${path}/resources/js/common/main.js" defer></script>
+<script src="${path}/resources/js/customer/join.js" defer></script>
 </head>
 <body>
 	<div class="wrap">
@@ -62,9 +63,9 @@
 									</tr>
 									<tr>
 										<th> * 비밀번호(확인) </th>
-										<td>
-											<input type="password" class="input" name="re_password" size="20" placeholder="비밀번호 확인" required>
-										</td>
+											<td>
+												<input type="password" class="input" name="re_password" size="20" placeholder="비밀번호 확인" required>
+											</td>
 									</tr>
 									<tr>
 										<th> * 이름 </th>

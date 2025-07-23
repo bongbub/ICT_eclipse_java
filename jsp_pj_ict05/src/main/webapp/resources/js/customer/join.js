@@ -49,8 +49,9 @@ function signInCheck(){
 	}
 	
 	// 비밀번호 불일치 => 과제
-	
-	
+	if(document.inputform.user_password.value != document.inputform.re_password.value){
+		alert("비밀번호가 일치하지 않습니다.");
+	}
 }
 
 

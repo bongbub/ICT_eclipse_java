@@ -1,8 +1,8 @@
 @charset "UTF-8";
 
-body {
-	width:100%;
+html, body {
 	height:100%;
+	overflow-x:hidden;
 	margin:0;
 }
 
@@ -28,7 +28,7 @@ div #right a {
 .navbar {
 	display: flex;						/* 수평 배치 */
 	width:100%;
-	justify-content : space-between;	/* 시작과 끝은 벽에 붙이고 사이사이 공백 동일 */
+	justify-content : space-evenly;	/* 시작과 끝은 벽에 붙이고 사이사이 공백 동일 */
 	align-items : center;				/* 수평인데 가운데 정렬 */
 	background-color : black;
 	opacity:0.88;
@@ -58,13 +58,19 @@ div #right a {
 
 .navbar_menu li {
 	padding : 8px 30px;
+	background: linear-gradient(180deg, black, transparent);
+	transform: translateY(calc(var(--r) * -2px)) rotate(calc(var(--c) * 1deg));
+  	transition: 0.5s;
 }
 
 
-.navbar_menu li:hover {  /* 마우스 올렸을 때 */
-	background-color : #fae09d;
+.navbar_menu li:hover {  /*마우스 올렸을 때*/
 	border-radius : 4px;
-}
+	transform: rotate(0) scale(1.5);
+	color:black;
+	z-index:1;
+	
+} 
 
 .navbar_icons {
 	margin:0;

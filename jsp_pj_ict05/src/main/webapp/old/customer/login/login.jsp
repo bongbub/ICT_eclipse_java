@@ -58,7 +58,7 @@
 											<div align="right">
 												<input class="inputButton" type="submit" value="로그인">
 												<input class="inputButton" type="reset" value="초기화">
-												<input class="inputButton" type="button" value="회원가입" onclick="window.location='join.do'">
+												<input class="inputButton" type="button" value="회원가입" onclick="window.location='/jsp_pj_ict05/join.do'">
 											</div>
 										</td>
 									</tr>

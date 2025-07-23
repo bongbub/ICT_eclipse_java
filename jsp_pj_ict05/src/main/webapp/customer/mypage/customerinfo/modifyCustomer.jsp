@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/common/setting.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,15 +11,15 @@
 <title>main</title>
 
 <!-- css -->
-<link rel="stylesheet" href="/jsp_pj_ict05/resources/css/common/header.css">
-<link rel="stylesheet" href="/jsp_pj_ict05/resources/css/common/footer.css">
-<link rel="stylesheet" href="/jsp_pj_ict05/resources/css/customer/login.css">
+<link rel="stylesheet" href="${path}/resources/css/common/header.css">
+<link rel="stylesheet" href="${path}/resources/css/common/footer.css">
+<link rel="stylesheet" href="${path}/resources/css/customer/login.css">
 
 <!--  js -->
 <script src="https://kit.fontawesome.com/8760f92571.js" crossorigin="anonymous"></script>
 
-<script src="/jsp_pj_ict05/resources/js/customer/login.js" defer></script>
-<script src="/jsp_pj_ict05/resources/js/common/main.js" defer></script>
+<script src="${path}/resources/js/customer/login.js" defer></script>
+<script src="${path}/resources/js/common/main.js" defer></script>
 </head>
 <body>
 	<div class="wrap">
@@ -40,14 +41,10 @@
 						<div class="join">
 							<form name="passwordform" action="modifyDetailAction.do" method="post"> <!-- 상세 페이지 요청 -->
 								
-								<%
-									String sessionID = (String)request.getSession().getAttribute("sessionID");
-								%>
-								
 								<table>
 									<tr >
 										<th colspan = "2" align="center" > 
-											<span style="color:#FF82AA"><b> <%= sessionID %> </b></span>
+											<span style="color:#FF82AA"><b> ${sessionScope.sessionID} </b></span>
 											<span> <b> 님, 비밀번호를 입력하세요.</b></span>
 										</th>
 									</tr>
@@ -62,7 +59,7 @@
 											<br>
 											<div align="right">
 												<input class="inputButton" type="submit" value="확인">
-												<input class="inputButton" type="button" value="취소" onclick ="window.location='main.do'">
+												<input class="inputButton" type="button" value="취소" onclick ="window.location='${path}/main.do'">
 											</div>
 										</td>
 									</tr>

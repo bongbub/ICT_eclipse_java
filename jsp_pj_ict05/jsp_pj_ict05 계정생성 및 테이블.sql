@@ -36,7 +36,7 @@ alter user jsp_pj_ict05 account unlock;
 DROP TABLE mvc_customer_tbl  CASCADE CONSTRAINTS;
 CREATE TABLE mvc_customer_tbl(
     user_id         VARCHAR2(20)    PRIMARY KEY,    	-- ID
-	user_password   VARCHAR2(20)    NOT NULL,          	-- 비밀번호
+	user_password   VARCHAR2(20)    NOT NULL,          	-- 수정, 삭제용 비밀번호
 	user_name   	VARCHAR2(50)    NOT NULL,          	-- 이름
 	user_birthday   DATE            NOT NULL,          	-- 생년월일    
 	user_address    VARCHAR2(50)    NOT NULL,          	-- 주소
@@ -44,10 +44,57 @@ CREATE TABLE mvc_customer_tbl(
 	user_email      VARCHAR2(50)    NOT NULL,          	-- 이메일
 	user_regdate    TIMESTAMP       DEFAULT sysdate    	-- 가입일
 ); 
-
 -- 테이블 생성했다면, 꼭 해당 스키마를 새로고침을 해야 하위의 테이블 목록에 생성된 것이 보임
 
 SELECT * FROM MVC_CUSTOMER_TBL;
 
+-------------------------
+
+-- jsp_pj_ict05 계정에서 작업
+-- 게시판 테이블
+DROP TABLE mvc_board_tbl CASCADE CONSTRAINT;
+CREATE TABLE mvc_board_tbl (
+	b_num		number(7)		PRIMARY KEY,		-- 글번호
+	b_title 	varchar2(100)	NOT NULL,			-- 글제목
+	b_content 	clob 			NOT NULL,			-- 글내용
+	b_writer	varchar2(30)	NOT NULL,			-- 작성자
+	b_password	varchar2(30)	NOT NULL,			-- 수정, 삭제용 비밀번호
+	b_readCnt	NUMBER(6)		DEFAULT 0,			-- 조회수
+	b_regDate 	DATE			DEFAULT sysdate,	-- 작성일
+	b_comment_count number(6)	DEFAULT 0			-- 댓글 개수
+);
+
+SELECT * FROM mvc_board_tbl ORDER BY b_num desc;
+SELECT count(*) FROM mvc_board_tbl;
+
+-- 게시글 입력(다건) -> 목록 확인용   ==> 실행엔 declare부터 end까지 다 잡아서 실행
+DECLARE -- 선언문(프로시저)
+	i 	NUMBER := 1; 	-- 변수 i에 1을 대입
+BEGIN
+	WHILE i <= 991 LOOP
+		INSERT INTO mvc_board_tbl(b_num, b_title, b_content, b_writer, b_password, b_readCnt, b_regDate, b_comment_count)
+			VALUES (i,'글제목'||i, '글내용'||i, '작성자'||i, 1234, 0, sysdate, 0 );
+		i := i+1;
+	END LOOP;
+END;
+
+COMMIT;
+
+-- 게시글 목록
+
+SELECT * 
+  FROM 
+  	(SELECT A.*							-- A 테이블에서 모든 것을 가져와
+		, rownum AS rn
+		FROM 
+		  	(SELECT * FROM mvc_board_tbl
+				ORDER BY b_num DESC)  A		-- 내림차순
+	)
+ WHERE rn BETWEEN 11 AND  20;				-- 1페이지 : rn 1~10, /2페이지 : rn 11~20 /3페이지 : rn : 21~30
+
+-- 내용삭제 --------------------------------
 DELETE FROM MVC_CUSTOMER_TBL ;
+
+DELETE FROM mvc_board_tbl;
+
 

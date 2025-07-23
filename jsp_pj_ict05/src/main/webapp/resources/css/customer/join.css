@@ -30,6 +30,10 @@
 	max-width:900px;
 	margin:40px 10px;
 	height:auto;
+	word-break: break-word;
+	overflow-x: hidden;
+	min-width:300px;
+	
 	}
 	
 	
@@ -50,6 +54,7 @@
 	border-bottom:1px solid #ccc;
 }
 
+
 .input {
 	width:300px;
 	height:40px;
@@ -66,3 +71,16 @@
 	border-radius:4px;
 }
 
+.newWindow {
+	position:relative;
+	width:50%;
+	min-width:400px;
+	align-content: center;
+	max-width:600px;
+	overflow-x:hidden;
+	word-break:break-word;
+}
+.tds {
+	display:flex;
+	flex-direction:column;
+}

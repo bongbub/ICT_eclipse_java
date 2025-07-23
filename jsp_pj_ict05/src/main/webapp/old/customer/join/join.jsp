@@ -73,9 +73,9 @@
 										</td>
 									</tr>
 									<tr>
-										<th> * 생년월일 </th>
+										<th><label for="birth"> * 생년월일 </label></th>
 										<td>
-											<input type="date" class="input" name="user_birthday" size="8" placeholder="- 없이 '19991030'형식으로 작성" required>
+											<input type="date" id ="birth" class="input" name="user_birthday" size="8" placeholder="- 없이 '19991030'형식으로 작성" required>
 										</td>
 									</tr>
 									<tr>

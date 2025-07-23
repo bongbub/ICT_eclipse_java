@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/common/setting.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,13 +11,13 @@
 <title>main</title>
 
 <!-- css -->
-<link rel="stylesheet" href="/jsp_pj_ict05/resources/css/common/header.css">
-<link rel="stylesheet" href="/jsp_pj_ict05/resources/css/common/footer.css">
-<link rel="stylesheet" href="/jsp_pj_ict05/resources/css/customer/login.css">
+<link rel="stylesheet" href="${path}/resources/css/common/header.css">
+<link rel="stylesheet" href="${path}/resources/css/common/footer.css">
+<link rel="stylesheet" href="${path}/resources/css/customer/login.css">
 
 <!--  js -->
 <script src="https://kit.fontawesome.com/8760f92571.js" crossorigin="anonymous"></script>
-<script src="/jsp_pj_ict05/resources/js/common/main.js" defer></script>
+<script src="${path}/resources/js/common/main.js" defer></script>
 </head>
 <body>
 	<div class="wrap">
@@ -38,69 +39,59 @@
 						<div class="join">
 							<form name="loginform" action="loginAction.do" method="post"
 								onsubmit="return loginCheck()">
-								
-								<%
-									String sessionID = (String)request.getSession().getAttribute("sessionID");
-									
-									// 세션이 없는 경우 : 로그인 실패
-									if(sessionID == null){
-								%>
-										<script type="text/javascript">
-										 	alert("◜  아이디 또는 비밀번호가 일치하지 않습니다.   ◝ \n ◟                                 ◞  ");
-										 </script>
-										 <table>
+								<!-- 세션이 없는 경우 : 로그인 실패 -->
+								<c:if test="${sessionScope.sessionID == null }">
+									<script type="text/javascript">
+									 	alert("◜  아이디 또는 비밀번호가 일치하지 않습니다.   ◝ \n ◟                                 ◞  ");
+									 </script>
+									 <table>
+										<tr>
+											<th> * 아이디 </th>
+											<td>
+												<input type="text" class="input" name="user_id" size="20" placeholder="공백없이 20자 이내" required autofocus>
+											</td>
+										</tr>
+										<tr>
+											<th> * 비밀번호 </th>
+											<td>
+												<input type="password" class="input" name="user_password" size="20" placeholder="공백없이 20자 이내" required>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2" style="border-bottom:none">
+												<br>
+												<div align="right">
+													<input class="inputButton" type="submit" value="로그인">
+													<input class="inputButton" type="reset" value="초기화">
+													<input class="inputButton" type="button" value="회원가입" onclick="window.location='${path}/join.do'">
+												</div>
+											</td>
+										</tr>
+									</table>
+								</c:if>
+								<!-- 세션이 있는 경우  -->
+								<c:if test="${sessionScope.sessionID != null }">
+									<table name="loginsuccess">
 											<tr>
-												<th> * 아이디 </th>
-												<td>
-													<input type="text" class="input" name="user_id" size="20" placeholder="공백없이 20자 이내" required autofocus>
-												</td>
+												<th colspan="2" align="center" id="result1">
+													<span style="color:pink"><b> ${sessionID } </b></span>님, 돌아오신 것을 환영합니다!
+												</th>
 											</tr>
 											<tr>
-												<th> * 비밀번호 </th>
-												<td>
-													<input type="password" class="input" name="user_password" size="20" placeholder="공백없이 20자 이내" required>
-												</td>
-											</tr>
-											<tr>
-												<td colspan="2" style="border-bottom:none">
+												<td colspan="2" style="border-bottom:none" >
 													<br>
-													<div align="right">
-														<input class="inputButton" type="submit" value="로그인">
-														<input class="inputButton" type="reset" value="초기화">
-														<input class="inputButton" type="button" value="회원가입" onclick="window.location='join.do'">
+													<div align="center">
+														<input class="inputButton" type="button" value="회원수정" onclick="window.location='${path}/modifyCustomer.do'">       
+														<input class="inputButton" type="button" value="회원탈퇴" onclick="window.location='${path}/deleteCustomer.do'">
+														<input class="inputButton" type="button" value="로그아웃" onclick="window.location='${path}/logout.do'">
 													</div>
 												</td>
 											</tr>
 										</table>
-										 
-								<% 	}
-									else{		// 세션이 있는 경우
-									%>
-										<table>
-												<tr>
-													<th colspan="2" align="center">
-														<span style="color:pink"><b> <%=sessionID %> </b></span>님, 돌아오신 것을 환영합니다!
-													</th>
-												</tr>
-												<tr>
-													<td colspan="2" style="border-bottom:none">
-														<br>
-														<div align="right">
-															<input class="inputButton" type="button" value="회원수정" onclick="window.location='/jsp_pj_ict05/modifyCustomer.do'">       
-															<input class="inputButton" type="button" value="회원탈퇴" onclick="window.location='/jsp_pj_ict05/deleteCustomer.do'">
-															<input class="inputButton" type="button" value="로그아웃" onclick="window.location='/jsp_pj_ict05/logout.do'">
-														</div>
-													</td>
-												</tr>
-											</table>
-										<script type="text/javascript">
-											alert("◜              로그인 성공!          ◝ \n ◟                                  ◞  ");
-										</script>
-								<% 
-									}
-								%>
-								
-								
+									<script type="text/javascript">
+										alert("◜              로그인 성공!          ◝ \n ◟                                  ◞  ");
+									</script>
+								</c:if>
 							</form>
 						</div>	<!-- join -->
 					</div>

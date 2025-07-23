@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="/common/setting.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,9 +11,9 @@
 <title>main</title>
 
 <!-- css -->
-<link rel="stylesheet" href="/jsp_pj_ict05/resources/css/common/header.css">
-<link rel="stylesheet" href="/jsp_pj_ict05/resources/css/common/footer.css">
-<link rel="stylesheet" href="/jsp_pj_ict05/resources/css/customer/login.css">
+<link rel="stylesheet" href="${path}/resources/css/common/header.css">
+<link rel="stylesheet" href="${path}/resources/css/common/footer.css">
+<link rel="stylesheet" href="${path}/resources/css/customer/login.css">
 
 <!--  js -->
 <script src="https://kit.fontawesome.com/8760f92571.js" crossorigin="anonymous"></script>
@@ -58,7 +59,7 @@
 											<div align="right">
 												<input class="inputButton" type="submit" value="로그인">
 												<input class="inputButton" type="reset" value="초기화">
-												<input class="inputButton" type="button" value="회원가입" onclick="window.location='join.do'">
+												<input class="inputButton" type="button" value="회원가입" onclick="window.location='${path}/join.do'">
 											</div>
 										</td>
 									</tr>
