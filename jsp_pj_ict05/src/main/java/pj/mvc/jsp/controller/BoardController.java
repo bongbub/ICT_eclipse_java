@@ -58,16 +58,59 @@ public class BoardController extends HttpServlet {
 		}
 		
 		// [게시글 상세] 화면
+		if(url.equals("/board_detailAction.bc")) {
+			System.out.println("  <<< url  ==>  /board_detail.bc  >>>");
+			
+			service.boardDetailAction(request, response);
+			viewPage="/admin/csCenter/board_detailAction.jsp";
+		}
 		
 		
 		// [게시글 수정삭제 버튼] 클릭 시 - > 비밀번호 인증 처리
+		if(url.equals("/password_chkAction.bc")){
+			System.out.println("  <<< url  ==>  /password_chkAction.bc  >>>");
+			
+			// int로 돌려받는 이유 : 컨트롤러에서 핸들링하기 위해
+			int result = service.password_chkAction(request, response);
+			
+			// 문제가 없으면 수정/삭제 상세페이지로 이동
+			if(result != 0) {
+				viewPage = "/admin/csCenter/board_edit.jsp";
+			}
+			// 문제가 있으면(인증실패) =>  페이지 이동X 
+			else {
+				System.out.println("----비밀번호 인증 실패-----");
+				// 현재 내 페이지로 이동
+				int num = Integer.parseInt(request.getParameter("hidden_b_num")); // b_num들고오기
+				
+				// 페이지로 이동할 때 글번호와 에러메세지 들고가기
+				viewPage = request.getContextPath()+"/board_detailAction.bc?b_num="+num+"&message=error";
+				response.sendRedirect(viewPage);		// forward 말고 sendRedirect로 보냄
+				return;				// 아래의 forward 를 타지 않기 위해 
+			}
+			
+		}
 		
 		
 		// [게시글 수정] 처리
-		
+		if(url.equals("/board_updateAction.bc")){
+			System.out.println("  <<< url  ==>  /board_updateAction.bc  >>>");
+			
+			service.boardUpdateAction(request, response);
+			viewPage = request.getContextPath()+"/board_list.bc";
+			response.sendRedirect(viewPage);
+			return;
+		}
 		
 		// [게시글 삭제] 처리
-		
+		if(url.equals("/board_deleteAction.bc")) {
+			System.out.println("  <<< url  ==>  /board_deleteAction.bc  >>>");
+			
+			service.boardDeleteAction(request, response);
+			viewPage = request.getContextPath()+"/board_list.bc";
+			response.sendRedirect(viewPage);
+			return;
+		}
 		
 		// [게시글 작성] 화면
 		

@@ -92,6 +92,43 @@ SELECT *
 	)
  WHERE rn BETWEEN 11 AND  20;				-- 1페이지 : rn 1~10, /2페이지 : rn 11~20 /3페이지 : rn : 21~30
 
+
+-- 게시글 상세 페이지
+SELECT * FROM mvc_board_tbl
+ WHERE b_num = 991;
+ 
+-- 조회수
+UPDATE MVC_BOARD_TBL
+	SET b_readCnt = b_readCnt + 1
+WHERE b_num = 199;	-- 현재번호에 맞을 때만 조회수 + 1
+COMMIT;
+
+
+-- 게시글 수정 삭제 버튼 클릭시 -> 비밀번호 인증처리
+SELECT count(*) AS cnt FROM MVC_BOARD_TBL
+ WHERE b_num = 1
+   AND b_password = 1234;
+
+
+-- 게시글 수정
+UPDATE mvc_board_tbl
+   SET b_password = '1111'
+   	 , b_title='제목입니당 ㅋ'
+   	 , b_content='곰세마리가 한 집에 있어 아빠곰 엄마곰 애기곰 아빠곰은 뚱뚱해 엄마곰은 날씬해 애기곰은 너무 귀여워 으쓱 으쓱 잘 한다'
+ WHERE b_num = 991;
+COMMIT;
+
+
+-- 게시글 삭제
+DELETE FROM MVC_BOARD_TBL
+ WHERE b_num = 991;
+
+
+
+
+
+
+
 -- 내용삭제 --------------------------------
 DELETE FROM MVC_CUSTOMER_TBL ;
 

@@ -78,6 +78,7 @@ public class BoardDAOImpl implements BoardDAO{
 			while(rs.next()) {
 				// dto 생성하고 담는다
 				BoardDTO dto = new BoardDTO();
+				// 3. dto에 1건의 rs 게시글 정보를 담는다.
 				dto.setB_num(rs.getInt("b_num"));
 				dto.setB_title(rs.getString("b_title"));
 				dto.setB_content(rs.getString("b_content"));
@@ -87,15 +88,9 @@ public class BoardDAOImpl implements BoardDAO{
 				dto.setB_regDate(rs.getDate("b_regDate"));
 				dto.setB_comment_count(rs.getInt("b_comment_count"));
 				
+				// 4. List에 dto를 추가한다
 				list.add(dto);
 			}
-			
-			// 3. dto에 1건의 rs 게시글 정보를 담는다.
-			
-			
-			// 4. List에 dto를 추가한다
-			
-			
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -115,49 +110,190 @@ public class BoardDAOImpl implements BoardDAO{
 	// 게시글 갯수 구하기
 	@Override
 	public int boardCnt() {
-		// TODO Auto-generated method stub
-		return 0;
+		System.out.println(" <<< BoardDAOImpl - boardCnt() >>>");
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int total = 0;
+		try {
+			String sql = "SELECT COUNT(*) AS cnt FROM mvc_board_tbl";
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				total = rs.getInt("cnt");
+			}
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return total;
 	}
 
 	// 조회수 증가
 	@Override
 	public void plusReadCnt(int num) {
-		// TODO Auto-generated method stub
-		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			String sql = "UPDATE mvc_board_tbl "
+						+ "SET b_readCnt = b_readCnt + 1 "
+						+ "WHERE b_num = ?";
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	// 게시글 상세 처리
 	@Override
 	public BoardDTO getBoardDetail(int num) {
-		// TODO Auto-generated method stub
-		return null;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		BoardDTO dto = new BoardDTO();
+		try {
+			String sql ="SELECT * FROM mvc_board_tbl "
+						+ " WHERE b_num = ?";
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				dto.setB_num(num);
+				dto.setB_title(rs.getString("b_title"));
+				dto.setB_content(rs.getString("b_content"));
+				dto.setB_writer(rs.getString("b_writer"));
+				dto.setB_password(rs.getString("b_password"));
+				dto.setB_readCnt(rs.getInt("b_readCnt"));
+				dto.setB_regDate(rs.getDate("b_regDate"));
+				dto.setB_comment_count(rs.getInt("b_comment_count"));
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return dto;
 	}
 
 	// 게시글 수정삭제 버튼 클릭 시 - > 비밀번호 인증 처리
 	@Override
 	public int password_chk(int num, String password) {
-		// TODO Auto-generated method stub
-		return 0;
+		int selectCnt = 0;
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "SELECT count(*) AS cnt FROM MVC_BOARD_TBL"
+					+ " WHERE b_num = ?"
+					+ " AND b_password = ? ";
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.setString(2, password);
+			rs =pstmt.executeQuery();
+			if(rs.next()) {
+				selectCnt = rs.getInt("cnt");
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return selectCnt;
 	}
+		
 	// 게시글 수정 처리
 	@Override
-	public int updateBoard(int num) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void updateBoard(BoardDTO dto) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int updateCnt = 0;
+		try {
+			String sql = "UPDATE mvc_board_tbl"
+					+ " SET b_password =? "
+					+ " , b_title = ?"
+					+ " , b_content = ?"
+					+ " WHERE b_num = ?";
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getB_password());
+			pstmt.setString(2, dto.getB_title());
+			pstmt.setString(3, dto.getB_content());
+			pstmt.setInt(4, dto.getB_num());
+			updateCnt = pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	// 게시글 삭제 처리
 	@Override
-	public int deleteBoard(int num) {
-		// TODO Auto-generated method stub
-		return 0;
+	public void deleteBoard(int num) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		int deleteCnt = 0;
+		try {
+			String sql = "DELETE FROM mvc_board_tbl "
+					+ "WHERE b_num = ?";
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			deleteCnt = pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	// 게시글 작성 처리
 	@Override
-	public int insertBoard(BoardDTO dto) {
+	public void insertBoard(BoardDTO dto) {
 		// TODO Auto-generated method stub
-		return 0;
 	}
 	
 	// 댓글 작성 처리

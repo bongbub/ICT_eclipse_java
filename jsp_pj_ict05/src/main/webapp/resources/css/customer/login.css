@@ -69,3 +69,9 @@
 #result1 {
 	width : 300px;
 }
+
+#adminmode {
+	margin:5px;
+	color:grey;
+	font-weight:bold;
+}

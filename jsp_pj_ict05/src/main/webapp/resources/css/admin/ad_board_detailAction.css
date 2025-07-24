@@ -30,27 +30,32 @@
 
 .table_div {
 	margin-top: 30px;
+	border-radius:10px;
+	min-width:80%;
 }
 
 .table_div  table {
 	border-collapse: collapse;
+	border:1px solid grey;
 	width: 800px; 
-	align: center;
-}
-
-.table_div  table th {
-	background: #FDE3E9;
-}
-
-.table_div  table th, td {
-	height: 50px;
-	border: 1px solid black;
-	padding-left: 2px;
 	text-align: center;
 }
 
+.table_div  table th {
+	background: #e7e7e7;
+	width:20%;
+}
+
+.table_div  table th, td {
+	border-top :1px solid grey;
+	height: 50px;
+	padding-left: 2px;
+	text-align: center;
+	min-width:100px;
+}
+
 .input {
-	width: 550px;
+	min-width: 80%;
 	height: 40px;
 	border: 1px solid gray;
 	padding: 0 0 0 10px;
@@ -62,41 +67,12 @@
 	padding: 5px 10px 5px 10px;
 }
 
+#not_pwd{
+	color:red;
+}
+
+.content_box{
+	min-height : 50%px;
+	padding:20px;
+}
 /* 우측내용 종료*/
-
-/* 페이징 시작*/
-.table_div .pagination {
-    margin: 20px 0;
-    display: flex;
-    justify-content: center;
-    list-style: none;
-    padding: 0;
-}
-
-.table_div .pagination li {
-    margin: 0 5px;
-}
-
-.table_div .pagination a {
-    display: block;
-    padding: 8px 12px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    color: #333;
-    text-decoration: none;
-    background-color: #fff;
-}
-
-.table_div .pagination a:hover {
-    background-color: #f1c40f;
-    color: #fff;
-    border-color: #f39c12;
-}
-
-.table_div .pagination .active {
-    background-color: #f39c12;
-    color: #fff;
-    border-color: #f39c12;
-}
-
-/* 페이징 종료*/

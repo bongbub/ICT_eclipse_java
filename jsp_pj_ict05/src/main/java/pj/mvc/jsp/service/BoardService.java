@@ -17,7 +17,7 @@ public interface BoardService {
 			throws ServletException, IOException;
 	
 	// 게시글 수정삭제 버튼 클릭 시 - > 비밀번호 인증 처리
-	public int password_cheAction(HttpServletRequest request, HttpServletResponse response)
+	public int password_chkAction(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException;
 	
 	// 게시글 수정 처리

@@ -74,7 +74,7 @@
 									<table name="loginsuccess">
 											<tr>
 												<th colspan="2" align="center" id="result1">
-													<span style="color:pink"><b> ${sessionID } </b></span>님, 돌아오신 것을 환영합니다!
+													<span style="color:pink"><b> ${sessionScope.sessionID } </b></span>님, 돌아오신 것을 환영합니다!
 												</th>
 											</tr>
 											<tr>
@@ -84,12 +84,17 @@
 														<input class="inputButton" type="button" value="회원수정" onclick="window.location='${path}/modifyCustomer.do'">       
 														<input class="inputButton" type="button" value="회원탈퇴" onclick="window.location='${path}/deleteCustomer.do'">
 														<input class="inputButton" type="button" value="로그아웃" onclick="window.location='${path}/logout.do'">
+														
+														<!-- admin/1234로 가입 후, admin으로 로그인 할 때만 관리자 링크가 보일 수 있도록 -->
+														<c:if test="${sessionScope.sessionID == 'admin' }">
+															<a href="${path}/board_list.bc" id="adminmode"> 관리자모드 </a>
+														</c:if>
 													</div>
 												</td>
 											</tr>
 										</table>
 									<script type="text/javascript">
-										alert("◜              로그인 성공!          ◝ \n ◟                                  ◞  ");
+										alert("◜              로그인 성공!             ◝ \n ◟                                  ◞  ");
 									</script>
 								</c:if>
 							</form>

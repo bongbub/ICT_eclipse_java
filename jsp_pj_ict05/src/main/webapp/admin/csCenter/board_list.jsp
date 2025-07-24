@@ -15,6 +15,7 @@
 <link rel="stylesheet" href="${path}/resources/css/common/header.css">
 <link rel="stylesheet" href="${path}/resources/css/common/footer.css">
 <link rel="stylesheet" href="${path}/resources/css/admin/ad_boardList.css">
+<link rel="stylesheet" href="${path}/resources/css/admin/ad_leftMenu.css">
 
 <!--  js -->
 <script src="https://kit.fontawesome.com/8760f92571.js" crossorigin="anonymous"></script>
@@ -63,7 +64,7 @@
 										<tr>
 											<td>${dto.b_num}</td>
 											<td>${dto.b_writer}</td>
-											<td>${dto.b_title}</td>
+											<td><a href="${path}/board_detailAction.bc?b_num=${dto.b_num}">${dto.b_title}</a></td>
 											<td>${dto.b_regDate}</td>
 											<td>${dto.b_readCnt}</td>
 										</tr>
@@ -75,18 +76,27 @@
 											<ul class="pagination">
 												<!-- 페이징 처리 -->
 												<!-- 이전 버튼 활성화 -->
-												
+												<c:if test="${paging.startPage > 10}">
+													<li>
+														<a href="${path}/board_list.bc?pageNum=${paging.prev}" class="prevPage"> [ 이전 ]</a>
+													</li>
+												</c:if>
 												
 												<!-- 페이지 번호 처리 -->
 												<c:forEach var="num" begin="${paging.startPage}" end="${paging.endPage}">	<!-- paging=>serviceimpl에서 넘겨준 참조변수, 의 멤버변수 호출 -->
 													<li>
-														
+														<!-- 해당 페이지를 클릭할 때마다 번호를 pageNum에 넣어 ServiceImpl전송 및 처리 -->
+														<a href="${path}/board_list.bc?pageNum=${num}" class="<c:if test='${num == paging.currentPage}'> active </c:if>">${num}</a>
 													</li>
 												</c:forEach>
 												
 												
 												<!-- 다음 버튼 활성화 -->
-												
+												<c:if test="${paging.endPage < paging.pageCount}">
+													<li>
+														<a href="${path}/board_list.bc?pageNum=${paging.next}" class="nextPage"> [ 다음 ]</a>
+													</li>
+												</c:if>
 												
 												
 											</ul>

@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>관리자 좌측메뉴</title>
+<link rel="stylesheet" href="${path}/resources/css/admin/ad_leftMenu.css">
 </head>
 <body>
 	<!-- 좌측메뉴 시작 -->
@@ -28,19 +29,19 @@
 					<ul class="order_menu">
 						<li><a href="#">주문목록</a></li>
 						<li><a href="#">주문등록</a></li>
-						<li><a href="#">환불요청목록</a></li>
-						<li><a href="#">환불완료목록</a></li>
-						<li><a href="#">환불취소목록</a></li>
+						<li><a href="#">환불요청</a></li>
+						<li><a href="#">환불완료</a></li>
+						<li><a href="#">환불취소</a></li>
 					</ul>
 				</li>
 				<hr>
 				<li>
+					<h4> 회원관리 </h4>
 					<ul class="order_menu">
-						<li><a href="#">주문목록</a></li>
-						<li><a href="#">주문등록</a></li>
-						<li><a href="#">환불요청목록</a></li>
-						<li><a href="#">환불완료목록</a></li>
-						<li><a href="#">환불취소목록</a></li>
+						<li><a href="#">회원목록</a></li>
+						<li><a href="#">게시판</a></li>
+						<li><a href="#">결산</a></li>
+						<li><a href="#">로그아웃</a></li>
 					</ul>
 				</li>
 			</ul>

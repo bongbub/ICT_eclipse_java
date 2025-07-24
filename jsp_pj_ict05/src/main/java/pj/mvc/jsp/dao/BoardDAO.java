@@ -23,13 +23,13 @@ public interface BoardDAO {
 	public int password_chk(int num, String password);
 	
 	// 게시글 수정 처리
-	public int updateBoard(int num);
+	public void updateBoard(BoardDTO dto);
 	
 	// 게시글 삭제 처리
-	public int deleteBoard(int num);
+	public void deleteBoard(int num);
 	
 	// 게시글 작성 처리
-	public int insertBoard(BoardDTO dto);
+	public void insertBoard(BoardDTO dto);
 	
 	// 댓글 작성 처리
 	public int insertComment(BoardCommentDTO dto);
