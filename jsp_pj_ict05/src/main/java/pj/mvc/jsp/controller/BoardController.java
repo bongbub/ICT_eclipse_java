@@ -96,8 +96,8 @@ public class BoardController extends HttpServlet {
 		if(url.equals("/board_updateAction.bc")){
 			System.out.println("  <<< url  ==>  /board_updateAction.bc  >>>");
 			
-			service.boardUpdateAction(request, response);
-			viewPage = request.getContextPath()+"/board_list.bc";
+			int num = service.boardUpdateAction(request, response);
+			viewPage = request.getContextPath()+"/board_detailAction.bc?b_num="+ num;
 			response.sendRedirect(viewPage);
 			return;
 		}
@@ -113,10 +113,23 @@ public class BoardController extends HttpServlet {
 		}
 		
 		// [게시글 작성] 화면
+		if(url.equals("/board_insert.bc")) {
+			System.out.println("  <<< url  ==>  /board_insert.bc  >>>");
+			
+			viewPage = "/admin/csCenter/board_insert.jsp";
+		}
 		
 		
 		// [게시글 작성] 처리
-		
+		if(url.equals("/board_insertAction.bc")) {
+			System.out.println("  <<< url  ==>  /board_insertAction.bc  >>>");
+			
+			int b_num = service.boardInsertAction(request, response);
+			viewPage = request.getContextPath()+"/board_detailAction.bc?b_num="+b_num;
+			
+			response.sendRedirect(viewPage);
+			return;
+		}
 		
 		// [댓글 작성] 처리
 		

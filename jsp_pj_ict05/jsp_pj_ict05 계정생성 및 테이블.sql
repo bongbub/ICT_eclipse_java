@@ -124,7 +124,9 @@ DELETE FROM MVC_BOARD_TBL
  WHERE b_num = 991;
 
 
-
+-- 게시글 추가
+INSERT INTO mvc_board_tbl(b_num, B_TITLE, B_WRITER, B_CONTENT, B_PASSWORD, B_COMMENT_COUNT, B_READCNT, B_REGDATE)
+	values(992, '제목', '작성자', '내용', '1234', 0, 0, sysdate);
 
 
 

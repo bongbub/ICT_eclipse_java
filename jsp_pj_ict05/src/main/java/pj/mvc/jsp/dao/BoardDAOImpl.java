@@ -239,7 +239,6 @@ public class BoardDAOImpl implements BoardDAO{
 	public void updateBoard(BoardDTO dto) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		int updateCnt = 0;
 		try {
 			String sql = "UPDATE mvc_board_tbl"
 					+ " SET b_password =? "
@@ -252,7 +251,7 @@ public class BoardDAOImpl implements BoardDAO{
 			pstmt.setString(2, dto.getB_title());
 			pstmt.setString(3, dto.getB_content());
 			pstmt.setInt(4, dto.getB_num());
-			updateCnt = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -264,20 +263,48 @@ public class BoardDAOImpl implements BoardDAO{
 			}
 		}
 	}
+	
+	// 추가 후 작성한 게시글로 이동
+	public int moveRecentBoard(String writer) {
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int num = 0;
+		try {
+			String sql="SELECT max(b_num) as num FROM mvc_board_tbl WHERE b_writer = ? ";
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, writer);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				num = rs.getInt("num");
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return num;
+	}
 
 	// 게시글 삭제 처리
 	@Override
 	public void deleteBoard(int num) {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		int deleteCnt = 0;
 		try {
 			String sql = "DELETE FROM mvc_board_tbl "
 					+ "WHERE b_num = ?";
 			conn = dataSource.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, num);
-			deleteCnt = pstmt.executeUpdate();
+			pstmt.executeUpdate();
 		}catch(SQLException e) {
 			e.printStackTrace();
 		}finally {
@@ -293,7 +320,30 @@ public class BoardDAOImpl implements BoardDAO{
 	// 게시글 작성 처리
 	@Override
 	public void insertBoard(BoardDTO dto) {
-		// TODO Auto-generated method stub
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		try {
+			String sql ="INSERT INTO mvc_board_tbl(b_num, B_TITLE, B_WRITER, B_CONTENT, "
+					+ "B_PASSWORD)"
+					+ "	values((SELECT nvl(MAX(b_num)+1,1) FROM mvc_board_tbl), ?, ?, ?, ?)";
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getB_title());
+			pstmt.setString(2, dto.getB_writer());
+			pstmt.setString(3, dto.getB_content());
+			pstmt.setString(4, dto.getB_password());
+
+			pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 	
 	// 댓글 작성 처리

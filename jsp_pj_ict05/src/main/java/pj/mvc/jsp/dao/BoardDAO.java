@@ -31,6 +31,9 @@ public interface BoardDAO {
 	// 게시글 작성 처리
 	public void insertBoard(BoardDTO dto);
 	
+	// 작성 후 작성한 게시글로 이동
+	public int moveRecentBoard(String writer);
+	
 	// 댓글 작성 처리
 	public int insertComment(BoardCommentDTO dto);
 	

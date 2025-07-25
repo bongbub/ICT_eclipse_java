@@ -21,7 +21,7 @@ public interface BoardService {
 			throws ServletException, IOException;
 	
 	// 게시글 수정 처리
-	public void boardUpdateAction(HttpServletRequest request, HttpServletResponse response)
+	public int boardUpdateAction(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException;
 	
 	// 게시글 삭제 처리
@@ -29,7 +29,7 @@ public interface BoardService {
 			throws ServletException, IOException;
 	
 	// 게시글 작성 처리
-	public void boardInsertAction(HttpServletRequest request, HttpServletResponse response)
+	public int boardInsertAction(HttpServletRequest request, HttpServletResponse response)
 	 		throws ServletException, IOException;
 	
 	// 댓글 작성 처리

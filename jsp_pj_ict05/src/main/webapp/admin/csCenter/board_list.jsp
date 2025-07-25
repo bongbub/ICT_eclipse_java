@@ -23,6 +23,15 @@
 <!-- (3-4). 자바스크립트 소스 연결 -->
 <!-- defer : html을 다 읽은 후에 자바 스크립트를 실행해라 -> 페이지가 모두 로딩 된 후 외부 스크립트 실행 -->
 <script src="${path}/resources/js/common/main.js" defer></script>
+<script>
+	$(function(){
+			$("#btnInsert").click(function(){
+			window.location="${path}/board_insert.bc";
+		})
+	})
+
+</script>
+
 </head>
 <body>
 
@@ -51,6 +60,13 @@
 						<div class="table_div">
 							<form name="boardList" >
 								<table>
+									<tr>
+										<td colspan="5">
+											<div align="right">
+												<input type="button" class="inputButton" value="글쓰기" id="btnInsert">
+											</div>
+										</td>
+									</tr>
 									<tr>
 										<th>글번호</th>
 										<th>작성자</th>

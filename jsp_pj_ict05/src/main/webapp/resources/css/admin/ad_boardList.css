@@ -30,16 +30,18 @@
 
 .table_div {
 	margin-top: 30px;
+	align-self: center;
 }
 
 .table_div  table {
 	border-collapse: collapse;
 	width: 800px; 
-	align: center;
+	align-content: center;
+	border-bottom:1px solid #545454;
 }
 
 .table_div  table th {
-	background: #FDE3E9;
+	background: rgb(242, 242, 242);
 }
 
 .table_div  table th, td {
