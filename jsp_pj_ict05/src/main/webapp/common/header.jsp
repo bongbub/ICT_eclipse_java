@@ -13,7 +13,7 @@
 	<!-- 요청 : url, button, link -->
 	<nav class="navbar">
 		<ul class="navbar_title">
-			<li><img src="" alt=""><i class="fa-solid fa-ghost"></i></li>
+			<li><img src="" alt=""><i class="fa-solid fa-dragon"></i></li>
 		</ul>
 		<ul class="navbar_menu">
 			<li><a href="${path}/main.do">홈</a></li>
@@ -28,6 +28,7 @@
 			<li><a href="${path}/join.do">JOIN</a></li>
 			<li><a href="#"><i class="fa-solid fa-basket-shopping"></i></a></li>
 			<li><a href="#"><i class="fa-solid fa-user"></i></a></li>
+			<li><a href="#"><i class="fa-solid fa-magnifying-glass"></i></a></li>	<!-- 검색 -->
 		</ul>
 		
 		

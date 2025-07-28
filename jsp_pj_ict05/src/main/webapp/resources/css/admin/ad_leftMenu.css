@@ -34,6 +34,7 @@
 /* 좌측메뉴 시작 */
 #left {
 	width: 12%;
+	min-width: 12%;
 	margin-top: 15px;
 	height: 100%;
 	border-radius: 10px;

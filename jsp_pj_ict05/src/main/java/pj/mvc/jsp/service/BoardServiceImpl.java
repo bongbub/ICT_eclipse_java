@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import pj.mvc.jsp.dao.BoardDAO;
 import pj.mvc.jsp.dao.BoardDAOImpl;
+import pj.mvc.jsp.dto.BoardCommentDTO;
 import pj.mvc.jsp.dto.BoardDTO;
 import pj.mvc.jsp.page.Paging;
 
@@ -160,17 +161,44 @@ public class BoardServiceImpl implements BoardService{
 		return b_num;
 	}
 
-	// 댓글 작성 처리
+	// 댓글 작성 처리 (4)
 	@Override
 	public void commentAddAction(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println(" @@@  BoardServiceImpl   -   commentAddAction()  @@@");
 		
+		// 3단계 - 화면에서 입력받은 값(jQuery에서 넘긴 값)을 가져오기
+		// CommentDTO 생성 후 입력 값 받아오기
+		BoardCommentDTO dto = new BoardCommentDTO();
+		dto.setC_board_num(Integer.parseInt(request.getParameter("board_num")));
+		dto.setC_writer(request.getParameter("writer"));
+		dto.setC_content(request.getParameter("content"));
+		
+		// 4단계 - 싱글톤 방식으로 DAO 생성, 다형성 적용
+		BoardDAO dao = BoardDAOImpl.getInstance();
+		
+		// 5단계 - 댓글 작성 처리 후 컨트롤러에서 list로 이동
+		dao.insertComment(dto);
 	}
 
 	// 댓글 목록 처리
 	@Override
 	public void commentListAction(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println(" @@@  BoardServiceImpl   -   commentListAction()  @@@");
+		
+		// 3단계 - 화면에서 입력받은 값(jQuery에서 넘긴 값)을 가져오기
+		int board_num = Integer.parseInt(request.getParameter("board_num"));
+		
+		// 4단계 - 싱글톤 방식으로 DAO 생성, 다형성 적용
+		BoardDAO dao = BoardDAOImpl.getInstance();
+		
+		// 5단계 - 댓글 삭제 처리 후 컨트롤러에서 list로 이동
+		List<BoardCommentDTO> list = dao.commentList(board_num);
+		
+		// 6단계 - jsp로 처리결과 전달
+		request.setAttribute("list", list);
+		
 		
 	}
 

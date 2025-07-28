@@ -120,22 +120,39 @@ public class BoardController extends HttpServlet {
 		}
 		
 		
-		// [게시글 작성] 처리
+		// [게시글 작성] 처리 
 		if(url.equals("/board_insertAction.bc")) {
 			System.out.println("  <<< url  ==>  /board_insertAction.bc  >>>");
 			
-			int b_num = service.boardInsertAction(request, response);
+			int b_num = service.boardInsertAction(request, response);  
 			viewPage = request.getContextPath()+"/board_detailAction.bc?b_num="+b_num;
 			
 			response.sendRedirect(viewPage);
 			return;
 		}
 		
-		// [댓글 작성] 처리
 		
 		
-		// [댓글 목록] 처리
+		// [댓글 작성] 처리(4)
+		if(url.equals("/comment_insert.bc")) {
+			System.out.println("  <<< url  ==>  /comment_insert.bc  >>>");
+			
+			service.commentAddAction(request, response);  // (5)
+			
+			// viewPage 필요 없음 ==> 전체적인 화면 이동x --> 아래 뿌려주는 jsp만 변경되므로
+			// viewPage = "/admin/csCenter/comment_insert.jsp"로 이동안함
+			// board_detailAction.jsp의 comment_add()로 복귀 => $.ajax의 콜백함수로 리턴
+		}
 		
+		
+		// [댓글 목록] 처리  (10)
+		if(url.equals("/comment_list.bc")) {
+			System.out.println("  <<< url  ==>  /comment_list.bc  >>>");
+			
+			service.commentListAction(request, response); 		// (11)
+			viewPage = "admin/csCenter/comment_list.jsp";		//  (12) 결과페이지이며, $.ajax 콜백함수(success)의 result
+			// board_detailAction.jsp의 comment_list()로 복귀 => $.ajax의 콜백함수로 리턴
+		}
 		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);

@@ -25,7 +25,17 @@
 <script src="${path}/resources/js/common/main.js" defer></script>
 
 <script>
-	$(function(){
+	$(function(){		// 상세페이지가 로딩되면
+		
+		// 댓글목록 - 기존 작성한 것도 뿌려줘야하기 때문에 가장 먼저 호출 (=> 자동으로 댓글목록 로딩)
+		comment_list();
+		
+		//  [댓글쓰기 버튼] 클릭 (1)
+		$('#btnCommentSave').click(function(){
+			comment_add();
+		});
+		
+		
 		// <게시글목록> 버튼 클릭할 때 -> 컨트롤러의 목록으로 이동
 		$('#btnList').click(function(){
 			location.href="${path}/board_list.bc";
@@ -39,6 +49,50 @@
 		});
 		
 	});
+	
+	//  [댓글쓰기 버튼] 클릭 (2)
+	function comment_add(){
+		//alert('comment_add()');
+		
+		// 게시글 번호, 댓글 작성자, 댓글 내용 parameter로 전송
+		let param ={
+				"board_num" : ${dto.b_num},		// => key:value -> 댓글번호:게시글번호
+				"writer" : $('#c_writer').val(),
+				"content" : $('#c_content').val()
+		}
+		$.ajax({
+			url:'${path}/comment_insert.bc',		// 컨트롤러 이동 (3) 
+			type:'POST',
+			data: param,
+			success:function(){			// 콜백함수(6) => 댓글쓰기가 완료되면 서버에서 콜백함수
+				$('#c_writer').val("");
+				$('#c_content').val("")
+				comment_list();			// 댓글목록 새로고침 (7)
+			},
+			error: function(){
+				alert('comment_add() 오류');
+			}
+		});
+	}
+	
+	
+	// 댓글목록
+	function comment_list(){
+		// alert("comment_list()");
+		 $.ajax({
+			url:'${path}/comment_list.bc',
+			type:'POST',
+			data: 'board_num=${dto.b_num}',		//게시글 번호가 같을 때
+			success:function(result){		// 성공이면
+				// 콜백함수
+				$('#comment_list').html(result);		// 콜백함수 호출
+			},
+			error: function(){
+				alert('comment_list() 오류');
+			}
+		}); 
+	} 
+	
 
 </script>
 
@@ -115,8 +169,41 @@
 											<input type="button" class="inputButton" value="목록" id="btnList">
 										</td>
 									</tr>
-									
 								</table>
+								<br><br><br>
+								
+								<!-- 댓글 목록 코드 -->
+								<div id="comment_list" align="center">
+									<!-- 댓글 목록 -->
+									
+								</div>
+								
+								<!-- 댓글 입력 코드 -->
+								<table>
+									<tr>
+										<th>작성자</th>
+										<td>
+											<input type="text" class="input" name="c_writer"
+												id="c_writer" size="50" placeholer="작성자 입력">
+										</td>
+									</tr>
+									<tr>
+										<th rowspan="2" align="right">
+											<div align="center">
+												<input type="button" class="inputButton" value="작성" id="btnCommentSave">
+											</div>
+										</th>
+									</tr>
+									<tr>
+										<th>글내용</th>
+										<td>
+											<textarea rows="5" cols="93" name="c_content" id="c_content" placeholder="댓글입력">
+											
+											</textarea>
+										</td>
+									</tr>
+								</table>
+								
 							</form>
 						</div>
 					</div>

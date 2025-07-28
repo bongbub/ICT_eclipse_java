@@ -129,11 +129,47 @@ INSERT INTO mvc_board_tbl(b_num, B_TITLE, B_WRITER, B_CONTENT, B_PASSWORD, B_COM
 	values(992, '제목', '작성자', '내용', '1234', 0, 0, sysdate);
 
 
+----------- [ 댓글 ] ------------------------------
+
+-- 게시판 댓글테이블
+DROP TABLE mvc_comment_tbl  CASCADE CONSTRAINTS;
+CREATE TABLE mvc_comment_tbl(  
+	c_comment_num     NUMBER(7)  	PRIMARY KEY,      -- PK, 댓글 일련번호
+   	c_board_num       NUMBER(7)  	REFERENCES   mvc_board_tbl(b_num),   -- FK, 게시글 번호
+    c_writer          VARCHAR2(30)  NOT NULL,       -- 작성자
+    c_content         CLOB  		NOT NULL,              -- 글내용
+   	c_regDate         Date  		DEFAULT sysdate       -- 등록일
+);
+
+SELECT * FROM mvc_comment_tbl;
+ -- 댓글 작성페이지
+INSERT INTO mvc_comment_tbl(c_comment_num, c_board_num, c_writer, c_content, c_regDate)
+ VALUES((SELECT NVL(MAX(c_comment_num)+1, 1) FROM mvc_comment_tbl), 991, '작성자1', '글내용1', sysdate);
+COMMIT;  
+
+
+-- 댓글목록
+SELECT *
+   FROM
+  	(SELECT A.*
+  	, rownum AS rn
+  		FROM 
+  		(SELECT * FROM MVC_COMMENT_TBL c,
+  						mvc_board_tbl b
+  			WHERE b.b_num = c.c_board_num
+  			  AND b_num = 991
+  			ORDER BY c_comment_num DESC) A
+  	)
+  	ORDER BY rn desc;
+
+
+
 
 
 -- 내용삭제 --------------------------------
 DELETE FROM MVC_CUSTOMER_TBL ;
 
 DELETE FROM mvc_board_tbl;
+DELETE FROM mvc_comment_tbl;
 
 

@@ -349,14 +349,100 @@ public class BoardDAOImpl implements BoardDAO{
 	// 댓글 작성 처리
 	@Override
 	public int insertComment(BoardCommentDTO dto) {
-		// TODO Auto-generated method stub
-		return 0;
+		// 1. List 생성
+		List<BoardCommentDTO> list = new ArrayList<BoardCommentDTO>();
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		
+		int insertCnt = 0;
+		
+		try {
+			String sql = "INSERT INTO mvc_comment_tbl(c_comment_num, c_board_num, c_writer, c_content)"
+					+ " Values((SELECT nvl(MAX(c_comment_num)+1, 1) FROM mvc_comment_tbl), ?, ?, ?)";
+			conn = dataSource.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, dto.getC_board_num());
+			pstmt.setString(2, dto.getC_writer());
+			pstmt.setString(3, dto.getC_content());
+			
+			insertCnt = pstmt.executeUpdate();
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		return insertCnt;
 	}
 	
 	// 댓글 목록 처리
 	@Override
 	public List<BoardCommentDTO> commentList(int board_num) {
-		// TODO Auto-generated method stub
-		return null;
+		System.out.println("<<< BoardDAOImpl ==> commentList() >>>");
+		
+		Connection conn = null;				// 오라클 연결
+		PreparedStatement pstmt = null;		// SQL문장
+		ResultSet rs = null;				// SELECT 결과를 담기 위함
+		
+		// 1. List 생성
+		List<BoardCommentDTO> list = new ArrayList<BoardCommentDTO>();
+		try {
+			// 1-1. DB연결
+			conn = dataSource.getConnection();
+			
+			// 1-2. SQL문 생성
+			String sql = "SELECT *"
+	                  + " FROM"
+	                  + "     (SELECT A.*"
+	                  + "             , rownum AS rn"
+	                  + "          FROM"
+	                  + "             (SELECT * "
+	                  + "            FROM mvc_comment_tbl c,"
+	                  + "                 mvc_board_tbl b "
+	                  + "            WHERE b.b_num = c.c_board_num "
+	                  + "              AND b_num = ? "
+	                  + "           ORDER BY c_comment_num DESC) A"
+	                  + "    )"
+	                  + " ORDER BY rn desc";
+			
+			// 2. 데이터가 존재하면 DTO 생성
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, board_num);
+			
+			rs = pstmt.executeQuery();
+			
+			// 2-1. 데이터가 존재하면
+			while(rs.next()) {
+				// dto 생성하고 담는다
+				BoardCommentDTO dto = new BoardCommentDTO();
+				// 3. dto에 1건의 rs 게시글 정보를 담는다.
+				dto.setC_comment_num(rs.getInt("rn"));
+				dto.setC_board_num(rs.getInt("c_board_num"));
+				dto.setC_writer(rs.getString("c_writer"));
+				dto.setC_content(rs.getString("c_content"));
+				dto.setC_regDate(rs.getDate("c_regDate"));
+				
+				// 4. List에 dto를 추가한다
+				list.add(dto);
+			}
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(conn != null) conn.close();
+				if(pstmt != null) pstmt.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		// 5. list를 리턴
+		return list;
 	}
 }

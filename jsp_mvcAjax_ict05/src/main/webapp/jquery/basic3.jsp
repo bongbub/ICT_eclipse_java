@@ -11,21 +11,23 @@
 
 <script type="text/javascript">
 	
+	// dataType : 'xml'인 경우
 	$(function(){
 		$('#btn').click(function(){
-			let param = {};	// 객체
-			param.name = "김태희";
-			param.tel = "010-2222-1111";
-			param.address = "워싱턴";
-			param.email="kim@naver.com";
 			
 			$.ajax({		// jQuery + Ajax
 				// url 처리
-				url: '${path}/basic2_next.jq' ,			// 3. 컨트롤러에게 `(요청)
+				url: '${path}/resources/data/basic3_data.xml' ,			// 3. new > other > xml > XML File > 파일명
 				type: 'GET',
-				data : param,
+				dataType : 'xml',
 				success: function(result){			// 6. 콜백함수 - 전송성공시 결과 result에 전달
-					$('#display').html(result);
+					let strText = "";
+					$(result).find('holiday').each(function(){		// result 내에서 holiday란걸 검색해서 반복
+						let item_text = $(this).text();			// 각각의 정보를 가져와 실제 텍스트 값을 추출하라
+						strText += item_text;			// strText에 현재 가져온 값들을 누적해라
+						$('#display').html(strText);
+				});
+					
 				},
 				error:function(){
 					alert('오류');
