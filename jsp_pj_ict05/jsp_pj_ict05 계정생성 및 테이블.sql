@@ -129,6 +129,17 @@ INSERT INTO mvc_board_tbl(b_num, B_TITLE, B_WRITER, B_CONTENT, B_PASSWORD, B_COM
 	values(992, '제목', '작성자', '내용', '1234', 0, 0, sysdate);
 
 
+-- 삭제 시, b_show 컬럼을 'N'으로 수정, 리스트에서 b_show 컬럼이 'Y'인 것만 조회
+ALTER TABLE mvc_board_tbl
+	ADD b_show varchar2(1) DEFAULT 'Y';
+
+
+-- 댓글등록시 갯수 업데이트
+UPDATE MVC_BOARD_TBL SET b_comment_count = b_comment_count+1
+WHERE b_num = 995;
+
+
+
 ----------- [ 댓글 ] ------------------------------
 
 -- 게시판 댓글테이블
