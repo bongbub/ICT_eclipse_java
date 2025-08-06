@@ -174,12 +174,60 @@ SELECT *
   	ORDER BY rn desc;
 
 
+----------------------------------------------------------------------------------------
+----------- [ 상품정보 ] ------------------------------
+1)  [ 상품정보 TABLE ]-----------
+ DROP TABLE mvc_product_tbl CASCADE CONSTRAINTS;
+ CREATE TABLE mvc_product_tbl(
+    pdNo        NUMBER(7)  PRIMARY KEY,           	-- 상품번호
+    pdName      VARCHAR2(100)  NOT NULL UNIQUE,    	-- 상품명
+    pdBrand     VARCHAR2(50) NOT NULL,            	-- 상품브랜드
+    pdImg       VARCHAR2(100) NOT NULL,            	-- 상품이미지
+    pdCategory  VARCHAR2(50) NOT NULL,             	-- 상품카테고리
+    pdContent   CLOB,                               -- 상품설명
+    pdPrice     NUMBER(9) NOT NULL,                	-- 상품가격
+    pdQuantity  NUMBER(9) NOT NULL,                	-- 상품등록 수량
+    pdStatus    VARCHAR2(20) NOT NULL,             	-- 상품상태코드
+    pdIndate    DATE  DEFAULT sysdate              	-- 상품등록일
+ );
 
+-- clob : 대용량 텍스트 자료형
+-- blob : 대용량 바이너리 자료형
+
+SELECT * FROM mvc_product_tbl;
+
+ALTER TABLE mvc_product_tbl
+  ADD show char(1) DEFAULT 'Y';
+
+SELECT * FROM
+	(SELECT A.*, 
+		rownum AS rn
+			FROM (SELECT * FROM mvc_product_tbl
+					WHERE show='Y'
+					ORDER BY pdNo DESC) A
+	)
+	WHERE rn BETWEEN 1 AND 10;
+
+-- 상세페이지
+SELECT * FROM mvc_product_tbl
+WHERE pdNo = 1;
+
+-- 상품 수정
+UPDATE mvc_product_tbl
+  SET pdName = '12345'
+    , pdBrand='브랜드123'
+    , pdImg = 'img'
+    , pdCategory = ''
+    , pdContent = ''
+    , pdPrice = 194812
+    , pdQuantity = 124
+    , pdStatus = ''
+ WHERE pdNo = 9;
+COMMIT;
 
 
 -- 내용삭제 --------------------------------
 DELETE FROM MVC_CUSTOMER_TBL ;
-
 DELETE FROM mvc_board_tbl;
 DELETE FROM mvc_comment_tbl;
 
