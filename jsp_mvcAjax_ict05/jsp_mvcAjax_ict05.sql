@@ -38,3 +38,5 @@ INSERT INTO mvc_search_tbl(keyword)
 COMMIT; 
 
 
+SELECT * FROM mvc_search_tbl WHERE keyword LIKE upper('%' || 'java' || '%');
+

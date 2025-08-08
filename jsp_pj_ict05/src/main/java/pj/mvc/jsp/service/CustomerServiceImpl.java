@@ -53,7 +53,16 @@ public class CustomerServiceImpl implements CustomerService{
 		dto.setUser_password(request.getParameter("user_password"));
 		dto.setUser_name(request.getParameter("user_name"));
 		dto.setUser_birthday(Date.valueOf(request.getParameter("user_birthday")));
-		dto.setUser_address(request.getParameter("user_address"));
+		// dto.setUser_address(request.getParameter("user_address"));
+		
+		
+		String addr1 = request.getParameter("user_addr1");
+		String addr2 = request.getParameter("user_addr2");
+		String addr3 = request.getParameter("user_addr3");
+		String addr = addr1 + addr2 + addr3;
+		dto.setUser_address(addr);
+		
+		
 		
 		// hp는 필수가 아니므로 null값이 아닐때만 받아온다 (010 1234 1234)
 		String hp = "";
