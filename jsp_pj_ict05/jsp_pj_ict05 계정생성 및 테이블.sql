@@ -39,7 +39,7 @@ CREATE TABLE mvc_customer_tbl(
 	user_password   VARCHAR2(20)    NOT NULL,          	-- 수정, 삭제용 비밀번호
 	user_name   	VARCHAR2(50)    NOT NULL,          	-- 이름
 	user_birthday   DATE            NOT NULL,          	-- 생년월일    
-	user_address    VARCHAR2(50)    NOT NULL,          	-- 주소
+	user_address    VARCHAR2(500)    NOT NULL,          	-- 주소
 	user_hp         VARCHAR2(13),                      	-- 핸드폰      
 	user_email      VARCHAR2(50)    NOT NULL,          	-- 이메일
 	user_regdate    TIMESTAMP       DEFAULT sysdate    	-- 가입일
